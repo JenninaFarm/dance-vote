@@ -1,5 +1,5 @@
 const express = require('express');
-const crud = require('../database/crudrepository');
+// const crud = require('../database/crudrepository');
 
 const route = express.Router();
 
@@ -11,14 +11,14 @@ route.get('/', (req, res) => {
   }
 });
 
-route.get('/users', async (req, res) => {
-  const query = req.query;
-  try {
-    const result = await crud.findAllUsers(query);
-    res.status(200).json(result.rows);
-  } catch (err) {
-    res.send(err);
-  }
-});
+// route.get('/users', async (req, res) => {
+//   const query = req.query;
+//   try {
+//     const result = await crud.findAllUsers(query);
+//     res.status(200).json(result.rows);
+//   } catch (err) {
+//     res.send(err);
+//   }
+// });
 
 module.exports = route;
