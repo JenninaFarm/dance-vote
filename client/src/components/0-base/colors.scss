@@ -1,0 +1,57 @@
+/*********************
+COLORS DECLARED
+*********************/
+$color-black: #000;
+$color-white: #fff;
+$color-dark-gray: #404E4D;
+$color-light-gray: #D3D3D3;
+$color-shade-red: #C3423F;
+$color-green: #A6BF36;
+$color-light-green: #CCD645;
+$color-light-blue-green: #ACD49C;
+$color-light-turquoise: #BADECA;
+$color-dark-navy: #00043d;
+
+
+/*********************
+DEFAULT COLORS
+*********************/
+// Use these colors via clr() function rather than colors directly.
+// This way we can change colors easily and fast.
+
+$defaultColors: (
+  text: $color-black,
+  text-inverse: $color-white,
+  primary: $color-dark-navy,
+  border-date-picker: $color-light-gray,
+);
+
+/*********************
+FUNCTION TO CALL COLORS
+*********************/
+// The function that you can access the colors anywhere easily:
+// for example: background-color: clr(primary);
+
+// The colorChoice called in the function is prefixed with
+// `var(--c-` to call the custom property for that color.
+// for example: color: clr(primary); will return color: var(--c-primary);
+// Note: (The `--c-` is added via the `@each` loops below)
+@function clr($colorChoice) {
+  @return var(--c-#{$colorChoice});
+}
+
+/*********************
+CREATE CUSTOM PROPERTIES
+*********************/
+// Create CSS custom properties
+// This loop creates a css custom property for each variable in a map.
+// for example: text: $color-black, -> --c-text: $color-black;
+//
+// The first `@each` loop will create a custom property for each item in the
+// $defaultColors map. So put all of your default colors there.
+:root {
+  // Create custom properties for default colors
+  @each $name, $color in $defaultColors {
+    --c-#{$name}: #{$color};
+  }
+}

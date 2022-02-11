@@ -1,0 +1,41 @@
+/*********************
+BREAKPOINTS
+*********************/
+
+@mixin breakpoint($point) {
+  @if $point == desktop {
+    @media (min-width: 70em) { @content ; }
+ }
+  @else if $point == laptop {
+    @media (min-width: 64em) { @content ; }
+ }
+   @else if $point == tablet {
+    @media (min-width: 50em) { @content ; }
+ }
+  @else if $point == phablet {
+    @media (min-width: 37.5em)  { @content ; }
+ }
+ @else if $point == mobileonly {
+    @media (max-width: 27.5em)  { @content ; }
+ }
+}
+
+/*********************
+SPACER
+*********************/
+@mixin element-spacer() {
+  margin-top: $space-m;
+  margin-bottom: $space-m;
+  margin-left: $space-m;
+  margin-right: $space-m;
+}
+
+/*********************
+RESETS
+*********************/
+
+@mixin list-reset() {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
