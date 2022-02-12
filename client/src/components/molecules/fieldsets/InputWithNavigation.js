@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
 
 import Label from '../../atoms/label/Label';
 import Input from '../../atoms/input/Input';
-import Button from '../../atoms/button/Button';
+import ButtonWithNav from '../../atoms/button/ButtonWithNav';
 
 const InputWithNavigation = ({buttonText, onClick, placeholder, inputId, labelContent, navBase, queryParam}) => {
   const [navTo, setNavTo] = useState('');
@@ -13,11 +12,9 @@ const InputWithNavigation = ({buttonText, onClick, placeholder, inputId, labelCo
     <fieldset>
       <Label inputId={inputId} content={labelContent} />
       <Input id={inputId} placeholder={placeholder} handleValueChange={event => setNavTo(event.target.value)} />
-      <NavLink to={`${navBase}?${queryParam}=${navTo}`}>
-        <Button onClick={onClick}>
-          {buttonText}
-        </Button>
-      </NavLink>
+      <ButtonWithNav to={`${navBase}?${queryParam}=${navTo}`}>
+        {buttonText}
+      </ButtonWithNav>
     </fieldset>
   );
 }
