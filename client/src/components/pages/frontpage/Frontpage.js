@@ -1,4 +1,5 @@
 import React from 'react';
+import ButtonWithNav from '../../atoms/button/ButtonWithNav';
 // import PropTypes from 'prop-types';
 
 import InputWithNavigation from '../../molecules/fieldsets/InputWithNavigation';
@@ -30,6 +31,8 @@ const Frontpage = () => {
         navBase='vote'
         queryParam='poll_id'
       />
+      
+      <ButtonWithNav to='/register'> Registration </ButtonWithNav>
     </div>
   )
 }
