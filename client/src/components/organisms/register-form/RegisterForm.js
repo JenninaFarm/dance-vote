@@ -37,7 +37,7 @@ const RegisterForm = () => {
     }
 
     const res = await restApi.createUser(newUser);
-    console.log(res.status);
+    console.log(res);
   }
 
   const handleSubmit = (event) => {
