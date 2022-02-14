@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 
 import './Styles.scss';
 
@@ -11,17 +10,9 @@ import Registeration from './components/pages/registeration/Registeration';
 
 
 const App = () => {
-  const [data, setData] = useState();
-
-  useEffect(() => {
-    fetch("/api")
-    .then((res) => res.json())
-    .then((data) => setData(data.message));
-  }, []);
 
   return (
     <div className='dance-vote'>
-      <p>{!data ? "Loading..." : data}</p>
       <Routes>
         <Route path='/' element={<Frontpage />} />
         <Route path='/register' element={<Registeration />} />
