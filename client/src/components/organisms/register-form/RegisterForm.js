@@ -3,6 +3,7 @@ import Button from '../../atoms/button/Button';
 import Form from '../../atoms/form/Form';
 import Input from '../../atoms/input/Input';
 import Label from '../../atoms/label/Label';
+import { restApi } from '../../../restApi';
 
 const RegisterForm = () => {
   const [userName, setUserName] = useState();
@@ -28,12 +29,26 @@ const RegisterForm = () => {
     }
   }
 
+  const submitRegistration = async () => {
+    const newUser = {
+      username: userName,
+      password: password,
+      email: email, 
+    }
+
+    const res = await restApi.createUser(newUser);
+    console.log(res.status);
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
+
     showErrorMessagesIfNeeded(event.target);
+
     if(validate(event.target)) {
       console.log('Validated');
-    }
+      submitRegistration();
+    } 
   }
 
   return (
