@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Button from '../../atoms/button/Button';
+import Form from '../../atoms/form/Form';
 import Input from '../../atoms/input/Input';
 import Label from '../../atoms/label/Label';
 
@@ -8,15 +9,35 @@ const RegisterForm = () => {
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
 
-  const handleSubmit = (event) => {
-    if ( !userName || !password || !email ) {
-      
+  const validate = (form) => {
+    if(form.checkValidity()) {
+      return true;
     }
-    console.log('submit registration');
+    return false;
+  }
+
+  const showErrorMessagesIfNeeded = (form) => {
+    for(let i=0; i<form.length; i++) {
+      if(!form[i].checkValidity()) {
+        form[i].classList.add('invalid-input');
+      } else {
+        if(form[i].classList.contains('invalid-input')) {
+          form[i].classList.remove('invalid-input');
+        }
+      }
+    }
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    showErrorMessagesIfNeeded(event.target);
+    if(validate(event.target)) {
+      console.log('Validated');
+    }
   }
 
   return (
-    <form>
+    <Form submit={handleSubmit} >
       <Label inputId='user-name' content='User name' />
       <Input 
         id='user-name'
@@ -41,11 +62,11 @@ const RegisterForm = () => {
         placeholder='password'
         handleValueChange={event => setPassword(event.target.value)}
         errorMessage='Please give a password with atleast 8 characters'
-        minlength='8'
+        minLength='8'
         required
       />
-      <Button type='submit' onClick={handleSubmit} > Create account </Button>
-    </form>
+      <Button type='submit'> Create account </Button>
+    </Form>
   );
 }
 

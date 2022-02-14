@@ -1,0 +1,10 @@
+.input-container {
+
+  .error-message {
+    display: none;
+  }
+
+  .invalid-input + .error-message {
+    display: block;
+  }
+}
