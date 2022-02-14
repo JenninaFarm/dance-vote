@@ -46,7 +46,6 @@ const RegisterForm = () => {
     showErrorMessagesIfNeeded(event.target);
 
     if(validate(event.target)) {
-      console.log('Validated');
       submitRegistration();
     } 
   }

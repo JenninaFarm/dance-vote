@@ -28,7 +28,7 @@ export const restApi = {
   createUser: async (user) => {
     try {
       const res = await client.post('register/', user);
-      return res.status;
+      return res;
     } catch (err) {
       console.log(err);
     }

@@ -24,6 +24,18 @@ const connectionFunctions = {
       });
     });
   },
+
+  createUser: (user) => {
+    return new Promise((resolve, reject) => {
+      pool.query('INSERT INTO users (username, password, email) VALUES ($1, $2, $3)', user, (err, result) => {
+        if(err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  },
 }
 
 module.exports = connectionFunctions;
