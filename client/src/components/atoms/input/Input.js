@@ -5,7 +5,7 @@ import ErrorMessage from '../error-message/ErrorMessage';
 const Input = ({type, placeholder, id, handleValueChange, errorMessage, ...rest}) => {
   
   return (
-    <div>
+    <div className='input-container'>
       <input 
         type={type} 
         placeholder={placeholder} 
@@ -15,7 +15,7 @@ const Input = ({type, placeholder, id, handleValueChange, errorMessage, ...rest}
         {...rest}
       />
 
-      <ErrorMessage className='input__error-message'>
+      <ErrorMessage>
         {errorMessage}
       </ErrorMessage>
 
