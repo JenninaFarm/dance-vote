@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3500;
 
 
 
-// const cors = require('cors');
+const cors = require('cors');
 // const { logger } = require('./middleware/logEvents');
 // const errorHandler = require('./middleware/errorHandler');
 // const poll = require('./routes/poll');
@@ -31,7 +31,7 @@ const PORT = process.env.PORT || 3500;
 //   optionsSuccessStatus: 200
 // }
 
-// server.use(cors(corsOptions));
+server.use(cors());
 
 server.use(express.json());
 server.use(express.static(path.resolve(__dirname, '../client/build')));
