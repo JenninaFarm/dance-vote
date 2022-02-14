@@ -1,12 +1,20 @@
 const express = require('express');
-const server = express();
 const path = require('path');
 
-const poll = require('./routes/poll');
+const server = express();
+const api = express.Router();
 
 const PORT = process.env.PORT || 3500;
 
 
+const register = require('./routes/register');
+const poll = require('./routes/poll');
+
+
+// public routes
+api.use('/register', register);
+// needs authentication
+api.use('/poll', poll);
 
 
 const cors = require('cors');
@@ -38,7 +46,7 @@ server.use(express.static(path.resolve(__dirname, '../client/build')));
 
 // server.use(express.static("build"));
 
-server.use('/api', poll);
+server.use('/api', api);
 
 // all other get requests not handled before will return React app
 server.get('*', (req, res) => {
