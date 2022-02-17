@@ -1,4 +1,5 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 import './Styles.scss';
 
@@ -11,14 +12,21 @@ import Login from './components/pages/login/Login';
 
 
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  const login = () => {
+    setIsLoggedIn(true);
+    navigate('/profile');
+  }
 
   return (
     <div className='dance-vote'>
       <Routes>
         <Route path='/' element={<Frontpage />} />
         <Route path='/register' element={<Registeration />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/new-poll' element={<NewPoll />} />
+        <Route path='/login' element={<Login handleLogin={login} />} />
+        <Route path='/new-poll' element={isLoggedIn ? <NewPoll /> : <Navigate to='/login' /> }/>
         <Route path='/vote' element={<Voting />} />
       </Routes>
     </div>

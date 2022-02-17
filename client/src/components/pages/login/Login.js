@@ -6,7 +6,7 @@ import Form from '../../atoms/form/Form';
 import Input from '../../atoms/input/Input';
 import Label from '../../atoms/label/Label';
 
-const Login = () => {
+const Login = ({handleLogin}) => {
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
   const [error, setError] = useState();
@@ -20,7 +20,11 @@ const Login = () => {
       password: password,
     }
     const res = await restApi.login(login);
-    console.log(res);
+    if (!res.error) {
+      handleLogin();
+    } else {
+      setError(res.error);
+    }
   }
 
   return (
@@ -50,7 +54,7 @@ const Login = () => {
             {error}
           </ErrorMessage>
         }
-        <Button type='submit'> Create account </Button>
+        <Button type='submit'> Log in </Button>
       </Form>
     </div>
   );
