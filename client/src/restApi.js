@@ -25,6 +25,7 @@ export const restApi = {
       console.log(err);
     }
   },
+
   createUser: async (user) => {
     try {
       const res = await client.post('register/', user);
@@ -32,8 +33,17 @@ export const restApi = {
     } catch (err) {
       return err.response.data;
     }
-   
   },
+
+  login: async (loginInfo) => {
+    try {
+      const res = await client.patch('login/', loginInfo);
+      return res.data;
+    } catch (err) {
+      return err.response.data;
+    }
+  },
+
   getUsers: async () => {
     try {
       const res = await client.get('users');

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { restApi } from '../../../restApi';
 import Button from '../../atoms/button/Button';
 import ErrorMessage from '../../atoms/error-message/ErrorMessage';
 import Form from '../../atoms/form/Form';
@@ -10,8 +11,16 @@ const Login = () => {
   const [email, setEmail] = useState();
   const [error, setError] = useState();
 
-  const handleSubmit = () => {
-    console.log('submit login');
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+
+    const login = {
+      email: email,
+      password: password,
+    }
+    const res = await restApi.login(login);
+    console.log(res);
   }
 
   return (
@@ -29,7 +38,7 @@ const Login = () => {
         />
         <Label inputId='password' content='password'/>
         <Input 
-          id='email'
+          id='password'
           type='password'
           placeholder='email'
           handleValueChange={event => setPassword(event.target.value)}

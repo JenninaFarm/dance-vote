@@ -9,7 +9,7 @@ const Input = ({type, placeholder, id, handleValueChange, errorMessage, ...rest}
       <input 
         type={type} 
         placeholder={placeholder} 
-        size={10} 
+        size={30} 
         id={id} 
         onChange={handleValueChange}
         {...rest}
