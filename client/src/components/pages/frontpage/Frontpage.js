@@ -33,6 +33,7 @@ const Frontpage = () => {
       />
       
       <ButtonWithNav to='/register'> Registration </ButtonWithNav>
+      <ButtonWithNav to='/login'> Log in </ButtonWithNav>
     </div>
   )
 }
