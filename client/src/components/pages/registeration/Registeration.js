@@ -1,10 +1,14 @@
 import React from 'react';
+import ButtonWithNav from '../../atoms/button/ButtonWithNav';
 // import PropTypes from 'prop-types';
 import RegisterForm from '../../organisms/register-form/RegisterForm';
 
 const Registeration = () => {
   return (
     <div>
+      <ButtonWithNav to='/'>
+        Back to Frontpage
+      </ButtonWithNav>
       Registeration
 
       <RegisterForm />
