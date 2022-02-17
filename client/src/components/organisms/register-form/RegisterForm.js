@@ -4,11 +4,13 @@ import Form from '../../atoms/form/Form';
 import Input from '../../atoms/input/Input';
 import Label from '../../atoms/label/Label';
 import { restApi } from '../../../restApi';
+import ErrorMessage from '../../atoms/error-message/ErrorMessage';
 
 const RegisterForm = () => {
   const [userName, setUserName] = useState();
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
+  const [error, setError] = useState();
 
   const validate = (form) => {
     if(form.checkValidity()) {
@@ -37,7 +39,11 @@ const RegisterForm = () => {
     }
 
     const res = await restApi.createUser(newUser);
-    console.log(res);
+    if(res.error) {
+      setError(res.error);
+    } else {
+      setError(undefined);
+    }
   }
 
   const handleSubmit = (event) => {
@@ -79,6 +85,11 @@ const RegisterForm = () => {
         minLength='8'
         required
       />
+      {error && 
+        <ErrorMessage>
+          {error}
+        </ErrorMessage>
+      }
       <Button type='submit'> Create account </Button>
     </Form>
   );

@@ -30,7 +30,7 @@ export const restApi = {
       const res = await client.post('register/', user);
       return res;
     } catch (err) {
-      console.log(err);
+      return err.response.data;
     }
    
   },
