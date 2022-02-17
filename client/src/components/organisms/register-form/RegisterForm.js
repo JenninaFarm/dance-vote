@@ -73,7 +73,7 @@ const RegisterForm = () => {
         placeholder='example@example.com'
         handleValueChange={event => setEmail(event.target.value)}
         errorMessage='Please give a valid email'
-        required  
+        required
       />
       <Label inputId='password' content='password' />
       <Input
