@@ -25,6 +25,18 @@ const connectionFunctions = {
     });
   },
 
+  setLastLogin: (user) => {
+    return new Promise((resolve, reject) => {
+      pool.query('UPDATE users SET last_login = now() WHERE email = $1', [user.email], (err, result) => {
+        if(err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    })
+  },
+
   createUser: (user) => {
     return new Promise((resolve, reject) => {
       pool.query('INSERT INTO users (username, password, email) VALUES ($1, $2, $3)', user, (err, result) => {

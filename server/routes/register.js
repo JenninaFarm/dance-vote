@@ -7,6 +7,7 @@ const route = express.Router();
 
 route.post('/', async (req, res) => {
 
+  console.log(req.body.email);
   const existingUser = await crud.getUserByEmail(req.body.email);
 
   if (existingUser.rows.length !== 0) {
