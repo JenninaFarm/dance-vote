@@ -1,5 +1,6 @@
 const express = require('express');
 const crud = require('../database/crudrepository');
+const HttpStatus = require('../HttpStatus');
 
 const route = express.Router();
 
@@ -11,14 +12,15 @@ route.get('/', (req, res) => {
   }
 });
 
-route.get('/users', async (req, res) => {
-  const query = req.query;
+route.post('/', async (req, res) => {
   try {
-    const result = await crud.findAllUsers(query);
-    res.status(200).json(result.rows);
+    const result = await crud.createPoll(req.body);
+    res.status(HttpStatus.CREATED).json(result);
   } catch (err) {
+    console.log(err);
     res.send(err);
   }
+
 });
 
 module.exports = route;
