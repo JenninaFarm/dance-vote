@@ -51,10 +51,8 @@ const connectionFunctions = {
 
   createPoll: (poll) => {
     return new Promise((resolve, reject) => {
-      console.log(poll.name);
       pool.query('INSERT INTO polls (owner_id, name, access_code) VALUES ($1, $2, $3)', [poll.owner_id, poll.name, poll.access_code], (err, result) => {
         if (err) {
-          console.log(err);
           reject(err);
         } else {
           resolve(result);

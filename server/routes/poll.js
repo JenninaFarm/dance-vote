@@ -17,7 +17,6 @@ route.post('/', async (req, res) => {
     const result = await crud.createPoll(req.body);
     res.status(HttpStatus.CREATED).json(result);
   } catch (err) {
-    console.log(err);
     res.send(err);
   }
 

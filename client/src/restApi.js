@@ -46,11 +46,9 @@ export const restApi = {
 
   createPoll: async (poll) => {
     try {
-      console.log(poll);
       const res = await client.post('poll/', poll);
       return res;
     } catch (err) {
-      console.log(err);
       return err;
     }
   },
