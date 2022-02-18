@@ -27,11 +27,11 @@ const App = () => {
     <div className='dance-vote'>
       <Routes>
         <Route path='/' element={<Frontpage />} />
-        <Route path='/register' element={<Registeration />} />
-        <Route path='/login' element={<Login handleLogin={login} />} />
-        <Route path='/new-poll' element={isLoggedIn ? <NewPoll /> : <Navigate to='/login' /> }/>
-        <Route path='/profile' element={isLoggedIn ? <Profile user={user} /> : <Navigate to='/login' /> }/>
-        <Route path='/vote' element={<Voting />} />
+        <Route path='register' element={<Registeration />} />
+        <Route path='login' element={<Login handleLogin={login} />} />
+        <Route path='new-poll' element={isLoggedIn ? <NewPoll /> : <Navigate to='/login' /> }/>
+        <Route path='profile' element={isLoggedIn ? <Profile user={user} /> : <Navigate to='/login' /> } />
+        <Route path='vote' element={<Voting />} />
       </Routes>
     </div>
   );
