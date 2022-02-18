@@ -14,12 +14,12 @@ import Profile from './components/pages/profile/Profile';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState({username: ''})
+  const [user, setUser] = useState({username: '', id: ''})
   const navigate = useNavigate();
 
-  const login = (username) => {
+  const login = (loggedUser) => {
     setIsLoggedIn(true);
-    setUser({username: username});
+    setUser({username: loggedUser.username, id: loggedUser.id});
     navigate('/profile');
   }
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import ButtonWithNav from '../../atoms/button/ButtonWithNav';
 
 import InputWithNavigation from '../../molecules/fieldsets/InputWithNavigation';
 
@@ -11,9 +10,10 @@ const Profile = ({user}) => {
 
   return (
     <div>
-      <h1>Profile of {user.username} </h1>
+      <h1>Profile of {user.username} id: {user.id} </h1>
       <p> TODO: logout</p>
       <p> TODO: change password</p>
+      <p> TODO: My polls </p>
       <InputWithNavigation
         labelContent='Create new poll'
         buttonText='create'

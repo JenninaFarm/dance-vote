@@ -21,7 +21,8 @@ const Login = ({handleLogin}) => {
     }
     const res = await restApi.login(login);
     if (!res.error) {
-      handleLogin( res.username );
+      const user = {username: res.username, id: res.user_id}
+      handleLogin( user );
     } else {
       setError(res.error);
     }
