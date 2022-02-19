@@ -1,6 +1,7 @@
 import React from 'react';
 
 import InputWithNavigation from '../../molecules/fieldsets/InputWithNavigation';
+import MyPolls from '../../organisms/my-polls/MyPolls';
 
 const Profile = ({user}) => {
 
@@ -14,6 +15,7 @@ const Profile = ({user}) => {
       <p> TODO: logout</p>
       <p> TODO: change password</p>
       <p> TODO: My polls </p>
+      <MyPolls />
       <InputWithNavigation
         labelContent='Create new poll'
         buttonText='create'
