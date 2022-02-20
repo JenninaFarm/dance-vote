@@ -13,7 +13,7 @@ const MyPolls = ({userId}) => {
       }
     }
     fetch();
-  }, [polls, userId]);
+  }, [userId]);
 
   return (
     <div>
