@@ -14,8 +14,7 @@ const Profile = ({user}) => {
       <h1>Profile of {user.username} id: {user.id} </h1>
       <p> TODO: logout</p>
       <p> TODO: change password</p>
-      <p> TODO: My polls </p>
-      <MyPolls />
+      <MyPolls userId={user.id} />
       <InputWithNavigation
         labelContent='Create new poll'
         buttonText='create'

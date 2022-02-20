@@ -60,6 +60,18 @@ const connectionFunctions = {
       });
     });
   },
+
+  getPollsByOwner: (owner) => {
+    return new Promise((resolve, reject) => {
+      pool.query('SELECT * FROM polls WHERE owner_id = $1', [owner], (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      })
+    })
+  },
 }
 
 module.exports = connectionFunctions;

@@ -4,9 +4,10 @@ const HttpStatus = require('../HttpStatus');
 
 const route = express.Router();
 
-route.get('/', (req, res) => {
+route.get('/', async (req, res) => {
   try {
-    res.status(200).json({message: "hello from server"});
+    const result = await crud.getPollsByOwner(req.query.id);
+    res.status(HttpStatus.OK).json(result.rows);
   } catch (err) {
     res.send(err);
   }
@@ -19,7 +20,6 @@ route.post('/', async (req, res) => {
   } catch (err) {
     res.send(err);
   }
-
 });
 
 module.exports = route;

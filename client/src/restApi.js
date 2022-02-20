@@ -40,7 +40,7 @@ export const restApi = {
       const res = await client.patch('login/', loginInfo);
       return res.data;
     } catch (err) {
-      return err.response.data;
+      return err;
     }
   },
 
@@ -53,6 +53,14 @@ export const restApi = {
     }
   },
 
+  getPollsByOwner: async (owner) => {
+    try {
+      const res = await client.get('poll/', {params: {id: owner}});
+      return res.data;
+    } catch (err) {
+      return err;
+    }
+  },
   getUsers: async () => {
     try {
       const res = await client.get('users');
