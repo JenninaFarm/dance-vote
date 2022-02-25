@@ -4,7 +4,7 @@ const HEROKU_URL = "https://https://dance-vote.herokuapp.com/api/";
 const LOCAL_URL = "http://localhost:3500/api/";
 
 // Set to true to use server running on Heroku
-const useHeroku = false;
+const useHeroku = true;
 
 const BASE_URL = useHeroku ? HEROKU_URL : LOCAL_URL;
 

@@ -5,7 +5,6 @@ const server = express();
 const api = express.Router();
 
 const PORT = process.env.PORT || 3500;
-console.log('port: ' + process.env.PORT);
 
 
 const register = require('./routes/register');
