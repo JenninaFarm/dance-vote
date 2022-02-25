@@ -73,6 +73,18 @@ const connectionFunctions = {
     })
   },
 
+  getOnGoingPollsByOwner: (owner) => {
+    return new Promise((resolve, reject) => {
+      pool.query('SELECT * FROM polls WHERE owner_id = $1 AND on_going = true', [owner], (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      })
+    })
+  },
+
   setPollAccesCode: (poll_id, access_code) => {
     return new Promise((resolve, reject) => {
       pool.query('UPDATE polls SET access_code = $1 WHERE poll_id = $2', [access_code, poll_id], (err, result) => {

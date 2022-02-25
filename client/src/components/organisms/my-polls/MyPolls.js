@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { restApi } from '../../../restApi';
 import Button from '../../atoms/button/Button';
 import EditPoll from '../../molecules/modals/EditPoll';
 
-const MyPolls = ({userId}) => {
+const MyPolls = ({userId, getFunction}) => {
   const [polls, setPolls] = useState([]);
   const [showEditPoll, setShowEditPoll] = useState(false);
   const [pollIdShown, setPollIdShown] = useState();
 
   useEffect(() => {
     const fetch = async () => {
-      const response = await restApi.getPollsByOwner(userId);
+      const response = await getFunction(userId);
       if(response) {
         setPolls(response);
       }
@@ -49,6 +48,7 @@ const MyPolls = ({userId}) => {
 
 MyPolls.propTypes = {
   userId: PropTypes.number,
+  getFunction: PropTypes.func,
 }
 
 export default MyPolls;

@@ -62,6 +62,15 @@ export const restApi = {
     }
   },
 
+  getOnGoingPollsByOwner: async (owner) => {
+    try {
+      const res = await client.get('poll/on-going', {params: {id: owner}});
+      return res.data;
+    } catch (err) {
+      return err;
+    }
+  },
+
   setPollAccessCode: async (poll) => {
     try {
       const res = await client.patch('poll/access-code', poll);

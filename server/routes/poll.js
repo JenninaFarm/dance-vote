@@ -13,6 +13,15 @@ route.get('/', async (req, res) => {
   }
 });
 
+route.get('/on-going', async (req, res) => {
+  try {
+    const result = await crud.getOnGoingPollsByOwner(req.query.id);
+    res.status(HttpStatus.OK).json(result.rows);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
 route.post('/', async (req, res) => {
   try {
     const result = await crud.createPoll(req.body);
