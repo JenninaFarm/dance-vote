@@ -32,6 +32,7 @@ route.patch('/', async (req, res) => {
     return res.status(HttpStatus.OK).json(user);
 
   } catch (err) {
+    console.log('Täss');
     console.log(err);
   }
 });
