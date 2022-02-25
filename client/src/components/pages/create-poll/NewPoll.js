@@ -5,6 +5,7 @@ import { useSearchParams } from 'react-router-dom';
 import NewPair from '../../molecules/fieldsets/NewPair';
 import Card from '../../molecules/cards/Card';
 import { restApi } from '../../../restApi';
+import { createUniqueId } from '../../../HelperFunctions';
 
 const NewPoll = ({userId}) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -30,6 +31,7 @@ const NewPoll = ({userId}) => {
 
     const sendPoll = async (poll) => {
       const res = await restApi.createPoll(poll);
+      const accessCode = createUniqueId(res.poll_id);
       console.log(res);
     }
 
@@ -37,12 +39,10 @@ const NewPoll = ({userId}) => {
       const poll = {
         owner_id: userId,
         name: searchParams.get('poll'),
-        access_code: '00000',
       }
       sendPoll(poll);
-      console.log(poll);
     }
-  }, [searchParams])
+  }, [searchParams]);
 
   return (
     <div>
