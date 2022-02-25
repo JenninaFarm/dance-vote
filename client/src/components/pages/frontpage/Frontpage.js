@@ -19,8 +19,7 @@ const Frontpage = () => {
         onClick={createNewPoll}
         placeholder='poll id'
         inputId='participate'
-        navBase='vote'
-        queryParam='poll_id'
+        navBase='vote?poll_id='
       />
       
       <ButtonWithNav to='/register'> Registration </ButtonWithNav>

@@ -3,30 +3,34 @@ import PropTypes from 'prop-types';
 
 import Label from '../../atoms/label/Label';
 import Input from '../../atoms/input/Input';
-import ButtonWithNav from '../../atoms/button/ButtonWithNav';
+import Button from '../../atoms/button/Button';
 
-const InputWithNavigation = ({buttonText, placeholder, inputId, labelContent, navBase}) => {
+const InputWithButton = ({buttonText, onClick, placeholder, inputId, labelContent}) => {
   const [value, setValue] = useState('');
+
+  const handleClick = () => {
+    if(onClick) {
+      onClick(value);
+    }
+  }
 
   return (
     <fieldset>
       <Label inputId={inputId} content={labelContent} />
       <Input id={inputId} placeholder={placeholder} handleValueChange={event => setValue(event.target.value)} />
-      <ButtonWithNav to={`${navBase}${value}`}>
+      <Button onClick={handleClick} >
         {buttonText}
-      </ButtonWithNav>
+      </Button>
     </fieldset>
   );
 }
 
-InputWithNavigation.propTypes = {
+InputWithButton.propTypes = {
   buttonText: PropTypes.string,
   inputId: PropTypes.string,
   onClick: PropTypes.func,
   labelContent: PropTypes.string,
   placeholder: PropTypes.string,
-  navBase: PropTypes.string,
-  navTo: PropTypes.string,
 }
 
-export default InputWithNavigation;
+export default InputWithButton;
