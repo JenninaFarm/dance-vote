@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const HEROKU_URL = "https://https://dance-vote.herokuapp.com/api/";
+const HEROKU_URL = "https://dance-vote.herokuapp.com/api/";
 const LOCAL_URL = "http://localhost:3500/api/";
 
 // Set to true to use server running on Heroku
