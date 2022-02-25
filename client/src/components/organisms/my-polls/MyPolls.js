@@ -27,6 +27,11 @@ const MyPolls = ({userId}) => {
   return (
     <div>
       <h3>My polls</h3>
+      {!polls && (
+        <div>
+          Loading polls
+        </div>
+      )}
       {polls.map(poll => (
         <div key={poll.poll_id}>
           {poll.name} 
