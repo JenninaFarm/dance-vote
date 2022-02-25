@@ -27,9 +27,9 @@ route.patch('/', async (req, res) => {
           .status(HttpStatus.UNAUTHORIZED)
           .json({ error:'Wrong email or password.' });
       }
-      return res.status(200).json(user);
+      return res.status(HttpStatus.OK).json(user);
     }
-    return res.status(200).json(user);
+    return res.status(HttpStatus.OK).json(user);
 
   } catch (err) {
     console.log(err);

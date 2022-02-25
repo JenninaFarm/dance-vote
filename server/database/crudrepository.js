@@ -51,7 +51,7 @@ const connectionFunctions = {
 
   createPoll: (poll) => {
     return new Promise((resolve, reject) => {
-      pool.query('INSERT INTO polls (owner_id, name, access_code) VALUES ($1, $2, $3)', [poll.owner_id, poll.name, poll.access_code], (err, result) => {
+      pool.query('INSERT INTO polls (owner_id, name, access_code) VALUES ($1, $2, $3) RETURNING poll_id', [poll.owner_id, poll.name, poll.access_code], (err, result) => {
         if (err) {
           reject(err);
         } else {
@@ -70,6 +70,18 @@ const connectionFunctions = {
           resolve(result);
         }
       })
+    })
+  },
+
+  setPollAccesCode: (poll_id, access_code) => {
+    return new Promise((resolve, reject) => {
+      pool.query('UPDATE polls SET access_code = $1 WHERE poll_id = $2', [access_code, poll_id], (err, result) => {
+        if(err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
     })
   },
 }

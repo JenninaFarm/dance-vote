@@ -13,6 +13,7 @@ const NewPoll = ({userId}) => {
   const [follower, setFollower] = useState();
   const [leader, setLeader] = useState();
   const [pairs, setPairs] = useState([]);
+  const [accessCode, setAccessCode] = useState();
 
   const fetchPairs = (newPair) => {
     console.log('fetch pairs and update pair cards');
@@ -31,8 +32,14 @@ const NewPoll = ({userId}) => {
 
     const sendPoll = async (poll) => {
       const res = await restApi.createPoll(poll);
-      const accessCode = createUniqueId(res.poll_id);
       console.log(res);
+      const accessCode = createUniqueId(res.poll_id);
+      const accessPoll = {
+        poll_id: res.poll_id,
+        access_code: accessCode,
+      }
+      await restApi.setPollAccessCode(accessPoll);
+      setAccessCode(accessCode);
     }
 
     if (searchParams.get('poll')) {
@@ -47,6 +54,7 @@ const NewPoll = ({userId}) => {
   return (
     <div>
       <h1> New Poll: {pollName} </h1>
+      <h2> Access code: {accessCode} </h2>
       <NewPair
         onClick={sendNewPair}
         setLeader={value => setLeader(value)}

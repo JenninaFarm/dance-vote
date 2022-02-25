@@ -47,7 +47,7 @@ export const restApi = {
   createPoll: async (poll) => {
     try {
       const res = await client.post('poll/', poll);
-      return res;
+      return res.data.rows[0];
     } catch (err) {
       return err;
     }
@@ -61,6 +61,16 @@ export const restApi = {
       return err;
     }
   },
+
+  setPollAccessCode: async (poll) => {
+    try {
+      const res = await client.patch('poll/access-code', poll);
+      return res.data;
+    } catch (err) {
+      return err;
+    }
+  },
+
   getUsers: async () => {
     try {
       const res = await client.get('users');
