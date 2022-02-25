@@ -80,6 +80,15 @@ export const restApi = {
     }
   },
 
+  createPollItem: async (pollItem) => {
+    try {
+      const res = await client.post('poll-item/', pollItem);
+      return res;
+    } catch (err) {
+      return err;
+    }
+  },
+
   getUsers: async () => {
     try {
       const res = await client.get('users');

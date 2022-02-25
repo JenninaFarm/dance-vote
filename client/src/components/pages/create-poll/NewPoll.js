@@ -21,8 +21,13 @@ const NewPoll = ({userId}) => {
     setPairs(newPair);
   }
 
-  const sendNewPair = () => {
-    console.log(`${follower} ja ${leader}`);
+  const sendNewPair = async () => {
+    const pollItem = {
+      leader: leader,
+      follower: follower,
+      poll_id: searchParams.get('poll'),
+    }
+    await restApi.createPollItem(pollItem);
     const newPair = [{leader: leader, follow: follower}]
     fetchPairs(newPair);
   }

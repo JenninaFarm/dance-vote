@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 3500;
 const register = require('./routes/register');
 const login = require('./routes/login');
 const poll = require('./routes/poll');
+const pollItem = require('./routes/pollItem');
 
 
 // public routes
@@ -17,6 +18,7 @@ api.use('/register', register);
 api.use('/login', login);
 // needs authentication
 api.use('/poll', poll);
+api.use('/poll-item', pollItem);
 
 
 const cors = require('cors');

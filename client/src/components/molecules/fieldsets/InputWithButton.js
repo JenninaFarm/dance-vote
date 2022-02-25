@@ -17,7 +17,11 @@ const InputWithButton = ({buttonText, onClick, placeholder, inputId, labelConten
   return (
     <fieldset>
       <Label inputId={inputId} content={labelContent} />
-      <Input id={inputId} placeholder={placeholder} handleValueChange={event => setValue(event.target.value)} />
+      <Input
+        id={inputId}
+        placeholder={placeholder}
+        handleValueChange={event => setValue(event.target.value)}
+      />
       <Button onClick={handleClick} >
         {buttonText}
       </Button>

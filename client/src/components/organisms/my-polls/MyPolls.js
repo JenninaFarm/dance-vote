@@ -16,7 +16,7 @@ const MyPolls = ({userId, getFunction}) => {
       }
     }
     fetch();
-  }, [userId]);
+  }, [userId, getFunction]);
 
   const handleShowEditPoll = (pollId) => {
     setShowEditPoll(true);

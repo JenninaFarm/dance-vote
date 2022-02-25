@@ -11,7 +11,11 @@ const InputWithNavigation = ({buttonText, placeholder, inputId, labelContent, na
   return (
     <fieldset>
       <Label inputId={inputId} content={labelContent} />
-      <Input id={inputId} placeholder={placeholder} handleValueChange={event => setValue(event.target.value)} />
+      <Input 
+        id={inputId}
+        placeholder={placeholder}
+        handleValueChange={event => setValue(event.target.value)}
+      />
       <ButtonWithNav to={`${navBase}${value}`}>
         {buttonText}
       </ButtonWithNav>
