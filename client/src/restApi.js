@@ -63,6 +63,15 @@ export const restApi = {
     }
   },
 
+  getOnGoingPollByAccessCode: async (accessCode) => {
+    try {
+      const res = await client.get('poll/on-going/access-code', {params: {access_code: accessCode}});
+      return res.data;
+    } catch (err) {
+      return err;
+    }
+  },
+
   getOnGoingPollsByOwner: async (owner) => {
     try {
       const res = await client.get('poll/on-going', {params: {id: owner}});
@@ -90,6 +99,15 @@ export const restApi = {
     }
   },
 
+  getPollItemsByPollId: async (pollId) => {
+    try {
+      const res = await client.get('poll-item/poll-id', {params: {poll_id: pollId}});
+      return res.data;
+    } catch (err) {
+      return err;
+    }
+  },
+
   getUsers: async () => {
     try {
       const res = await client.get('users');
@@ -97,5 +115,5 @@ export const restApi = {
     } catch (err) {
       return(err);
     }
-  }
+  },
 }

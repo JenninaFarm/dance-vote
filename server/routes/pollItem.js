@@ -4,9 +4,9 @@ const HttpStatus = require('../HttpStatus');
 
 const route = express.Router();
 
-route.get('/', async (req, res) => {
+route.get('/poll-id', async (req, res) => {
   try {
-    const result = await crud.findAllUsers();
+    const result = await crud.getPollItemsByPollId(req.query.poll_id);
     res.status(HttpStatus.OK).json(result.rows);
   } catch (err) {
     res.send(err);

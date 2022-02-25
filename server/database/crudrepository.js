@@ -85,6 +85,18 @@ const connectionFunctions = {
     })
   },
 
+  getOnGoingPollByAccessCode: (access_code) => {
+    return new Promise((resolve, reject) => {
+      pool.query('SELECT * FROM polls WHERE access_code = $1 AND on_going = true', [access_code], (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      })
+    })
+  },
+
   setPollAccesCode: (poll_id, access_code) => {
     return new Promise((resolve, reject) => {
       pool.query('UPDATE polls SET access_code = $1 WHERE poll_id = $2', [access_code, poll_id], (err, result) => {
@@ -107,6 +119,18 @@ const connectionFunctions = {
         }
       });
     });
+  },
+
+  getPollItemsByPollId: (poll_id) => {
+    return new Promise((resolve, reject) => {
+      pool.query('SELECT * FROM poll_items WHERE poll_id = $1', [poll_id], (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      })
+    })
   },
 }
 
