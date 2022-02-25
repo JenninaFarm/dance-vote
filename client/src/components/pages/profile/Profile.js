@@ -14,7 +14,7 @@ const Profile = ({user}) => {
       name: pollName,
     }
     const res = await restApi.createPoll(poll);
-    navigate(`../new-poll?poll=${res.poll_id}name=${pollName}`)
+    navigate(`../new-poll?poll=${res.poll_id}&name=${pollName}`)
   }
 
   return (
