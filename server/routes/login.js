@@ -21,18 +21,16 @@ route.patch('/', async (req, res) => {
             .status(HttpStatus.INTERNAL_SERVER_ERROR)
             .json({ error: 'Login not updated'});
         }
-        
+        return res.status(HttpStatus.OK).json(user);
       } else {
         return res
           .status(HttpStatus.UNAUTHORIZED)
           .json({ error:'Wrong email or password.' });
       }
-      return res.status(HttpStatus.OK).json(user);
     }
     return res.status(HttpStatus.OK).json(user);
 
   } catch (err) {
-    console.log('Täss');
     console.log(err);
   }
 });
