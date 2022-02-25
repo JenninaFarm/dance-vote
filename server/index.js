@@ -31,19 +31,19 @@ const cors = require('cors');
 // server.use(logger);
 
 // // cross origin resource sharing
-// const whitelist = ['https://dance-vote-server.herokuapp.com/', 'https://www.yoursite.com', 'http://127.0.0.1:3500', 'http://localhost:5000'];
-// const corsOptions = {
-//   origin: (origin, callback) => {
-//     if (whitelist.indexOf(origin) !== -1 || !origin) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error('Not allowed by CORS'));
-//     }
-//   },
-//   optionsSuccessStatus: 200
-// }
+const whitelist = ['https://dance-vote.herokuapp.com/', 'https://www.yoursite.com', 'http://127.0.0.1:3500', 'http://localhost:5000'];
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  optionsSuccessStatus: 200
+}
 
-server.use(cors());
+server.use(cors(corsOptions));
 
 server.use(express.json());
 server.use(express.static(path.resolve(__dirname, '../client/build')));
