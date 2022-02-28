@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSearchParams } from 'react-router-dom';
+import { Container, Draggable} from 'react-smooth-dnd';
 
 import { restApi } from '../../../restApi';
 import Card from '../../molecules/cards/Card';
@@ -31,16 +32,37 @@ const Voting = () => {
       fetch(searchParams.get('poll_id'));
     }
   });
+
+  const handleDrop = (e) => {
+    const { removedIndex, addedIndex, payload } = e;
+
+    const result = [...pairs];
+    let itemToAdd = payload;
+
+    if (removedIndex !== null) {
+      itemToAdd = result.splice(removedIndex, 1)[0];
+    }
+
+    if (addedIndex !== null) {
+      result.splice(addedIndex, 0, itemToAdd);
+    }
+
+    setPairs(result);
+  }
   
   return (
     <div>
       <h1>Voting on {pollName} </h1>
-      {pairs.map((pair, index) => (
-        <Card
-          key={index}
-          content={`${pair.leader} & ${pair.follower}`}
-        />
-      ))}
+      <Container onDrop={handleDrop}>
+          {pairs.map((item, index) => (
+              <Draggable key={index}>
+                <Card
+                  key={index}
+                  content={`${item.leader} & ${item.follower}`}
+                />
+              </Draggable>
+          ))}
+        </Container>
     </div>
   );
 }
