@@ -3,16 +3,18 @@ import PropTypes from 'prop-types';
 import { useSearchParams } from 'react-router-dom';
 
 import { restApi } from '../../../restApi';
+import Card from '../../molecules/cards/Card';
 
-const Voting = ({pollCode}) => {
+const Voting = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [pollName, setPollName] = useState();
   const [pollId, setPollId] = useState();
+  const [pairs, setPairs] = useState([]);
 
   useEffect(() => {
     const fetchPairs = async () => {
       const res = await restApi.getPollItemsByPollId(pollId);
-      console.log(res);
+      setPairs(res);
     }
     fetchPairs();
 
@@ -33,6 +35,12 @@ const Voting = ({pollCode}) => {
   return (
     <div>
       <h1>Voting on {pollName} </h1>
+      {pairs.map((pair, index) => (
+        <Card
+          key={index}
+          content={`${pair.leader} & ${pair.follower}`}
+        />
+      ))}
     </div>
   );
 }
