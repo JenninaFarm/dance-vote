@@ -16,6 +16,7 @@ route.get('/poll-id', async (req, res) => {
 route.post('/', async (req, res) => {
   try {
     const result = await crud.createPollItem(req.body);
+    req.io.sockets.emit('poll-update', req.body);
     res.status(HttpStatus.CREATED).json(result);
   } catch (err) {
     res.send(err);

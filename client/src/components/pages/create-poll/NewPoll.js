@@ -7,16 +7,15 @@ import Card from '../../molecules/cards/Card';
 import { restApi } from '../../../restApi';
 import { createUniqueId } from '../../../HelperFunctions';
 
-const NewPoll = ({userId}) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+const NewPoll = () => {
+  const [searchParams] = useSearchParams();
   const [pollName, setPollName] = useState();
   const [follower, setFollower] = useState();
   const [leader, setLeader] = useState();
   const [pairs, setPairs] = useState([]);
   const [accessCode, setAccessCode] = useState();
 
-  const fetchPairs = (newPair) => {
-    console.log('fetch pairs and update pair cards');
+  const updatePairs = (newPair) => {
     newPair.push(...pairs);
     setPairs(newPair);
   }
@@ -28,8 +27,8 @@ const NewPoll = ({userId}) => {
       poll_id: searchParams.get('poll'),
     }
     await restApi.createPollItem(pollItem);
-    const newPair = [{leader: leader, follow: follower}]
-    fetchPairs(newPair);
+    const newPair = [{leader: leader, follow: follower}];
+    updatePairs(newPair);
   }
 
   useEffect(() => {

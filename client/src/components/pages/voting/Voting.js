@@ -3,14 +3,25 @@ import PropTypes from 'prop-types';
 import { useSearchParams } from 'react-router-dom';
 import { Container, Draggable} from 'react-smooth-dnd';
 
-import { restApi } from '../../../restApi';
+import { ENDPOINT, restApi } from '../../../restApi';
 import Card from '../../molecules/cards/Card';
+import socketIoClient from 'socket.io-client';
 
 const Voting = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [pollName, setPollName] = useState();
   const [pollId, setPollId] = useState();
   const [pairs, setPairs] = useState([]);
+
+  useEffect(() => {
+    const socket = socketIoClient(ENDPOINT, {
+      transports: ["websocket"],
+    });
+
+    socket.on('poll-update', newPair => {
+      setPairs([...pairs, newPair]);
+    })
+  }, [pairs]);
 
   useEffect(() => {
     const fetchPairs = async () => {
@@ -22,14 +33,14 @@ const Voting = () => {
   }, [pollId]);
 
   useEffect(() => {
-    const fetch = async (accessCode) => {
+    const fetchPoll = async (accessCode) => {
       const response = await restApi.getOnGoingPollByAccessCode(accessCode);
       setPollName(response[0].name);
       setPollId(response[0].poll_id);
     }
 
     if (!pollName) {
-      fetch(searchParams.get('poll_id'));
+      fetchPoll(searchParams.get('poll_id'));
     }
   });
 

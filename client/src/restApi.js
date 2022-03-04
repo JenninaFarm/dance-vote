@@ -1,13 +1,14 @@
 import axios from 'axios';
 
-const HEROKU_URL = "https://dance-vote.herokuapp.com/api/";
-const LOCAL_URL = "http://localhost:3500/api/";
+const HEROKU_URL = "https://dance-vote.herokuapp.com";
+const LOCAL_URL = "http://localhost:3500";
 
 // Set to true to use server running on Heroku
 const useHeroku = window.location.hostname + '/api/' === HEROKU_URL;
 
+export const ENDPOINT = useHeroku ? HEROKU_URL : LOCAL_URL;
 
-const BASE_URL = useHeroku ? HEROKU_URL : LOCAL_URL;
+export const BASE_URL = useHeroku ? HEROKU_URL + '/api/' : LOCAL_URL + '/api/';
 
 export const client = axios.create({
   baseURL: BASE_URL,
@@ -18,14 +19,6 @@ export const client = axios.create({
 });
 
 export const restApi = {
-  test: async () => {
-    try {
-      const res = await axios.get('http://localhost:3500/api/');
-      return res.data;
-    } catch (err) {
-      console.log(err);
-    }
-  },
 
   createUser: async (user) => {
     try {
