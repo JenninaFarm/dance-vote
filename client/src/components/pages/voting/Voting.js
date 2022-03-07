@@ -13,16 +13,20 @@ const Voting = () => {
   const [pollId, setPollId] = useState();
   const [pairs, setPairs] = useState([]);
 
+  // Handling listening websocket for updates
   useEffect(() => {
     const socket = socketIoClient(ENDPOINT, {
       transports: ["websocket"],
     });
 
     socket.on('poll-update', newPair => {
-      setPairs([...pairs, newPair]);
-    })
-  }, [pairs]);
+      if (newPair.accessCode === searchParams.get('poll_id')) {
+        setPairs([...pairs, newPair]);
+      }
+    });
+  }, [pairs, searchParams]);
 
+  // Handling fetching existing poll items at the start
   useEffect(() => {
     const fetchPairs = async () => {
       const res = await restApi.getPollItemsByPollId(pollId);
@@ -32,6 +36,7 @@ const Voting = () => {
 
   }, [pollId]);
 
+  // Handling fetching poll at the start
   useEffect(() => {
     const fetchPoll = async (accessCode) => {
       const response = await restApi.getOnGoingPollByAccessCode(accessCode);

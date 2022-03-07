@@ -25,6 +25,7 @@ const NewPoll = () => {
       leader: leader,
       follower: follower,
       poll_id: searchParams.get('poll'),
+      access_code: accessCode,
     }
     await restApi.createPollItem(pollItem);
     const newPair = [{leader: leader, follow: follower}];
