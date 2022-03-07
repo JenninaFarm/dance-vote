@@ -9,6 +9,7 @@ import Voting from './components/pages/voting/Voting';
 import Registeration from './components/pages/registeration/Registeration';
 import Login from './components/pages/login/Login';
 import Profile from './components/pages/profile/Profile';
+import Header from './components/organisms/header/Header';
 
 
 
@@ -25,6 +26,7 @@ const App = () => {
 
   return (
     <div className='dance-vote'>
+      <Header />
       <Routes>
         <Route path='/' element={<Frontpage />} />
         <Route path='register' element={<Registeration />} />

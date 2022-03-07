@@ -1,16 +1,19 @@
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-heading;
+  font-weight: $font-weight-regular;
   margin: 0;
+}
+
+h1 {
+  font-size: $h1-font-size;
 }
 
 h2 {
   font-size: $h2-font-size;
-  font-weight: $font-weight-regular;
 }
 
 h4 {
-  font-weight: $font-weight-regular;
-  font-size: $font-18;
+  font-size: $h4-font-size;
   text-transform: uppercase;
 }
 
@@ -32,6 +35,9 @@ input {
   box-sizing: border-box;
 }
 
+header {
+  margin: $space-m;
+}
 // button {
 //   //
 // }
