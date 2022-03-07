@@ -20,9 +20,9 @@ const Voting = () => {
     });
 
     socket.on('poll-update', newPair => {
-      if (newPair.accessCode === searchParams.get('poll_id')) {
+      // if (newPair.access_code === searchParams.get('poll_id')) {
         setPairs([...pairs, newPair]);
-      }
+      // }
     });
   }, [pairs, searchParams]);
 
@@ -62,7 +62,7 @@ const Voting = () => {
     if (addedIndex !== null) {
       result.splice(addedIndex, 0, itemToAdd);
     }
-
+    console.log(result);
     setPairs(result);
   }
   
