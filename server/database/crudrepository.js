@@ -111,7 +111,7 @@ const connectionFunctions = {
 
   createPollItem: (pollItem) => {
     return new Promise((resolve, reject) => {
-      pool.query('INSERT INTO poll_items (poll_id, leader, follower) VALUES ($1, $2, $3) RETURNING poll_id', [pollItem.poll_id, pollItem.leader, pollItem.follower], (err, result) => {
+      pool.query('INSERT INTO poll_items (poll_id, leader, follower) VALUES ($1, $2, $3) RETURNING poll_item_id', [pollItem.poll_id, pollItem.leader, pollItem.follower], (err, result) => {
         if (err) {
           reject(err);
         } else {
