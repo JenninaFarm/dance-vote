@@ -1,0 +1,12 @@
+.input-with-nav {
+  @include element-spacer;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__input {
+    margin-bottom: $space-l;
+  }
+}

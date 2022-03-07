@@ -2,7 +2,7 @@ import React from 'react';
 import ButtonWithNav from '../../atoms/button/ButtonWithNav';
 // import PropTypes from 'prop-types';
 
-import InputWithNavigation from '../../molecules/fieldsets/InputWithNavigation';
+import InputWithNavigation from '../../molecules/fieldsets/inputWithNavigation/InputWithNavigation';
 
 const Frontpage = () => {
 
@@ -11,8 +11,8 @@ const Frontpage = () => {
   }
 
   return (
-    <div>
-      <h2>Enter a room to vote or create your own votes by signing up!</h2>
+    <div className='frontpage'>
+      <h2 className='frontpage__title'>Enter a room to vote or create your own votes by signing up!</h2>
       <InputWithNavigation
         buttonText='Join voting room'
         onClick={createNewPoll}
@@ -20,9 +20,11 @@ const Frontpage = () => {
         inputId='participate'
         navBase='vote?poll_id='
       />
-      
+      <h4>or</h4>
+      <div className='frontpage__login'>
+        <ButtonWithNav to='/login'> Log in </ButtonWithNav>
+      </div>
       <ButtonWithNav modifier='secondary' to='/register'> Sign up </ButtonWithNav>
-      <ButtonWithNav to='/login'> Log in </ButtonWithNav>
     </div>
   )
 }

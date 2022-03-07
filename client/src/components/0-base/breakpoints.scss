@@ -23,11 +23,21 @@ BREAKPOINTS
 /*********************
 SPACER
 *********************/
-@mixin element-spacer() {
-  margin-top: $space-m;
-  margin-bottom: $space-m;
-  margin-left: $space-m;
-  margin-right: $space-m;
+// @mixin element-spacer() {
+//   margin-top: $space-m;
+//   margin-bottom: $space-m;
+//   margin-left: $space-m;
+//   margin-right: $space-m;
+// }
+
+@mixin element-spacer($property: 'margin') {
+  #{$property}-top: $gutter-medium;
+  #{$property}-bottom: $gutter-medium;
+
+  @include breakpoint(laptop) {
+    #{$property}-top: $gutter-large;
+    #{$property}-bottom: $gutter-large;
+  }
 }
 
 /*********************

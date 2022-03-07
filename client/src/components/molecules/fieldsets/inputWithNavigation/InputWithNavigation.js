@@ -1,24 +1,28 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import Label from '../../atoms/label/Label';
-import Input from '../../atoms/input/Input';
-import ButtonWithNav from '../../atoms/button/ButtonWithNav';
+import Label from '../../../atoms/label/Label';
+import Input from '../../../atoms/input/Input';
+import ButtonWithNav from '../../../atoms/button/ButtonWithNav';
 
 const InputWithNavigation = ({buttonText, placeholder, inputId, labelContent, navBase}) => {
   const [value, setValue] = useState('');
 
   return (
-    <div>
+    <div className='input-with-nav'>
       {labelContent && (
         <Label inputId={inputId} content={labelContent} />
       )}
-      <Input 
+      <Input
+        className='input-with-nav__input'
         id={inputId}
         placeholder={placeholder}
         handleValueChange={event => setValue(event.target.value)}
       />
-      <ButtonWithNav to={`${navBase}${value}`}>
+      <ButtonWithNav
+        className='input-with-nav__button'
+        to={`${navBase}${value}`}
+      >
         {buttonText}
       </ButtonWithNav>
     </div>
