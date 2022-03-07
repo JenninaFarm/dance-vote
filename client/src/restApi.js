@@ -1,12 +1,12 @@
 import axios from 'axios';
 
 const HEROKU_URL = "https://dance-vote.herokuapp.com";
-const LOCAL_URL = "http://localhost:3500";
+const LOCAL_URL = "http://localhost:8080";
 
 // Set to true to use server running on Heroku
 const useHeroku = window.location.hostname + '/api/' === HEROKU_URL;
 
-export const ENDPOINT = useHeroku ? HEROKU_URL : LOCAL_URL;
+export const ENDPOINT = useHeroku ? HEROKU_URL : 'ws://localhost:8080';
 
 export const BASE_URL = useHeroku ? HEROKU_URL + '/api/' : LOCAL_URL + '/api/';
 

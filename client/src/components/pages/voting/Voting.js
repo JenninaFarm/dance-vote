@@ -7,24 +7,24 @@ import { ENDPOINT, restApi } from '../../../restApi';
 import Card from '../../molecules/cards/Card';
 import socketIoClient from 'socket.io-client';
 
+const socket = socketIoClient(ENDPOINT, {
+  transports: ['websocket'],
+});
+
 const Voting = () => {
   const [searchParams] = useSearchParams();
   const [pollName, setPollName] = useState();
   const [pollId, setPollId] = useState();
   const [pairs, setPairs] = useState([]);
 
-  // Handling listening websocket for updates
+  // Handling listening socket for updates
   useEffect(() => {
-    const socket = socketIoClient(ENDPOINT, {
-      transports: ["websocket"],
-    });
-
     socket.on('poll-update', newPair => {
-      // if (newPair.access_code === searchParams.get('poll_id')) {
+      if (newPair.access_code === searchParams.get('poll_id')) {
         setPairs([...pairs, newPair]);
-      // }
+      }
     });
-  }, [pairs, searchParams]);
+  });
 
   // Handling fetching existing poll items at the start
   useEffect(() => {

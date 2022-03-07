@@ -4,7 +4,7 @@ const app = express();
 const api = express.Router();
 const http = require('http');
 const cors = require('cors');
-const whitelist = ['https://dance-vote.herokuapp.com', 'https://www.yoursite.com', 'http://127.0.0.1:3500', 'http://localhost:3000'];
+const whitelist = ['https://dance-vote.herokuapp.com', 'http://127.0.0.1:3500', 'http://localhost:3000'];
 const corsOptions = {
   origin: whitelist,
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
@@ -15,8 +15,7 @@ app.use(cors(corsOptions));
 
 const server = http.createServer(app);
 
-const PORT = process.env.PORT || 3500;
-
+const PORT = process.env.PORT || 8080;
 
 const {Server} = require('socket.io');
 const io = new Server(server, {
@@ -25,13 +24,18 @@ const io = new Server(server, {
     methods: ['GET', 'POST'],
     credentials: true,
   },
+  origin: whitelist,
   allowEIO4: true,
-  transports: ["websocket", "polling"],
+  transports: ['websocket'],
 });
 
 io.on('connection', (socket) => {
   console.log('a user connected');
-})
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+    // socket.disconnect();
+  });
+});
 
 // give io to all the routes
 api.use((req,res,next) => {
