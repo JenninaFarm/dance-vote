@@ -33,7 +33,6 @@ io.on('connection', (socket) => {
   console.log('a user connected');
   socket.on('disconnect', () => {
     console.log('user disconnected');
-    // socket.disconnect();
   });
 });
 
@@ -50,11 +49,12 @@ const register = require('./routes/register');
 const login = require('./routes/login');
 const poll = require('./routes/poll');
 const pollItem = require('./routes/pollItem');
-
+const vote = require('./routes/vote');
 
 // public routes
 api.use('/register', register);
 api.use('/login', login);
+api.use('/vote', vote);
 // needs authentication
 api.use('/poll', poll);
 api.use('/poll-item', pollItem);

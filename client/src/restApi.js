@@ -101,6 +101,15 @@ export const restApi = {
     }
   },
 
+  sendVote: async (votes) => {
+    try {
+      const res = await client.post('vote/', votes);
+      return res.data;
+    } catch (err) {
+      return err;
+    }
+  },
+
   getUsers: async () => {
     try {
       const res = await client.get('users');

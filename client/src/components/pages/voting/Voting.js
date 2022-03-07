@@ -6,6 +6,7 @@ import { Container, Draggable} from 'react-smooth-dnd';
 import { ENDPOINT, restApi } from '../../../restApi';
 import Card from '../../molecules/cards/Card';
 import socketIoClient from 'socket.io-client';
+import Button from '../../atoms/button/Button';
 
 const socket = socketIoClient(ENDPOINT, {
   transports: ['websocket'],
@@ -62,23 +63,41 @@ const Voting = () => {
     if (addedIndex !== null) {
       result.splice(addedIndex, 0, itemToAdd);
     }
-    console.log(result);
+
     setPairs(result);
+  }
+
+  const handleSendVote = () => {
+    console.log(pairs);
+    let votes = '{';
+    for(let i=0; i<pairs.length; i++) {
+      if (i === pairs.length - 1) {
+        votes += pairs[i].poll_item_id + '}';
+      } else {
+        votes += pairs[i].poll_item_id + ', ';
+      }
+    }
+    const voteObject = {
+      vote: votes,
+      poll_id: pollId,
+    }
+    restApi.sendVote(voteObject);
   }
   
   return (
     <div>
       <h1>Voting on {pollName} </h1>
       <Container onDrop={handleDrop}>
-          {pairs.map((item, index) => (
-              <Draggable key={index}>
-                <Card
-                  key={index}
-                  content={`${item.leader} & ${item.follower}`}
-                />
-              </Draggable>
-          ))}
-        </Container>
+        {pairs.map((item, index) => (
+            <Draggable key={index}>
+              <Card
+                key={index}
+                content={`${item.leader} & ${item.follower}`}
+              />
+            </Draggable>
+        ))}
+      </Container>
+      <Button onClick={handleSendVote} >Send Your Vote </Button>
     </div>
   );
 }
