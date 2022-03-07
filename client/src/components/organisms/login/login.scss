@@ -1,0 +1,29 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__close {
+    align-self: flex-end;
+    margin-bottom: $space-s;
+  }
+
+  &__form {
+    margin-bottom: $space-l;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    margin-bottom: $space-l;
+  }
+
+  &__input {
+    margin-bottom: $space-l;
+  }
+
+  &__signup {
+    @include element-spacer;
+  }
+}

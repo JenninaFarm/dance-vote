@@ -28,7 +28,7 @@ const App = () => {
     <div className='dance-vote'>
       <Header />
       <Routes>
-        <Route path='/' element={<Frontpage />} />
+        <Route path='/' element={<Frontpage handleLogin={login}/>} />
         <Route path='register' element={<Registeration />} />
         <Route path='login' element={<Login handleLogin={login} />} />
         <Route path='new-poll' element={isLoggedIn ? <NewPoll userId={user.id} /> : <Navigate to='/login' /> }/>
