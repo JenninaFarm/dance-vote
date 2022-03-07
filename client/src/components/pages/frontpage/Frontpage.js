@@ -22,7 +22,7 @@ const Frontpage = () => {
         navBase='vote?poll_id='
       />
       
-      <ButtonWithNav to='/register'> Registration </ButtonWithNav>
+      <ButtonWithNav modifier='secondary' to='/register'> Sign up </ButtonWithNav>
       <ButtonWithNav to='/login'> Log in </ButtonWithNav>
     </div>
   )

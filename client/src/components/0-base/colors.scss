@@ -22,6 +22,9 @@ DEFAULT COLORS
 $defaultColors: (
   text: $color-black,
   text-inverse: $color-white,
+  button-primary: $color-black,
+  button-secondary: $color-light-gray,
+  box-shadow: rgba($color-black, 0.25),
   primary: $color-dark-navy,
   border-date-picker: $color-light-gray,
 );

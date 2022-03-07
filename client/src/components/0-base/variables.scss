@@ -1,8 +1,9 @@
 /* Typography */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
 
 /* fonts */
-$font-body: 'Open Sans', 'Arial', sans-serif;
+$font-body: 'Roboto', 'Arial', sans-serif;
 $font-heading: 'Montserrat', 'Helvetica', 'Arial', sans-serif;
 
 /* font sizes in rem */
@@ -39,15 +40,23 @@ $h4-font-size-desktop: $font-20;
 $nav-font-size: $font-16;
 $nav-font-size-desktop: $font-18;
 
+/* Font weight */
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+$font-weight-black: 900;
 
 /* Spacings */
-$space-xxs: 0.25rem;
-$space-xs: 0.5rem;
-$space-s: 1rem;
-$space-m: 1.25rem;
-$space-l: 2rem;
-$space-xl: 3rem;
-$space-xxl: 4.5rem;
+$space-xxs: 0.25rem; //4
+$space-xs: 0.5rem;   //8
+// $space-s-xs: 0.75rem;
+$space-s: 1rem;      //16
+$space-m: 1.25rem;   //20
+$space-l: 2rem;      //32
+$space-xl: 3rem;     //48
+$space-xxl: 4.5rem;  //72
 
 /* Borders */
 $border-radius-small: 0.5rem;

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Button = (props) => {
   return (
-    <button {...props}>
+    <button className={`button button--${props.modifier}`} {...props}>
       {props.children}
     </button>
   );

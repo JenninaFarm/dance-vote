@@ -1,0 +1,22 @@
+.button,
+.button-with-nav {
+  background-color: clr(button-primary);
+  color: clr(text-inverse);
+  text-transform: uppercase;
+  font-size: $font-24;
+  font-family: $font-body;
+  font-weight: $font-weight-medium;
+  padding: $space-xs $space-m;
+  border-radius: $border-radius-small;
+  cursor: pointer;
+  border: none;
+  box-shadow: 7px 7px 4px clr(box-shadow);
+
+  &--secondary {
+    text-transform: capitalize;
+    background-color: clr(button-secondary);
+    color: clr(text);
+    font-size: $font-16;
+    // padding: $space-s-xs $space-m;
+  }
+}
