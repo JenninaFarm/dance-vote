@@ -12,7 +12,7 @@ const Frontpage = () => {
 
   return (
     <div>
-      <h1>Frontpage</h1>
+      <h2>Enter a room to vote or create your own votes by signing up!</h2>
       <InputWithNavigation
         buttonText='Join voting room'
         onClick={createNewPoll}
