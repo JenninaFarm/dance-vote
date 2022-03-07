@@ -8,6 +8,11 @@
     margin-bottom: $space-s;
   }
 
+  &__close-icon {
+    width: $icon-s;
+    height: $icon-s;
+  }
+
   &__form {
     margin-bottom: $space-l;
     display: flex;

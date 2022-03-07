@@ -5,6 +5,7 @@ import ErrorMessage from '../../atoms/error-message/ErrorMessage';
 import Form from '../../atoms/form/Form';
 import Input from '../../atoms/input/Input';
 import Modal from '../../molecules/modal/Modal';
+import {ReactComponent as Close} from "../../../images/icons/phone.svg";
 
 const Login = ({handleLogin, handleClose, openRegisteration}) => {
   const [password, setPassword] = useState();
@@ -30,7 +31,9 @@ const Login = ({handleLogin, handleClose, openRegisteration}) => {
   return (
     <Modal>
       <div className='login'>
-        <Button className='button button--icon login__close' onClick={handleClose}> X </Button>
+        <Button className='button button--icon login__close' onClick={handleClose} >
+          <Close className='login__close-icon' />
+        </Button>
         <h5 className='login__title'>Please log in</h5>
         <Form className='login__form' submit={handleSubmit}>
           <Input

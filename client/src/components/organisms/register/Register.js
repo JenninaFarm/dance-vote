@@ -6,6 +6,8 @@ import ErrorMessage from '../../atoms/error-message/ErrorMessage';
 import Input from '../../atoms/input/Input';
 import Form from '../../atoms/form/Form';
 import { restApi } from '../../../restApi';
+import {ReactComponent as Close} from "../../../images/icons/phone.svg";
+
 
 const Register = ({handleClose}) => {
   const [userName, setUserName] = useState();
@@ -60,7 +62,9 @@ const Register = ({handleClose}) => {
   return (
     <Modal>
       <div className='register'>
-        <Button className='button button--icon register__close' onClick={handleClose} >X</Button>
+        <Button className='button button--icon register__close' onClick={handleClose} >
+          <Close className='register__close-icon' />
+        </Button>
         <h5 className='register__title' >Please enter your information in
  order to create a new account</h5>
         <Form className='register__form' submit={handleSubmit} >

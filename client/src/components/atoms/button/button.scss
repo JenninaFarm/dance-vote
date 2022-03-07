@@ -17,6 +17,14 @@
     background-color: clr(button-secondary);
     color: clr(text);
     font-size: $font-16;
-    // padding: $space-s-xs $space-m;
+  }
+
+  &--icon {
+    color: clr(text);
+    background-color: transparent;
+    height: $icon-s;
+    width: $icon-s;
+    padding: 0;
+    box-shadow: none;
   }
 }
