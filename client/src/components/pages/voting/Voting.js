@@ -33,8 +33,9 @@ const Voting = () => {
       const res = await restApi.getPollItemsByPollId(pollId);
       setPairs(res);
     }
-    fetchPairs();
-
+    if(!pollId) {
+      fetchPairs();
+    }
   }, [pollId]);
 
   // Handling fetching poll at the start
@@ -63,11 +64,10 @@ const Voting = () => {
     if (addedIndex !== null) {
       result.splice(addedIndex, 0, itemToAdd);
     }
-
     setPairs(result);
   }
 
-  const handleSendVote = () => {
+  const handleSendVote = async () => {
     console.log(pairs);
     let votes = '{';
     for(let i=0; i<pairs.length; i++) {
@@ -81,7 +81,12 @@ const Voting = () => {
       vote: votes,
       poll_id: pollId,
     }
-    restApi.sendVote(voteObject);
+    try {
+      await restApi.sendVote(voteObject);
+      console.log('vote recorded');
+    } catch (err) {
+      console.log(err);
+    }
   }
   
   return (
