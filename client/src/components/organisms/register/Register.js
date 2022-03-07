@@ -7,6 +7,7 @@ import Input from '../../atoms/input/Input';
 import Form from '../../atoms/form/Form';
 import { restApi } from '../../../restApi';
 import {ReactComponent as Close} from "../../../images/icons/phone.svg";
+import {ReactComponent as Eye} from "../../../images/icons/Eye.svg";
 
 
 const Register = ({handleClose}) => {
@@ -14,6 +15,7 @@ const Register = ({handleClose}) => {
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
   const [error, setError] = useState();
+  const [passwordInputType, setPasswordInputType] = useState('password');
 
   const validate = (form) => {
     if(form.checkValidity()) {
@@ -59,6 +61,14 @@ const Register = ({handleClose}) => {
     } 
   }
 
+  const showPassword = () => {
+    if(passwordInputType === 'password') {
+      setPasswordInputType('type');
+    } else {
+      setPasswordInputType('password');
+    }
+  }
+
   return (
     <Modal>
       <div className='register'>
@@ -88,23 +98,39 @@ const Register = ({handleClose}) => {
           <Input
             className='register__input'
             id='password'
-            type='password'
+            type={passwordInputType}
             placeholder='Password'
             handleValueChange={event => setPassword(event.target.value)}
             errorMessage='Please give a password with atleast 8 characters'
             minLength='8'
             required
-          />
+          >
+            <Button
+              type='button'
+              className='button button--icon login__password-icon'
+              onClick={showPassword}
+            >
+              <Eye />
+            </Button>
+          </Input>
           <Input
             className='register__input'
             id='password'
-            type='password'
+            type={passwordInputType}
             placeholder='Confirm password'
             handleValueChange={event => setPassword(event.target.value)}
             errorMessage='Please give a password with atleast 8 characters'
             minLength='8'
             required
-          />
+          >
+            <Button
+              type='button'
+              className='button button--icon login__password-icon'
+              onClick={showPassword}
+            >
+              <Eye />
+            </Button>
+          </Input>
           {error && 
             <ErrorMessage>
               {error}

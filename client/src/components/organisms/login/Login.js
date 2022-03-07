@@ -6,11 +6,13 @@ import Form from '../../atoms/form/Form';
 import Input from '../../atoms/input/Input';
 import Modal from '../../molecules/modal/Modal';
 import {ReactComponent as Close} from "../../../images/icons/phone.svg";
+import {ReactComponent as Eye} from "../../../images/icons/Eye.svg";
 
 const Login = ({handleLogin, handleClose, openRegisteration}) => {
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
   const [error, setError] = useState();
+  const [passwordInputType, setPasswordInputType] = useState('password');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -28,6 +30,15 @@ const Login = ({handleLogin, handleClose, openRegisteration}) => {
       setError(res.error);
     }
   }
+
+  const showPassword = () => {
+    if(passwordInputType === 'password') {
+      setPasswordInputType('type');
+    } else {
+      setPasswordInputType('password');
+    }
+  }
+
   return (
     <Modal>
       <div className='login'>
@@ -48,12 +59,20 @@ const Login = ({handleLogin, handleClose, openRegisteration}) => {
           <Input
             className='login__input'
             id='password'
-            type='password'
+            type={passwordInputType}
             placeholder='email'
             handleValueChange={event => setPassword(event.target.value)}
             errorMessage='Please give a password'
             required
-          />
+          >
+            <Button
+              type='button'
+              className='button button--icon login__password-icon'
+              onClick={showPassword}
+            >
+              <Eye />
+            </Button>
+          </Input>
           {error && 
             <ErrorMessage>
               {error}
