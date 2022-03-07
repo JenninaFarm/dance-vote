@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import Button from '../../atoms/button/Button';
-import ButtonWithNav from '../../atoms/button/ButtonWithNav';
 // import PropTypes from 'prop-types';
 
 import InputWithNavigation from '../../molecules/fieldsets/inputWithNavigation/InputWithNavigation';
 import Login from '../../organisms/login/Login';
+import Register from '../../organisms/register/Register';
 
 const Frontpage = ({handleLogin}) => {
   const [loginOpen, setLoginOpen] = useState(false);
+  const [registerOpen, setRegisterOpen] = useState(false);
 
   const createNewPoll = () => {
     console.log('click');
@@ -15,6 +16,11 @@ const Frontpage = ({handleLogin}) => {
 
   const handleLoginOpen = () => {
     setLoginOpen(!loginOpen);
+  }
+
+  const handleOpenRegistration = () => {
+    setLoginOpen(false);
+    setRegisterOpen(!registerOpen);
   }
 
   return (
@@ -28,13 +34,22 @@ const Frontpage = ({handleLogin}) => {
         navBase='vote?poll_id='
       />
       <h4>or</h4>
-      <Button onClick={handleLoginOpen}>Kirjaudu</Button>
-      {loginOpen && <Login handleClose={handleLoginOpen} handleLogin={handleLogin} />}
-      
+      {loginOpen &&
+        <Login
+          handleClose={handleLoginOpen}
+          handleLogin={handleLogin}
+          openRegisteration={handleOpenRegistration}
+        />
+      }
+      {registerOpen &&
+        <Register
+          handleClose={handleOpenRegistration}
+        />
+      }
       <div className='frontpage__login'>
-        <ButtonWithNav to='/login'> Log in </ButtonWithNav>
+        <Button onClick={handleLoginOpen}>Log in</Button>
       </div>
-      <ButtonWithNav modifier='secondary' to='/register'> Sign up </ButtonWithNav>
+      <Button modifier='secondary' onClick={handleOpenRegistration}>Sign up</Button>
     </div>
   )
 }

@@ -1,0 +1,28 @@
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__close {
+    align-self: flex-end;
+  }
+
+  &__title {
+    @include element-spacer;
+
+    margin-left: $space-l;
+    margin-right: $space-l;
+  }
+
+  &__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: $space-l;
+  }
+
+  &__input {
+    margin-bottom: $space-l;
+  }
+}
