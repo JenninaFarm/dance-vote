@@ -9,8 +9,10 @@ const InputWithNavigation = ({buttonText, placeholder, inputId, labelContent, na
   const [value, setValue] = useState('');
 
   return (
-    <fieldset>
-      <Label inputId={inputId} content={labelContent} />
+    <div>
+      {labelContent && (
+        <Label inputId={inputId} content={labelContent} />
+      )}
       <Input 
         id={inputId}
         placeholder={placeholder}
@@ -19,7 +21,7 @@ const InputWithNavigation = ({buttonText, placeholder, inputId, labelContent, na
       <ButtonWithNav to={`${navBase}${value}`}>
         {buttonText}
       </ButtonWithNav>
-    </fieldset>
+    </div>
   );
 }
 

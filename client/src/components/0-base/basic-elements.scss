@@ -10,9 +10,16 @@ a {
   text-decoration: none;
 }
 
-// input {
-//   //
-// }
+input {
+  width: 100%;
+  border: none;
+  border-bottom: $border-input;
+  margin: $space-l 0;
+  font-family: $font-body;
+  font-size: $font-16;
+  padding: $space-xxs $space-l;
+  box-sizing: border-box;
+}
 
 // button {
 //   //

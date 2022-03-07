@@ -14,10 +14,9 @@ const Frontpage = () => {
     <div>
       <h1>Frontpage</h1>
       <InputWithNavigation
-        labelContent='Participate to a poll'
-        buttonText='participate'
+        buttonText='Join voting room'
         onClick={createNewPoll}
-        placeholder='poll id'
+        placeholder='Enter access code to vote'
         inputId='participate'
         navBase='vote?poll_id='
       />
