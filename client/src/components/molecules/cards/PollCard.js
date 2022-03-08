@@ -8,6 +8,8 @@ const PollCard = ({name, accessCode, handlePublish}) => {
   return (
     <Card className="poll-card">
       <h3 className='poll-card__title' >{name}</h3>
+      <p> TODO: functionality to buttons</p>
+      <p> TODO: Make icon as a button</p>
       <Button className='button poll-card__access-code' >Access code</Button>
       <Button onClick={handlePublish} className='button button--secondary poll-card__publish' >Publish Results</Button>
       <Edit className='poll-card__edit' />
