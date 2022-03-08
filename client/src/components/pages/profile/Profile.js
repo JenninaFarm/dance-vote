@@ -4,7 +4,7 @@ import { restApi } from '../../../restApi';
 
 import InputWithButton from '../../molecules/fieldsets/InputWithButton';
 import ProfileHeader from '../../organisms/headers/ProfileHeader';
-import MyPolls from '../../organisms/my-polls/MyPolls';
+import PollList from '../../organisms/poll-list/PollList';
 
 const Profile = ({user}) => {
   const navigate = useNavigate();
@@ -21,9 +21,7 @@ const Profile = ({user}) => {
   return (
     <div>
       <ProfileHeader userName={user.username} />
-      <p> TODO: logout</p>
-      <p> TODO: change password</p>
-      <MyPolls userId={user.id} getFunction={restApi.getOnGoingPollsByOwner} />
+      <PollList userId={user.id} getFunction={restApi.getOnGoingPollsByOwner} />
       <InputWithButton
         labelContent='Create new poll'
         buttonText='create'
@@ -31,6 +29,8 @@ const Profile = ({user}) => {
         placeholder='poll name'
         inputId='newPoll'
       />
+      <p> TODO: logout</p>
+      <p> TODO: change password</p>
     </div>
   );
 }

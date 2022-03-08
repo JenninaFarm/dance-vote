@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Button from '../../atoms/button/Button';
 import EditPoll from '../../molecules/modals/EditPoll';
 
-const MyPolls = ({userId, getFunction}) => {
+const PollList = ({userId, getFunction}) => {
   const [polls, setPolls] = useState([]);
   const [showEditPoll, setShowEditPoll] = useState(false);
   const [pollIdShown, setPollIdShown] = useState();
@@ -24,8 +24,8 @@ const MyPolls = ({userId, getFunction}) => {
   }
 
   return (
-    <div>
-      <h3>My polls</h3>
+    <div className='poll-list' >
+      <h5 className='poll-list__title' > You have {polls.length} on-going votes </h5>
       {!polls && (
         <div>
           Loading polls
@@ -46,9 +46,9 @@ const MyPolls = ({userId, getFunction}) => {
   );
 }
 
-MyPolls.propTypes = {
+PollList.propTypes = {
   userId: PropTypes.number,
   getFunction: PropTypes.func,
 }
 
-export default MyPolls;
+export default PollList;
