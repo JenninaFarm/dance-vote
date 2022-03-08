@@ -4,7 +4,10 @@ const HEROKU_URL = "https://dance-vote.herokuapp.com";
 const LOCAL_URL = "http://localhost:8080";
 
 // Set to true to use server running on Heroku
-const useHeroku = window.location.hostname.includes(HEROKU_URL);
+let useHeroku = window.location.hostname.includes(HEROKU_URL);
+console.log('Use heroku boolean: ' + useHeroku);
+useHeroku = true;
+
 
 export const ENDPOINT = useHeroku ? HEROKU_URL : 'ws://localhost:8080';
 
