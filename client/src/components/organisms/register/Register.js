@@ -6,8 +6,8 @@ import ErrorMessage from '../../atoms/error-message/ErrorMessage';
 import Input from '../../atoms/input/Input';
 import Form from '../../atoms/form/Form';
 import { restApi } from '../../../restApi';
-import {ReactComponent as Close} from "../../../images/icons/phone.svg";
-import {ReactComponent as Eye} from "../../../images/icons/Eye.svg";
+import {ReactComponent as Close} from "../../../images/icons/close.svg";
+import {ReactComponent as Eye} from "../../../images/icons/eye.svg";
 
 
 const Register = ({handleClose}) => {
@@ -115,7 +115,7 @@ const Register = ({handleClose}) => {
           </Input>
           <Input
             className='register__input'
-            id='password'
+            id='confirm-password'
             type={passwordInputType}
             placeholder='Confirm password'
             handleValueChange={event => setPassword(event.target.value)}

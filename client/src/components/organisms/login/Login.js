@@ -5,8 +5,8 @@ import ErrorMessage from '../../atoms/error-message/ErrorMessage';
 import Form from '../../atoms/form/Form';
 import Input from '../../atoms/input/Input';
 import Modal from '../../molecules/modal/Modal';
-import {ReactComponent as Close} from "../../../images/icons/phone.svg";
-import {ReactComponent as Eye} from "../../../images/icons/Eye.svg";
+import {ReactComponent as Close} from "../../../images/icons/close.svg";
+import {ReactComponent as Eye} from "../../../images/icons/eye.svg";
 
 const Login = ({handleLogin, handleClose, openRegisteration}) => {
   const [password, setPassword] = useState();
