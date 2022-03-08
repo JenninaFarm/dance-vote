@@ -11,6 +11,7 @@ $color-light-green: #CCD645;
 $color-light-blue-green: #ACD49C;
 $color-light-turquoise: #BADECA;
 $color-dark-navy: #00043d;
+$color-off-white: #EAE3E3;
 
 
 /*********************
@@ -26,6 +27,7 @@ $defaultColors: (
   button-primary: $color-black,
   button-secondary: $color-light-gray,
   box-shadow: rgba($color-black, 0.25),
+  separator: $color-off-white,
 );
 
 /*********************

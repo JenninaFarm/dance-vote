@@ -1,0 +1,12 @@
+.profile-header {
+  @include element-gutter('padding');
+
+  border-bottom: $border-separator;
+  border-top: $border-separator;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: $space-xs;
+  padding-bottom: $space-xs;
+}

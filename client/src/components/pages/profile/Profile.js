@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { restApi } from '../../../restApi';
 
 import InputWithButton from '../../molecules/fieldsets/InputWithButton';
+import ProfileHeader from '../../organisms/headers/ProfileHeader';
 import MyPolls from '../../organisms/my-polls/MyPolls';
 
 const Profile = ({user}) => {
@@ -19,7 +20,7 @@ const Profile = ({user}) => {
 
   return (
     <div>
-      <h1>Profile of {user.username} id: {user.id} </h1>
+      <ProfileHeader userName={user.username} />
       <p> TODO: logout</p>
       <p> TODO: change password</p>
       <MyPolls userId={user.id} getFunction={restApi.getOnGoingPollsByOwner} />
