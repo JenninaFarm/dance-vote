@@ -1,3 +1,5 @@
 .profile {
+  @include element-gutter('padding');
+
   background-color: clr(profile);
 }
