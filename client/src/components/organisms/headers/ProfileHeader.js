@@ -7,6 +7,7 @@ const ProfileHeader = ({userName}) => {
   return (
     <header className='profile-header'>
       <h6 className='profile-header__name' >{userName}</h6>
+      <p> TODO: user-link</p>
       <User className='profile-header__user-icon' />
     </header>
   );
