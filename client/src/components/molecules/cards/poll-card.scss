@@ -1,0 +1,27 @@
+.poll-card {
+  background-color: clr(card);
+  border-radius: $border-radius-small;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin-bottom: $space-m;
+
+  &__title {
+    padding: $space-m $space-xl;
+  }
+
+  &__access-code,
+  &__publish {
+    margin-bottom: $space-m;
+  }
+
+  &__edit {
+    align-self: flex-end;
+    margin-top: (-1) * $space-l;
+    padding-right: $space-s;
+    padding-bottom: $space-m;
+    width: $icon-s;
+    height: $icon-s;
+  }
+}

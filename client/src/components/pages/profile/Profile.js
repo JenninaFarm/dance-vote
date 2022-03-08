@@ -19,7 +19,7 @@ const Profile = ({user}) => {
   }
 
   return (
-    <div>
+    <div className='profile'>
       <ProfileHeader userName={user.username} />
       <PollList userId={user.id} getFunction={restApi.getOnGoingPollsByOwner} />
       <InputWithButton

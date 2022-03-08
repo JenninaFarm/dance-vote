@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Card = ({content}) => {
+const Card = ({className, children}) => {
   return (
-    <div className="card">
-      {content}
+    <div className={className} >
+      {children}
     </div>
   );
 }
 
 Card.propTypes = {
-  content: PropTypes.string,
+  className: PropTypes.string,
+  content: PropTypes.node,
 }
 
 export default Card;

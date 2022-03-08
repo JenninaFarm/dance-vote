@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../atoms/button/Button';
 import EditPoll from '../../molecules/modals/EditPoll';
+import PollCard from '../../molecules/cards/PollCard';
 
 const PollList = ({userId, getFunction}) => {
   const [polls, setPolls] = useState([]);
@@ -32,15 +33,17 @@ const PollList = ({userId, getFunction}) => {
         </div>
       )}
       {polls.map(poll => (
-        <div key={poll.poll_id}>
-          {poll.name} 
-          <Button onClick={() => handleShowEditPoll(poll.poll_id)}>Edit</Button>
+        <PollCard
+          key={poll.poll_id}
+          name={poll.name}
+        >
+          {/* <Button onClick={() => handleShowEditPoll(poll.poll_id)}>Edit</Button>
           {(showEditPoll && pollIdShown === poll.poll_id) && (
             <EditPoll>
               <Button onClick={() => setShowEditPoll(false)}>Close</Button>
             </EditPoll>
-          )}
-        </div>
+          )} */}
+        </PollCard>
       ))}
     </div>
   );
