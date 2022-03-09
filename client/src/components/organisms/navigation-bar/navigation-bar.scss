@@ -1,0 +1,17 @@
+.navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: clr(profile);
+  border-top: $border-separator;
+  display: flex;
+  justify-content: space-around;
+  padding: $space-m $space-l;
+  box-sizing: border-box;
+
+  &__icon {
+    width: $icon-m;
+    height: $icon-m;
+  }
+}
