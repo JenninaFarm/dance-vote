@@ -30,7 +30,7 @@ const Profile = ({user}) => {
       <NavigationBar clickPlus={handleOpenCreatePoll} />
       <ProfileHeader userName={user.username} />
       <PollList userId={user.id} getFunction={restApi.getOnGoingPollsByOwner} />
-      {createPollOpen && <CreatePollMoldal />} 
+      {createPollOpen && <CreatePollMoldal handleClose={handleOpenCreatePoll} user={user} />} 
       <InputWithButton
         labelContent='Create new poll'
         buttonText='create'

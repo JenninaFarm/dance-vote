@@ -1,5 +1,6 @@
 const express = require('express');
 const crud = require('../database/crudrepository');
+const { createUniqueId } = require('../HelperFunctions');
 const HttpStatus = require('../HttpStatus');
 
 const route = express.Router();
@@ -34,6 +35,11 @@ route.get('/on-going/access-code', async (req, res) => {
 route.post('/', async (req, res) => {
   try {
     const result = await crud.createPoll(req.body);
+    console.log(result.rows[0].poll_id);
+    const accessCode = createUniqueId(result.rows[0].poll_id);
+    console.log(accessCode);
+    const result2 = await crud.setPollAccesCode(result.rows[0].poll_id, accessCode);
+    console.log(result2);
     res.status(HttpStatus.CREATED).json(result);
   } catch (err) {
     res.send(err);

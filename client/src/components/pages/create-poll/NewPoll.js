@@ -35,18 +35,18 @@ const NewPoll = () => {
   useEffect(() => {
     setPollName(searchParams.get('name'));
 
-    const createPollAccessCode = async () => {
-      const accessCode = createUniqueId(searchParams.get('poll'));
-      const accessPoll = {
-        poll_id: searchParams.get('poll'),
-        access_code: accessCode,
-      }
-      await restApi.setPollAccessCode(accessPoll);
-      setAccessCode(accessCode);
-    }
+    // const createPollAccessCode = async () => {
+    //   const accessCode = createUniqueId(searchParams.get('poll'));
+    //   const accessPoll = {
+    //     poll_id: searchParams.get('poll'),
+    //     access_code: accessCode,
+    //   }
+    //   await restApi.setPollAccessCode(accessPoll);
+    //   setAccessCode(accessCode);
+    // }
 
     if (!pollName) {
-      createPollAccessCode();
+      //createPollAccessCode();
     }
   }, [pollName, searchParams]);
 
