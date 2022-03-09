@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { restApi } from '../../../restApi';
 
 import InputWithButton from '../../molecules/fieldsets/InputWithButton';
+import CreatePollMoldal from '../../molecules/modals/CreatePollModal';
 import ProfileHeader from '../../organisms/headers/ProfileHeader';
 import NavigationBar from '../../organisms/navigation-bar/NavigationBar';
 import PollList from '../../organisms/poll-list/PollList';
@@ -19,11 +20,16 @@ const Profile = ({user}) => {
     navigate(`../new-poll?poll=${res.poll_id}&name=${pollName}`)
   }
 
+  const handleOpenCreatePoll = () => {
+    console.log('Open Create poll');
+  }
+
   return (
     <div className='profile'>
-      <NavigationBar />
+      <NavigationBar clickPlus={handleOpenCreatePoll} />
       <ProfileHeader userName={user.username} />
       <PollList userId={user.id} getFunction={restApi.getOnGoingPollsByOwner} />
+      <CreatePollMoldal />
       <InputWithButton
         labelContent='Create new poll'
         buttonText='create'
