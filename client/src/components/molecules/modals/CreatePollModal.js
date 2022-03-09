@@ -14,23 +14,34 @@ const CreatePollMoldal = ({handleClose, user}) => {
   const [pollName, setPollName] = useState();
 
   const createNewPoll = async () => {
-    const poll = {
-      owner_id: user.id,
-      name: pollName,
+    if(pollName) {
+      const poll = {
+        owner_id: user.id,
+        name: pollName,
+      }
+      const res = await restApi.createPoll(poll);
+      navigate(`../new-poll?poll=${res.poll_id}&name=${pollName}`)  
     }
-    const res = await restApi.createPoll(poll);
-    navigate(`../new-poll?poll=${res.poll_id}&name=${pollName}`)
   }
 
   return (
     <Modal>
-      <h5>Create new poll</h5>
-      <Input
-        id='new vote name'
-        placeholder='Vote name'
-        handleValueChange={event => setPollName(event.target.value)} />
-      <Button onClick={handleClose} >Cancel</Button>
-      <Button onClick={createNewPoll} > Create</Button>
+      <div className='create-poll'>
+        <h5 className='create-poll__title'>Create new poll</h5>
+        <Input
+          id='new vote name'
+          placeholder='Vote name'
+          handleValueChange={event => setPollName(event.target.value)} />
+        <div className='create-poll__buttons'>
+          <Button
+            onClick={handleClose}
+            className='button create-poll__cancel'
+          >
+            Cancel
+          </Button>
+          <Button onClick={createNewPoll} > Create</Button>
+        </div>
+      </div>
     </Modal>
   );
 }

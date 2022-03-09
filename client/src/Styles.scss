@@ -8,13 +8,14 @@
 
 @import 'components/molecules/fieldsets/inputWithNavigation/inputWithNavigation.scss';
 @import 'components/molecules/modal/modal.scss';
-@import 'components/organisms/headers/profile-header.scss';
 @import 'components/molecules/cards/poll-card.scss';
+@import 'components/molecules/modals/create-poll-modal.scss';
 
 @import 'components/organisms/login/login.scss';
 @import 'components/organisms/register/register.scss';
 @import 'components/organisms/poll-list/poll-list.scss';
 @import 'components/organisms/navigation-bar/navigation-bar.scss';
+@import 'components/organisms/headers/profile-header.scss';
 
 @import 'components/pages/frontpage/frontpage.scss';
 @import 'components/pages/profile/profile.scss';
