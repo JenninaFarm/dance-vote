@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { restApi } from '../../../restApi';
 
@@ -10,6 +10,7 @@ import PollList from '../../organisms/poll-list/PollList';
 
 const Profile = ({user}) => {
   const navigate = useNavigate();
+  const [createPollOpen, setCreatePollOpen] = useState(false);
 
   const createNewPoll = async (pollName) => {
     const poll = {
@@ -21,7 +22,7 @@ const Profile = ({user}) => {
   }
 
   const handleOpenCreatePoll = () => {
-    console.log('Open Create poll');
+    setCreatePollOpen(!createPollOpen);
   }
 
   return (
@@ -29,7 +30,7 @@ const Profile = ({user}) => {
       <NavigationBar clickPlus={handleOpenCreatePoll} />
       <ProfileHeader userName={user.username} />
       <PollList userId={user.id} getFunction={restApi.getOnGoingPollsByOwner} />
-      <CreatePollMoldal />
+      {createPollOpen && <CreatePollMoldal />} 
       <InputWithButton
         labelContent='Create new poll'
         buttonText='create'
