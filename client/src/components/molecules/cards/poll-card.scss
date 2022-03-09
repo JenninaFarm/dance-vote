@@ -20,7 +20,10 @@
     align-self: flex-end;
     margin-top: (-1) * $space-l;
     padding-right: $space-s;
-    padding-bottom: $space-m;
+    padding-bottom: $space-s;
+  }
+
+  &__icon {
     width: $icon-s;
     height: $icon-s;
   }

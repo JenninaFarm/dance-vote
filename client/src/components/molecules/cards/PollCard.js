@@ -12,7 +12,9 @@ const PollCard = ({name, accessCode, handlePublish}) => {
       <p> TODO: Make icon as a button</p>
       <Button className='button poll-card__access-code' >Access code</Button>
       <Button onClick={handlePublish} className='button button--secondary poll-card__publish' >Publish Results</Button>
-      <Edit className='poll-card__edit' />
+      <Button className='button button--icon poll-card__edit'>
+        <Edit className='poll-card__icon' />
+      </Button>
     </Card>
   );
 }
