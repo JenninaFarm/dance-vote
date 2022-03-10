@@ -55,4 +55,13 @@ route.patch('/access-code', async (req, res) => {
   }
 });
 
+route.get('/access-code', async (req, res) => {
+  try {
+    const result = await crud.getAccessCodeByPollId(req.query.poll_id);
+    res.status(HttpStatus.OK).json(result.rows);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
 module.exports = route;

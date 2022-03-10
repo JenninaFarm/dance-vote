@@ -83,6 +83,15 @@ export const restApi = {
     }
   },
 
+  getPollAccessCodeByPollId: async (pollId) => {
+    try {
+      const res = await client.get('poll/access-code', {params: {poll_id: pollId}});
+      return res.data;
+    } catch (err) {
+      return err;
+    }
+  },
+
   createPollItem: async (pollItem) => {
     try {
       const res = await client.post('poll-item/', pollItem);

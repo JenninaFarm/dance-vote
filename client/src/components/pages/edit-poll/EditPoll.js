@@ -14,6 +14,7 @@ import {ReactComponent as Edit} from "../../../images/icons/edit-input.svg";
 const EditPoll = () => {
   const [searchParams] = useSearchParams();
   const [pollName, setPollName] = useState();
+  const [pollId, setPollId] = useState();
   const [follower, setFollower] = useState();
   const [leader, setLeader] = useState();
   const [pairs, setPairs] = useState([]);
@@ -36,23 +37,23 @@ const EditPoll = () => {
     updatePairs(newPair);
   }
 
+  // Get Poll access code after the pollId is set
+  useEffect(() => {
+    const getPollAccessCode = async () => {
+      const result = await restApi.getPollAccessCodeByPollId(pollId);
+      setAccessCode(result[0].access_code);
+    }
+
+    if (pollId && !accessCode) {
+      getPollAccessCode();
+    }
+  }, [pollId]);
+
+  // Set Poll name and id
   useEffect(() => {
     setPollName(searchParams.get('name'));
-
-    // const createPollAccessCode = async () => {
-    //   const accessCode = createUniqueId(searchParams.get('poll'));
-    //   const accessPoll = {
-    //     poll_id: searchParams.get('poll'),
-    //     access_code: accessCode,
-    //   }
-    //   await restApi.setPollAccessCode(accessPoll);
-    //   setAccessCode(accessCode);
-    // }
-
-    if (!pollName) {
-      //createPollAccessCode();
-    }
-  }, [pollName, searchParams]);
+    setPollId(searchParams.get('poll'));
+  }, [searchParams]);
 
   return (
     <div>

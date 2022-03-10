@@ -109,6 +109,18 @@ const connectionFunctions = {
     })
   },
 
+  getAccessCodeByPollId: (poll_id) => {
+    return new Promise((resolve, reject) => {
+      pool.query('SELECT access_code FROM polls WHERE poll_id = $1', [poll_id], (err, result) => {
+        if(err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      })
+    })
+  },
+
   createPollItem: (pollItem) => {
     return new Promise((resolve, reject) => {
       pool.query('INSERT INTO poll_items (poll_id, leader, follower) VALUES ($1, $2, $3) RETURNING poll_item_id', [pollItem.poll_id, pollItem.leader, pollItem.follower], (err, result) => {
