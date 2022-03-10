@@ -32,7 +32,7 @@ const CreatePollMoldal = ({handleClose, user}) => {
         <Input
           id='new vote name'
           placeholder='Vote name'
-          handleValueChange={event => setPollName(event.target.value)} />
+          handleValueChange={value => setPollName(value)} />
         <div className='create-poll__buttons'>
           <Button
             onClick={handleClose}

@@ -37,7 +37,7 @@ const Login = ({handleLogin}) => {
           id='email'
           type='email'
           placeholder='email'
-          handleValueChange={event => setEmail(event.target.value)}
+          handleValueChange={value => setEmail(value)}
           errorMessage='Please give a valid email'
           required
         />
@@ -46,7 +46,7 @@ const Login = ({handleLogin}) => {
           id='password'
           type='password'
           placeholder='email'
-          handleValueChange={event => setPassword(event.target.value)}
+          handleValueChange={value => setPassword(value)}
           errorMessage='Please give a password'
           required
         />

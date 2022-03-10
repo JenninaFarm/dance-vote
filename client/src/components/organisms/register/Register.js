@@ -82,7 +82,7 @@ const Register = ({handleClose}) => {
             className='register__input'
             id='user-name'
             placeholder='Username'
-            handleValueChange={event => setUserName(event.target.value)}
+            handleValueChange={value => setUserName(value)}
             errorMessage='Please give a username'
             required
           />
@@ -91,7 +91,7 @@ const Register = ({handleClose}) => {
             id='email'
             type='email'
             placeholder='Email'
-            handleValueChange={event => setEmail(event.target.value)}
+            handleValueChange={value => setEmail(value)}
             errorMessage='Please give a valid email'
             required
           />
@@ -100,7 +100,7 @@ const Register = ({handleClose}) => {
             id='password'
             type={passwordInputType}
             placeholder='Password'
-            handleValueChange={event => setPassword(event.target.value)}
+            handleValueChange={value => setPassword(value)}
             errorMessage='Please give a password with atleast 8 characters'
             minLength='8'
             required
@@ -118,7 +118,7 @@ const Register = ({handleClose}) => {
             id='confirm-password'
             type={passwordInputType}
             placeholder='Confirm password'
-            handleValueChange={event => setPassword(event.target.value)}
+            handleValueChange={value => setPassword(value)}
             errorMessage='Please give a password with atleast 8 characters'
             minLength='8'
             required

@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ErrorMessage from '../error-message/ErrorMessage';
 
-const Input = ({children, type, placeholder, id, handleValueChange, errorMessage, ...rest}) => {
+const Input = ({children, valueSet, type, placeholder, id, handleValueChange, errorMessage, ...rest}) => {
+  const [value, setValue] = useState(valueSet? valueSet : '');
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+    handleValueChange(e.target.value);
+  }
+
+  useEffect(() => {
+    if(valueSet) {
+      setValue(valueSet);
+    }
+  }, [valueSet]);
   
   return (
     <div className='input-container'>
@@ -10,7 +22,8 @@ const Input = ({children, type, placeholder, id, handleValueChange, errorMessage
         type={type} 
         placeholder={placeholder} 
         id={id} 
-        onChange={handleValueChange}
+        value={value}
+        onChange={handleChange}
         {...rest}
       />
 
@@ -33,7 +46,7 @@ Input.propTypes = {
   type: PropTypes.string,
   placeholder: PropTypes.string,
   id: PropTypes.string,
-  handleValueChange: PropTypes.func,
+  handleValueChange: PropTypes.func.isRequired,
   errorMessage: PropTypes.string,
 }
 

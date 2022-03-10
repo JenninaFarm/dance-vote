@@ -17,7 +17,7 @@ const InputWithNavigation = ({buttonText, placeholder, inputId, labelContent, na
         className='input-with-nav__input'
         id={inputId}
         placeholder={placeholder}
-        handleValueChange={event => setValue(event.target.value)}
+        handleValueChange={value => setValue(value)}
       />
       <ButtonWithNav
         className='input-with-nav__button'

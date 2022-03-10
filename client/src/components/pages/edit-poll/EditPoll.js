@@ -9,6 +9,7 @@ import EditPollHeader from '../../organisms/headers/EditPollHeader';
 import Label from '../../atoms/label/Label';
 import InputWithButton from '../../atoms/input/InputWithButton';
 import {ReactComponent as Edit} from "../../../images/icons/edit-input.svg";
+import Input from '../../atoms/input/Input';
 
 
 const EditPoll = () => {
@@ -59,7 +60,10 @@ const EditPoll = () => {
     <div>
       <EditPollHeader />
       <Label />
-      <InputWithButton > <Edit /> </InputWithButton>
+      <InputWithButton
+        valueSet={pollName}
+        handleValueChange={value => setPollName(value)}
+      > <Edit /> </InputWithButton>
       <h1> New Poll: {pollName} </h1>
       <h2> Access code: {accessCode} </h2>
       <NewPair

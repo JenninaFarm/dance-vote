@@ -62,7 +62,7 @@ const RegisterForm = () => {
       <Input 
         id='user-name'
         placeholder='User name'
-        handleValueChange={event => setUserName(event.target.value)}
+        handleValueChange={value => setUserName(value)}
         errorMessage='Please give a username'
         required
       />
@@ -71,7 +71,7 @@ const RegisterForm = () => {
         id='email'
         type='email'
         placeholder='example@example.com'
-        handleValueChange={event => setEmail(event.target.value)}
+        handleValueChange={value => setEmail(value)}
         errorMessage='Please give a valid email'
         required
       />
@@ -80,7 +80,7 @@ const RegisterForm = () => {
         id='password'
         type='password'
         placeholder='password'
-        handleValueChange={event => setPassword(event.target.value)}
+        handleValueChange={value => setPassword(value)}
         errorMessage='Please give a password with atleast 8 characters'
         minLength='8'
         required

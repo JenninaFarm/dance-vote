@@ -20,7 +20,7 @@ const InputWithButton = ({buttonText, onClick, placeholder, inputId, labelConten
       <Input
         id={inputId}
         placeholder={placeholder}
-        handleValueChange={event => setValue(event.target.value)}
+        handleValueChange={value => setValue(value)}
       />
       <Button onClick={handleClick} >
         {buttonText}

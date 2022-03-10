@@ -8,9 +8,9 @@ const NewPair = ({onClick, setLeader, setFollower}) => {
   return (
     <div>
       <Label inputId='leader' content='Leader' />
-      <Input id='leader' placeholder='leader name' handleValueChange={event => setLeader(event.target.value)} />
+      <Input id='leader' placeholder='leader name' handleValueChange={value => setLeader(value)} />
       <Label inputId='follower' content='Follower' />
-      <Input id='follower' placeholder='follower name' handleValueChange={event => setFollower(event.target.value)} />
+      <Input id='follower' placeholder='follower name' handleValueChange={value => setFollower(value)} />
       <Button onClick={onClick} > 
         Send pair
       </Button>
