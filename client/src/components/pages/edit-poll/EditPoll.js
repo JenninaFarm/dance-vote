@@ -11,7 +11,7 @@ import InputWithButton from '../../atoms/input/InputWithButton';
 import {ReactComponent as Edit} from "../../../images/icons/edit-input.svg";
 
 
-const NewPoll = () => {
+const EditPoll = () => {
   const [searchParams] = useSearchParams();
   const [pollName, setPollName] = useState();
   const [follower, setFollower] = useState();
@@ -76,8 +76,8 @@ const NewPoll = () => {
   )
 }
 
-NewPoll.propTypes = {
+EditPoll.propTypes = {
   pollName: PropTypes.string,
 }
 
-export default NewPoll;
+export default EditPoll;

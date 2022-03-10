@@ -7,7 +7,7 @@ import CreatePollMoldal from '../../molecules/modals/CreatePollModal';
 import ProfileHeader from '../../organisms/headers/ProfileHeader';
 import NavigationBar from '../../organisms/navigation-bar/NavigationBar';
 import PollList from '../../organisms/poll-list/PollList';
-import NewPoll from '../create-poll/NewPoll';
+import EditPoll from '../edit-poll/EditPoll';
 
 const Profile = ({user}) => {
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ const Profile = ({user}) => {
       <Routes>
         <Route path='/' element={<PollList userId={user.id} getFunction={restApi.getOnGoingPollsByOwner} />}/>
         <Route path='/muu' element={<ProfileHeader />} />
-        <Route path='/new-poll' element={<NewPoll userId={user.id} />}/>
+        <Route path='/new-poll' element={<EditPoll userId={user.id} />}/>
         <Route path='/user' element={<ProfileHeader />} />
       </Routes>
       {createPollOpen && <CreatePollMoldal handleClose={handleOpenCreatePoll} user={user} />} 
