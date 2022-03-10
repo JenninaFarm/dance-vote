@@ -5,7 +5,7 @@ import { useSearchParams } from 'react-router-dom';
 import NewPair from '../../molecules/fieldsets/NewPair';
 import Card from '../../molecules/cards/Card';
 import { restApi } from '../../../restApi';
-import { createUniqueId } from '../../../HelperFunctions';
+import EditPollHeader from '../../organisms/headers/EditPollHeader';
 
 const NewPoll = () => {
   const [searchParams] = useSearchParams();
@@ -52,6 +52,7 @@ const NewPoll = () => {
 
   return (
     <div>
+      <EditPollHeader />
       <h1> New Poll: {pollName} </h1>
       <h2> Access code: {accessCode} </h2>
       <NewPair

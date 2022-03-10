@@ -8,7 +8,6 @@ const ProfileHeader = ({userName, clickUser}) => {
   return (
     <header className='profile-header'>
       <h6 className='profile-header__name' >{userName}</h6>
-      <p> TODO: user-link</p>
       <Button onClick={clickUser} className='button button--icon profile-header__user-icon' >
         <User />
       </Button>

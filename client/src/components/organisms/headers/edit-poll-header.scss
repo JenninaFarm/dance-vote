@@ -1,0 +1,19 @@
+.edit-poll-header {
+  @include full-width;
+  @include element-gutter('padding');
+
+  background-color: clr(pale-background);
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding-top: $space-s;
+  padding-bottom: $space-s;
+  border-bottom: $border-separator;
+
+  &__delete-icon,
+  &__save-icon {
+    height: $icon-xxs;
+    width: $icon-xxs;
+    margin-right: $space-xs;
+  }
+}

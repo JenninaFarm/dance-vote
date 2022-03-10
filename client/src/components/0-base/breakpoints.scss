@@ -43,6 +43,8 @@ SPACER
 @mixin element-gutter($property: 'margin') {
   #{$property}-left: $gutter-medium;
   #{$property}-right: $gutter-medium;
+  margin-top: 0;
+  margin-bottom: 0;
 
   @include breakpoint(laptop) {
     #{$property}-left: $gutter-large;
