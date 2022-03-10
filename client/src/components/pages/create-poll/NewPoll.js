@@ -6,6 +6,10 @@ import NewPair from '../../molecules/fieldsets/NewPair';
 import Card from '../../molecules/cards/Card';
 import { restApi } from '../../../restApi';
 import EditPollHeader from '../../organisms/headers/EditPollHeader';
+import Label from '../../atoms/label/Label';
+import InputWithButton from '../../atoms/input/InputWithButton';
+import {ReactComponent as Edit} from "../../../images/icons/edit-input.svg";
+
 
 const NewPoll = () => {
   const [searchParams] = useSearchParams();
@@ -53,6 +57,8 @@ const NewPoll = () => {
   return (
     <div>
       <EditPollHeader />
+      <Label />
+      <InputWithButton > <Edit /> </InputWithButton>
       <h1> New Poll: {pollName} </h1>
       <h2> Access code: {accessCode} </h2>
       <NewPair

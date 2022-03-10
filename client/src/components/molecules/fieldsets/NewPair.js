@@ -6,7 +6,7 @@ import Button from '../../atoms/button/Button';
 
 const NewPair = ({onClick, setLeader, setFollower}) => {
   return (
-    <fieldset>
+    <div>
       <Label inputId='leader' content='Leader' />
       <Input id='leader' placeholder='leader name' handleValueChange={event => setLeader(event.target.value)} />
       <Label inputId='follower' content='Follower' />
@@ -14,7 +14,7 @@ const NewPair = ({onClick, setLeader, setFollower}) => {
       <Button onClick={onClick} > 
         Send pair
       </Button>
-    </fieldset>
+    </div>
   );
 }
 
