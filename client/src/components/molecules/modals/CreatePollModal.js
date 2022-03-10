@@ -14,13 +14,14 @@ const CreatePollMoldal = ({handleClose, user}) => {
   const [pollName, setPollName] = useState();
 
   const createNewPoll = async () => {
+    handleClose();
     if(pollName) {
       const poll = {
         owner_id: user.id,
         name: pollName,
       }
       const res = await restApi.createPoll(poll);
-      navigate(`../new-poll?poll=${res.poll_id}&name=${pollName}`)  
+      navigate(`new-poll?poll=${res.poll_id}&name=${pollName}`)  
     }
   }
 
