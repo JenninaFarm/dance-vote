@@ -5,6 +5,7 @@ import { restApi } from '../../../restApi';
 
 import CreatePollMoldal from '../../molecules/modals/CreatePollModal';
 import EditUser from '../../organisms/edit-user/EditUser';
+import EditUserName from '../../organisms/edit-user/EditUserName';
 import ProfileHeader from '../../organisms/headers/ProfileHeader';
 import NavigationBar from '../../organisms/navigation-bar/NavigationBar';
 import PollList from '../../organisms/poll-list/PollList';
@@ -31,9 +32,9 @@ const Profile = ({user}) => {
       />
       <Routes>
         <Route path='/' element={<PollList userId={user.id} getFunction={restApi.getOnGoingPollsByOwner} />}/>
-        <Route path='/muu' element={<ProfileHeader />} />
         <Route path='/new-poll' element={<EditPoll userId={user.id} />}/>
-        <Route path='/user' element={<EditUser user={user} />} />
+        <Route path='/user/*' element={<EditUser user={user} />} />
+        <Route path='user/edit-username' element={<EditUserName />} />
       </Routes>
       {createPollOpen && <CreatePollMoldal handleClose={handleOpenCreatePoll} user={user} />} 
       <p> TODO: logout</p>
