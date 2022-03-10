@@ -35,6 +35,7 @@ const PollList = ({userId, getFunction}) => {
       {polls.map(poll => (
         <PollCard
           key={poll.poll_id}
+          id={poll.poll_id}
           name={poll.name}
         >
           {/* <Button onClick={() => handleShowEditPoll(poll.poll_id)}>Edit</Button>

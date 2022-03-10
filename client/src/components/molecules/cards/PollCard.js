@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+
 import {ReactComponent as Edit} from "../../../images/icons/history.svg";
 import Card from './Card';
 import Button from '../../atoms/button/Button';
 
-const PollCard = ({name, accessCode, handlePublish}) => {
+const PollCard = ({name, id, accessCode, handlePublish}) => {
+  const navigate = useNavigate();
+  
   return (
     <Card className="poll-card">
       <h3 className='poll-card__title' >{name}</h3>
@@ -12,7 +16,10 @@ const PollCard = ({name, accessCode, handlePublish}) => {
       <p> TODO: Make icon as a button</p>
       <Button className='button poll-card__access-code' >Access code</Button>
       <Button onClick={handlePublish} className='button button--secondary poll-card__publish' >Publish Results</Button>
-      <Button className='button button--icon poll-card__edit'>
+      <Button
+        onClick={() => navigate(`new-poll?poll=${id}&name=${name}`)}
+        className='button button--icon poll-card__edit'
+      >
         <Edit className='poll-card__icon' />
       </Button>
     </Card>
