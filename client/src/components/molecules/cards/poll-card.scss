@@ -6,9 +6,11 @@
   width: 100%;
   align-items: center;
   margin-bottom: $space-m;
+  padding: $space-s;
 
   &__title {
-    padding: $space-m $space-xl;
+    padding: $space-xs $space-xl;
+    padding-bottom: $space-m;
   }
 
   &__access-code,
@@ -19,8 +21,6 @@
   &__edit {
     align-self: flex-end;
     margin-top: (-1) * $space-l;
-    padding-right: $space-s;
-    padding-bottom: $space-s;
   }
 
   &__icon {
