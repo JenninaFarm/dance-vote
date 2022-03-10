@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSearchParams } from 'react-router-dom';
 
-import NewPair from '../../molecules/fieldsets/NewPair';
+import NewPair from '../../molecules/fieldsets/new-pair/NewPair';
 import Card from '../../molecules/cards/Card';
 import { restApi } from '../../../restApi';
 import EditPollHeader from '../../organisms/headers/EditPollHeader';
@@ -59,13 +59,13 @@ const EditPoll = () => {
   return (
     <div>
       <EditPollHeader />
-      <Label />
+      <Label inputId='poll-name' content='Vote name' />
       <InputWithButton
+        id='poll-name'
         valueSet={pollName}
         handleValueChange={value => setPollName(value)}
       > <Edit /> </InputWithButton>
-      <h1> New Poll: {pollName} </h1>
-      <h2> Access code: {accessCode} </h2>
+      <h5>Add a new pair to the vote</h5>
       <NewPair
         onClick={sendNewPair}
         setLeader={value => setLeader(value)}

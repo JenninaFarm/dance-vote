@@ -53,6 +53,12 @@ input {
   background-color: transparent;
 }
 
+label {
+  font-family: $font-body;
+  font-size: $font-16;
+  font-weight: $font-weight-bold;
+}
+
 header {
   margin: $space-m;
 }

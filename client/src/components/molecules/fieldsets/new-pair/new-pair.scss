@@ -1,0 +1,15 @@
+.new-pair {
+  padding: $space-m 0;
+  display: flex;
+  flex-direction: column;
+
+  &__input {
+    margin-top: $space-xs;
+    margin-bottom: $space-s;
+  }
+
+  &__button {
+    margin-top: $space-xs;
+    align-self: center;
+  }
+}
