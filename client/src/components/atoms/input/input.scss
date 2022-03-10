@@ -10,3 +10,10 @@
     display: block;
   }
 }
+
+.input-with-button {
+  &__button {
+    border-bottom: $border-input;
+    border-radius: 0;
+  }
+}

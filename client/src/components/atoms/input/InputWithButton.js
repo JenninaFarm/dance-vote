@@ -6,7 +6,7 @@ import Button from '../button/Button';
 const InputWithButton = ({children, clickIcon, ...rest}) => {
   return (
     <Input {...rest} >
-      <Button className='button button--icon' onClick={clickIcon} >
+      <Button className='button button--icon input-with-button__button' onClick={clickIcon} >
         {children}
       </Button>
     </Input>
