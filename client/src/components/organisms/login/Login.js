@@ -24,7 +24,7 @@ const Login = ({handleLogin, handleClose, openRegisteration}) => {
     }
     const res = await restApi.login(login);
     if (!res.error) {
-      const user = {username: res.username, id: res.user_id}
+      const user = {username: res.username, id: res.user_id, email: res.email}
       handleLogin( user );
     } else {
       setError(res.error);

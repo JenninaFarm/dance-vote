@@ -10,11 +10,11 @@ const EditPollHeader = () => {
     <header className='edit-header'>
       <Button className='button button--icon' >
         <Delete className='edit-header__left-icon' />
-        Clear All
+        Back
       </Button>
       <Button className='button button--icon' >
         <Delete className='edit-header__right-icon' />
-        Save Changes
+        Save
       </Button>
     </header>
   );

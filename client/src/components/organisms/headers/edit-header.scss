@@ -1,4 +1,4 @@
-.edit-poll-header {
+.edit-header {
   @include full-width;
   @include element-gutter('padding');
 
@@ -11,8 +11,8 @@
   border-bottom: $border-separator;
   margin-bottom: $space-m;
 
-  &__delete-icon,
-  &__save-icon {
+  &__left-icon,
+  &__right-icon {
     height: $icon-xxs;
     width: $icon-xxs;
     margin-right: $space-xs;

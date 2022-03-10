@@ -4,6 +4,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import { restApi } from '../../../restApi';
 
 import CreatePollMoldal from '../../molecules/modals/CreatePollModal';
+import EditUser from '../../organisms/edit-user/EditUser';
 import ProfileHeader from '../../organisms/headers/ProfileHeader';
 import NavigationBar from '../../organisms/navigation-bar/NavigationBar';
 import PollList from '../../organisms/poll-list/PollList';
@@ -32,7 +33,7 @@ const Profile = ({user}) => {
         <Route path='/' element={<PollList userId={user.id} getFunction={restApi.getOnGoingPollsByOwner} />}/>
         <Route path='/muu' element={<ProfileHeader />} />
         <Route path='/new-poll' element={<EditPoll userId={user.id} />}/>
-        <Route path='/user' element={<ProfileHeader />} />
+        <Route path='/user' element={<EditUser user={user} />} />
       </Routes>
       {createPollOpen && <CreatePollMoldal handleClose={handleOpenCreatePoll} user={user} />} 
       <p> TODO: logout</p>

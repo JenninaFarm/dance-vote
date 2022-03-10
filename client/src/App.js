@@ -14,12 +14,12 @@ import Header from './components/organisms/headers/Header';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState({username: '', id: ''})
+  const [user, setUser] = useState({username: '', id: '', email: ''})
   const navigate = useNavigate();
 
   const login = (loggedUser) => {
     setIsLoggedIn(true);
-    setUser({username: loggedUser.username, id: loggedUser.id});
+    setUser(loggedUser);
     navigate('/profile');
   }
 
