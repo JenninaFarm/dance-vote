@@ -9,7 +9,6 @@ import EditPollHeader from '../../organisms/headers/EditPollHeader';
 import Label from '../../atoms/label/Label';
 import InputWithButton from '../../atoms/input/InputWithButton';
 import {ReactComponent as Edit} from "../../../images/icons/edit-input.svg";
-import Input from '../../atoms/input/Input';
 
 
 const EditPoll = () => {
@@ -48,7 +47,7 @@ const EditPoll = () => {
     if (pollId && !accessCode) {
       getPollAccessCode();
     }
-  }, [pollId]);
+  }, [pollId, accessCode]);
 
   // Set Poll name and id
   useEffect(() => {
@@ -57,15 +56,18 @@ const EditPoll = () => {
   }, [searchParams]);
 
   return (
-    <div>
+    <div className='edit-poll'>
       <EditPollHeader />
+
+      <p>TODO: Clear all functionality</p>
+      <p>TODO: Save changes functionality</p>
       <Label inputId='poll-name' content='Vote name' />
       <InputWithButton
         id='poll-name'
         valueSet={pollName}
         handleValueChange={value => setPollName(value)}
       > <Edit /> </InputWithButton>
-      <h5>Add a new pair to the vote</h5>
+      <h5 className='edit-poll__title'>Add a new pair to the vote</h5>
       <NewPair
         onClick={sendNewPair}
         setLeader={value => setLeader(value)}
