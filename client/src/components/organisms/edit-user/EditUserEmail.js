@@ -28,12 +28,18 @@ const EditUserEmail = ({user, handleChange}) => {
         type='email'
         labelContent='Email'
         valueSet={user.email}
+        disabled={true}
         handleValueChange={value => setEmail(value)}
       >
         <Edit />
       </InputWithButton>
     </section>
   );
+}
+
+EditUserEmail.propTypes = {
+  user: PropTypes.object,
+  handleChange: PropTypes.func,
 }
 
 export default EditUserEmail;

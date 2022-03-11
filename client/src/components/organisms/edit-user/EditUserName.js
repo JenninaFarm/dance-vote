@@ -26,6 +26,7 @@ const EditUserName = ({user, handleChange}) => {
         inputId='username'
         labelContent='Username'
         valueSet={user.username}
+        disabled={true}
         handleValueChange={value => setName(value)}
       >
         <Edit />

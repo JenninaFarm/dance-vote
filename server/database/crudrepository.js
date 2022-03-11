@@ -25,6 +25,18 @@ const connectionFunctions = {
     });
   },
 
+  getUserById: (id) => {
+    return new Promise((resolve, reject) => {
+      pool.query('SELECT * FROM users WHERE user_id = $1', [id], (err, result) => {
+        if(err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  },
+
   setLastLogin: (user) => {
     return new Promise((resolve, reject) => {
       pool.query('UPDATE users SET last_login = now() WHERE email = $1', [user.email], (err, result) => {
@@ -64,6 +76,19 @@ const connectionFunctions = {
   setEmailById: (user) => {
     return new Promise((resolve, reject) => {
       pool.query('UPDATE users SET email = $1 WHERE user_id = $2', [user.email, user.id], (err, result) => {
+        if(err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  },
+
+  setPasswordById: (newPassword, id) => {
+    console.log(newPassword);
+    return new Promise((resolve, reject) => {
+      pool.query('UPDATE users SET password = $1 WHERE user_id = $2', [newPassword, id], (err, result) => {
         if(err) {
           reject(err);
         } else {

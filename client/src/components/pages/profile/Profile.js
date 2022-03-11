@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 
 import { restApi } from '../../../restApi';
@@ -7,6 +7,7 @@ import CreatePollMoldal from '../../molecules/modals/CreatePollModal';
 import EditUser from '../../organisms/edit-user/EditUser';
 import EditUserEmail from '../../organisms/edit-user/EditUserEmail';
 import EditUserName from '../../organisms/edit-user/EditUserName';
+import EditUserPassword from '../../organisms/edit-user/EditUserPassword';
 import ProfileHeader from '../../organisms/headers/ProfileHeader';
 import NavigationBar from '../../organisms/navigation-bar/NavigationBar';
 import PollList from '../../organisms/poll-list/PollList';
@@ -50,10 +51,10 @@ const Profile = ({userObj}) => {
         <Route path='/user/*' element={<EditUser user={user} />} />
         <Route path='user/edit-username' element={<EditUserName handleChange={handleNameChange} user={user} />} />
         <Route path='user/edit-email' element={<EditUserEmail handleChange={handleEmailChange} user={user} />} />
+        <Route path='user/edit-password' element={<EditUserPassword user={user} />} />
       </Routes>
       {createPollOpen && <CreatePollMoldal handleClose={handleOpenCreatePoll} user={user} />} 
       <p> TODO: logout</p>
-      <p> TODO: change password</p>
     </div>
   );
 }
