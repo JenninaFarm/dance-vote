@@ -229,6 +229,18 @@ const connectionFunctions = {
       });
     });
   },
+
+  getVotesByPollId: (poll_id) => {
+    return new Promise((resolve, reject) => {
+      pool.query('SELECT * FROM votes WHERE poll_id = $1', [poll_id], (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  },
 }
 
 module.exports = connectionFunctions;

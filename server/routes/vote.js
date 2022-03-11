@@ -13,5 +13,14 @@ route.post('/', async (req, res) => {
   }
 });
 
+route.get('/', async (req, res) => {
+  try {
+    const result = await crud.getVotesByPollId(req.query.poll_id);
+    res.status(HttpStatus.OK).json(result.rows);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
 
 module.exports = route;

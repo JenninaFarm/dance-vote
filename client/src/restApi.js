@@ -164,6 +164,15 @@ export const restApi = {
     }
   },
 
+  getVotesByPollId: async (pollId) => {
+    try {
+      const res = await client.get('vote/', {params: {poll_id: pollId}});
+      return res.data;
+    } catch (err) {
+      return err;
+    }
+  },
+
   getUsers: async () => {
     try {
       const res = await client.get('users');
