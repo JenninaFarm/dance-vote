@@ -1,6 +1,7 @@
 .input-container {
   width: 100%;
   display: flex;
+  margin-bottom: $space-m;
 
   .error-message {
     display: none;
@@ -12,10 +13,6 @@
 }
 
 .input-with-button {
-  &__input {
-    margin-top: $space-xs;
-  }
-
   &__button {
     border-bottom: $border-input;
     border-radius: 0;

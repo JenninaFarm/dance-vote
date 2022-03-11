@@ -24,14 +24,16 @@
     margin-bottom: $space-l;
   }
 
-  &__input {
-    margin-bottom: $space-l;
+  &__eye {
+    width: $icon-s;
+    height: $icon-s;
   }
 
-  &__password-icon {
-    position: absolute;
-    margin-left: -2.25rem;
-    margin-top: (-1) * $space-xxs;
+  &__link {
+    margin-bottom: $space-l;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: $font-weight-regular;
   }
 
   &__signup {

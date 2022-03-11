@@ -8,6 +8,8 @@ import Input from '../../atoms/input/Input';
 import Modal from '../../molecules/modal/Modal';
 import {ReactComponent as Close} from "../../../images/icons/close.svg";
 import {ReactComponent as Eye} from "../../../images/icons/eye.svg";
+import InputWithButton from '../../atoms/input/InputWithButton';
+import { Link } from 'react-router-dom';
 
 const Login = ({handleLogin, handleClose, openRegisteration}) => {
   const [password, setPassword] = useState();
@@ -52,36 +54,36 @@ const Login = ({handleLogin, handleClose, openRegisteration}) => {
             className='login__input'
             id='email'
             type='email'
-            placeholder='email'
+            placeholder='Email'
             handleValueChange={value => setEmail(value)}
             errorMessage='Please give a valid email'
             required
           />
-          <Input
-            className='login__input'
+          <InputWithButton
             id='password'
+            clickIcon={showPassword}
             type={passwordInputType}
-            placeholder='email'
+            placeholder='Password'
             handleValueChange={value => setPassword(value)}
             errorMessage='Please give a password'
             required
           >
-            <Button
-              type='button'
-              className='button button--icon login__password-icon'
-              onClick={showPassword}
-            >
-              <Eye />
-            </Button>
-          </Input>
+            <Eye className='login__eye' />
+          </InputWithButton>
           {error && 
             <ErrorMessage>
               {error}
             </ErrorMessage>
           }
-          <Button type='submit'> Log in </Button>
+          <Button className='button login__login' type='submit'> Log in </Button>
         </Form>
-        <h4>or</h4>
+        <Link
+          to='forgot-password'
+          className='login__link'
+        >
+          Forgot your password?
+        </Link>
+        <h5>Don't have an account yet?</h5>
         <Button
           onClick={openRegisteration}
           className='button button--secondary login__signup'

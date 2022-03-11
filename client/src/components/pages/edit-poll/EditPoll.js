@@ -6,7 +6,6 @@ import NewPair from '../../molecules/fieldsets/new-pair/NewPair';
 import Card from '../../molecules/cards/Card';
 import { restApi } from '../../../restApi';
 import EditPollHeader from '../../organisms/headers/EditPollHeader';
-import Label from '../../atoms/label/Label';
 import InputWithButton from '../../atoms/input/InputWithButton';
 import {ReactComponent as Edit} from "../../../images/icons/edit-input.svg";
 

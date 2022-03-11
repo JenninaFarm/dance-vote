@@ -8,6 +8,8 @@ import Form from '../../atoms/form/Form';
 import { restApi } from '../../../restApi';
 import {ReactComponent as Close} from "../../../images/icons/close.svg";
 import {ReactComponent as Eye} from "../../../images/icons/eye.svg";
+import InputWithButton from '../../atoms/input/InputWithButton';
+import { Link } from 'react-router-dom';
 
 
 const Register = ({handleClose, openLogin}) => {
@@ -96,48 +98,40 @@ const Register = ({handleClose, openLogin}) => {
             errorMessage='Please give a valid email'
             required
           />
-          <Input
-            className='register__input'
+          <InputWithButton
             id='password'
+            clickIcon={showPassword}
             type={passwordInputType}
             placeholder='Password'
             handleValueChange={value => setPassword(value)}
-            errorMessage='Please give a password with atleast 8 characters'
-            minLength='8'
+            errorMessage='Please give a password'
             required
           >
-            <Button
-              type='button'
-              className='button button--icon login__password-icon'
-              onClick={showPassword}
-            >
-              <Eye />
-            </Button>
-          </Input>
-          <Input
-            className='register__input'
+            <Eye className='register__eye' />
+          </InputWithButton>
+          <InputWithButton
             id='confirm-password'
+            clickIcon={showPassword}
             type={passwordInputType}
             placeholder='Confirm password'
             handleValueChange={value => setPassword(value)}
-            errorMessage='Please give a password with atleast 8 characters'
-            minLength='8'
+            errorMessage='Please give a password'
             required
           >
-            <Button
-              type='button'
-              className='button button--icon login__password-icon'
-              onClick={showPassword}
-            >
-              <Eye />
-            </Button>
-          </Input>
+            <Eye className='register__eye' />
+          </InputWithButton>
           {error && 
             <ErrorMessage>
               {error}
             </ErrorMessage>
           }
-          <Button type='submit'> Create account </Button>
+          <Button className='button register__button' type='submit'> Create account </Button>
+          <Link
+            to='forgot-password'
+            className='register__link'
+          >
+            Already have an account?
+          </Link>
         </Form>
       </div>
     </Modal>

@@ -17,6 +17,7 @@
 
     margin-left: $space-l;
     margin-right: $space-l;
+    text-align: center;
   }
 
   &__form {
@@ -26,14 +27,30 @@
     align-items: center;
     margin-bottom: $space-l;
   }
-
-  &__input {
-    margin-bottom: $space-l;
-  }
   
   &__password-icon {
     position: absolute;
     margin-left: -2.25rem;
     margin-top: (-1) * $space-xxs;
+  }
+
+  &__eye {
+    width: $icon-s;
+    height: $icon-s;
+  }
+
+  &__button {
+    margin-top: $space-s;
+  }
+
+  &__link {
+    @include element-gutter;
+    @include element-gutter('padding');
+
+    text-align: center;
+    margin-top: $space-l;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: $font-weight-regular;
   }
 }
