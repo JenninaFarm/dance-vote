@@ -101,6 +101,15 @@ export const restApi = {
     }
   },
 
+  getGonePollsById: async (id) => {
+    try {
+      const res = await client.get('poll/gone', {params: {id: id.user_id}});
+      return res.data;
+    } catch (err) {
+      return err;
+    }
+  },
+
   setPollAccessCode: async (poll) => {
     try {
       const res = await client.patch('poll/access-code', poll);

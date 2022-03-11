@@ -1,0 +1,16 @@
+.history-card {
+  background-color: clr(light-background);
+  border-radius: $border-radius-small;
+  padding: $space-m;
+
+  &__delete {
+    width: $icon-s;
+    height: $icon-s;
+  }
+
+  &__title {
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: (-1) * $space-m;
+  }
+}

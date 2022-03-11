@@ -134,6 +134,18 @@ const connectionFunctions = {
     })
   },
 
+  getGonePollsById: (id) => {
+    return new Promise((resolve, reject) => {
+      pool.query('SELECT * FROM polls WHERE owner_id = $1 AND on_going = false', [id], (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  },
+
   getOnGoingPollByAccessCode: (access_code) => {
     return new Promise((resolve, reject) => {
       pool.query('SELECT * FROM polls WHERE access_code = $1 AND on_going = true', [access_code], (err, result) => {
