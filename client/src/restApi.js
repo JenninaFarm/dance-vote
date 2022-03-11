@@ -29,6 +29,15 @@ export const restApi = {
     }
   },
 
+  changeUsernameById: async (user) => {
+    try {
+      const res = await client.patch('user/username', user);
+      return res.data;
+    } catch (err) {
+      return err;
+    }
+  },
+
   login: async (loginInfo) => {
     try {
       const res = await client.patch('login/', loginInfo);

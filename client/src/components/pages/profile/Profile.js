@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 
 import { restApi } from '../../../restApi';
@@ -11,12 +11,24 @@ import NavigationBar from '../../organisms/navigation-bar/NavigationBar';
 import PollList from '../../organisms/poll-list/PollList';
 import EditPoll from '../edit-poll/EditPoll';
 
-const Profile = ({user}) => {
+const Profile = ({userObj}) => {
   const navigate = useNavigate();
+  const [user, setUser] = useState(userObj);
   const [createPollOpen, setCreatePollOpen] = useState(false);
 
+  // useEffect(() => {
+  //   setUser(userObj);
+  // }, [userObj]);
+  
   const handleOpenCreatePoll = () => {
     setCreatePollOpen(!createPollOpen);
+  }
+
+  const handleNameChange = (newName) => {
+    let temp = user;
+    temp.username = newName;
+    console.log(temp);
+    setUser(temp);
   }
 
   return (
@@ -34,7 +46,7 @@ const Profile = ({user}) => {
         <Route path='/' element={<PollList userId={user.id} getFunction={restApi.getOnGoingPollsByOwner} />}/>
         <Route path='/new-poll' element={<EditPoll userId={user.id} />}/>
         <Route path='/user/*' element={<EditUser user={user} />} />
-        <Route path='user/edit-username' element={<EditUserName user={user} />} />
+        <Route path='user/edit-username' element={<EditUserName handleChange={handleNameChange} user={user} />} />
       </Routes>
       {createPollOpen && <CreatePollMoldal handleClose={handleOpenCreatePoll} user={user} />} 
       <p> TODO: logout</p>

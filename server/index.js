@@ -42,14 +42,12 @@ api.use((req,res,next) => {
   next();
 });
 
-
-
-
 const register = require('./routes/register');
 const login = require('./routes/login');
 const poll = require('./routes/poll');
 const pollItem = require('./routes/pollItem');
 const vote = require('./routes/vote');
+const user = require('./routes/user');
 
 // public routes
 api.use('/register', register);
@@ -58,6 +56,7 @@ api.use('/vote', vote);
 // needs authentication
 api.use('/poll', poll);
 api.use('/poll-item', pollItem);
+api.use('/user', user);
 
 
 // const { logger } = require('./middleware/logEvents');

@@ -30,7 +30,7 @@ const App = () => {
         <Route path='/' element={<Frontpage handleLogin={login}/>} />
         <Route path='register' element={<Registeration />} />
         <Route path='login' element={<Login handleLogin={login} />} />
-        <Route path='profile/*' element={isLoggedIn ? <Profile user={user} /> : <Navigate to='/login' /> } />
+        <Route path='profile/*' element={isLoggedIn ? <Profile userObj={user} /> : <Navigate to='/login' /> } />
         <Route path='vote' element={<Voting />} />
       </Routes>
     </div>
