@@ -17,7 +17,6 @@ const App = () => {
   const navigate = useNavigate();
 
   const login = (loggedUser) => {
-    console.log('login frontpage');
     setIsLoggedIn(true);
     setUser(loggedUser);
     navigate('/profile');

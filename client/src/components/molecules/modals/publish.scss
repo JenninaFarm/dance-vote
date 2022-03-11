@@ -1,0 +1,15 @@
+.publish {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: $space-xl $space-m;
+
+  &__summary {
+    padding: $space-m 0;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+}
