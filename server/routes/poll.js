@@ -55,6 +55,15 @@ route.patch('/access-code', async (req, res) => {
   }
 });
 
+route.patch('/publish', async (req, res) => {
+  try {
+    const result = await crud.setPollPublicById(req.body);
+    res.status(HttpStatus.OK).json(result);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
 route.get('/access-code', async (req, res) => {
   try {
     const result = await crud.getAccessCodeByPollId(req.query.poll_id);

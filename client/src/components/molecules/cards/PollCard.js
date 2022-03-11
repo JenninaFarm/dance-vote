@@ -6,6 +6,7 @@ import {ReactComponent as Edit} from "../../../images/icons/edit-card.svg";
 import Card from './Card';
 import Button from '../../atoms/button/Button';
 import Publish from '../modals/Publish';
+import { restApi } from '../../../restApi';
 
 const PollCard = ({name, id, accessCode}) => {
   const navigate = useNavigate();
@@ -14,11 +15,17 @@ const PollCard = ({name, id, accessCode}) => {
   const handleOpenPublish = async () => {
     setPublishOpen(!publishOpen);
   }
+
+  const handlePublish = async () => {
+    const res = await restApi.setPublishByPollId({id: id});
+    if(res.rowCount) {
+      handleOpenPublish();
+    }
+  }
   
   return (
     <Card className="poll-card">
       <h3 className='poll-card__title' >{name}</h3>
-      <p> TODO: functionality to publish</p>
       <Button
         onClick={() => navigate(`access-code?code=${accessCode}`)}
         className='button poll-card__access-code'
@@ -32,7 +39,7 @@ const PollCard = ({name, id, accessCode}) => {
       >
         <Edit className='poll-card__icon' />
       </Button>
-      {publishOpen && <Publish />}
+      {publishOpen && <Publish handleClose={handleOpenPublish} publish={handlePublish} />}
     </Card>
   );
 }

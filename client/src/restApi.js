@@ -110,6 +110,15 @@ export const restApi = {
     }
   },
 
+  setPublishByPollId: async (id) => {
+    try {
+      const res = await client.patch('poll/publish', id);
+      return res.data;
+    } catch (err) {
+      return err;
+    }
+  },
+
   getPollAccessCodeByPollId: async (pollId) => {
     try {
       const res = await client.get('poll/access-code', {params: {poll_id: pollId}});

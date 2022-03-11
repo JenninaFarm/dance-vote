@@ -158,6 +158,18 @@ const connectionFunctions = {
     })
   },
 
+  setPollPublicById: (poll_id) => {
+    return new Promise((resolve, reject) => {
+      pool.query('UPDATE polls SET public = $1 WHERE poll_id = $2', [true, poll_id.id], (err, result) => {
+        if(err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    })
+  },
+
   getAccessCodeByPollId: (poll_id) => {
     return new Promise((resolve, reject) => {
       pool.query('SELECT access_code FROM polls WHERE poll_id = $1', [poll_id], (err, result) => {
