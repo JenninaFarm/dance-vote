@@ -43,14 +43,10 @@
     margin-top: $space-s;
   }
 
-  &__link {
+  &__login {
     @include element-gutter;
     @include element-gutter('padding');
 
-    text-align: center;
     margin-top: $space-l;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    font-weight: $font-weight-regular;
   }
 }

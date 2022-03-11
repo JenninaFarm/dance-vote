@@ -9,7 +9,6 @@ import { restApi } from '../../../restApi';
 import {ReactComponent as Close} from "../../../images/icons/close.svg";
 import {ReactComponent as Eye} from "../../../images/icons/eye.svg";
 import InputWithButton from '../../atoms/input/InputWithButton';
-import { Link } from 'react-router-dom';
 
 
 const Register = ({handleClose, openLogin}) => {
@@ -126,12 +125,12 @@ const Register = ({handleClose, openLogin}) => {
             </ErrorMessage>
           }
           <Button className='button register__button' type='submit'> Create account </Button>
-          <Link
-            to='forgot-password'
-            className='register__link'
+          <Button
+          onClick={openLogin}
+            className='button button--link register__login'
           >
             Already have an account?
-          </Link>
+          </Button>
         </Form>
       </div>
     </Modal>
