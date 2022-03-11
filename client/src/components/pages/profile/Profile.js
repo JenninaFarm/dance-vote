@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 
 import { restApi } from '../../../restApi';
+import AccessCode from '../../molecules/access-code/AccessCode';
 
 import CreatePollMoldal from '../../molecules/modals/CreatePollModal';
 import EditUser from '../../organisms/edit-user/EditUser';
@@ -52,6 +53,7 @@ const Profile = ({userObj}) => {
         <Route path='user/edit-username' element={<EditUserName handleChange={handleNameChange} user={user} />} />
         <Route path='user/edit-email' element={<EditUserEmail handleChange={handleEmailChange} user={user} />} />
         <Route path='user/edit-password' element={<EditUserPassword user={user} />} />
+        <Route path='access-code' element={<AccessCode />} />
       </Routes>
       {createPollOpen && <CreatePollMoldal handleClose={handleOpenCreatePoll} user={user} />} 
       <p> TODO: logout</p>

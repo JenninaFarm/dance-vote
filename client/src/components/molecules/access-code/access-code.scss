@@ -1,0 +1,11 @@
+.access-code {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+
+  &__code {
+    font-size: $font-32;
+    font-weight: $font-weight-medium;
+  }
+}

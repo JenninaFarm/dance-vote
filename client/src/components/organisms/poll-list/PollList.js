@@ -28,6 +28,7 @@ const PollList = ({userId, getFunction}) => {
           key={poll.poll_id}
           id={poll.poll_id}
           name={poll.name}
+          accessCode={poll.access_code}
         />
       ))}
     </div>
