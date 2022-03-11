@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { useSearchParams } from 'react-router-dom';
 
 import NewPair from '../../molecules/fieldsets/new-pair/NewPair';
-import Card from '../../molecules/cards/Card';
 import { restApi } from '../../../restApi';
 import EditPollHeader from '../../organisms/headers/EditPollHeader';
 import InputWithButton from '../../atoms/input/InputWithButton';
 import {ReactComponent as Edit} from "../../../images/icons/edit-input.svg";
+import PairCard from '../../molecules/cards/PairCard';
 
 
 const EditPoll = () => {
@@ -21,7 +21,6 @@ const EditPoll = () => {
 
   const updatePairs = (newPair) => {
     newPair.push(...pairs);
-    console.log(newPair);
     setPairs(newPair);
   }
 
@@ -32,11 +31,21 @@ const EditPoll = () => {
       poll_id: searchParams.get('poll'),
       access_code: accessCode,
     }
-    console.log(pollItem);
     await restApi.createPollItem(pollItem);
-    const newPair = [{leader: leader, follow: follower}];
+    const newPair = [{leader: leader, follower: follower}];
     updatePairs(newPair);
   }
+
+  useEffect(() => {
+    const getPairs = async () => {
+      const result = await restApi.getPollItemsByPollId(pollId);
+      setPairs(result);
+    }
+
+    if (pollId && pairs.length === 0) {
+      getPairs();
+    }
+  }, [pollId, pairs]);
 
   // Get Poll access code after the pollId is set
   useEffect(() => {
@@ -79,10 +88,12 @@ const EditPoll = () => {
         setFollower={value => setFollower(value)}
       />
       {pairs.map((pair, index) => (
-        <Card
-          key={index}
-          content={`${pair.leader} & ${pair.follow}`}
-        />
+        <PairCard
+        id={index}
+        key={index}
+        leader={pair.leader}
+        follower={pair.follower}
+      />
       ))}
     </div>
   )

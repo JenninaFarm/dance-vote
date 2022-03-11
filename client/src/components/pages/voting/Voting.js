@@ -4,7 +4,6 @@ import { useSearchParams } from 'react-router-dom';
 import { Container, Draggable} from 'react-smooth-dnd';
 
 import { ENDPOINT, restApi } from '../../../restApi';
-import Card from '../../molecules/cards/Card';
 import socketIoClient from 'socket.io-client';
 import Button from '../../atoms/button/Button';
 import PairCard from '../../molecules/cards/PairCard';
@@ -21,7 +20,6 @@ const Voting = () => {
 
   // Handling listening socket for updates
   useEffect(() => {
-    console.log(pairs);
     socket.on('poll-update', newPair => {
       if (newPair.access_code === searchParams.get('poll_id')) {
         setPairs([...pairs, newPair]);
@@ -70,7 +68,6 @@ const Voting = () => {
   }
 
   const handleSendVote = async () => {
-    console.log(pairs);
     let votes = '{';
     for(let i=0; i<pairs.length; i++) {
       if (i === pairs.length - 1) {
