@@ -38,6 +38,15 @@ export const restApi = {
     }
   },
 
+  changeEmailById: async (user) => {
+    try {
+      const res = await client.patch('user/email', user);
+      return res.data;
+    } catch (err) {
+      return err;
+    }
+  },
+
   login: async (loginInfo) => {
     try {
       const res = await client.patch('login/', loginInfo);

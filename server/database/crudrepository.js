@@ -61,6 +61,18 @@ const connectionFunctions = {
     });
   },
 
+  setEmailById: (user) => {
+    return new Promise((resolve, reject) => {
+      pool.query('UPDATE users SET email = $1 WHERE user_id = $2', [user.email, user.id], (err, result) => {
+        if(err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  },
+
   createPoll: (poll) => {
     return new Promise((resolve, reject) => {
       pool.query('INSERT INTO polls (owner_id, name, access_code) VALUES ($1, $2, $3) RETURNING poll_id', [poll.owner_id, poll.name, poll.access_code], (err, result) => {

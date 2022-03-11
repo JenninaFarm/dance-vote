@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import InputWithButton from '../../atoms/input/InputWithButton';
 
 import EditUserHeader from '../headers/EditUserHeader';
 import {ReactComponent as Edit} from "../../../images/icons/edit-input.svg";
 import { restApi } from '../../../restApi';
 
-const EditUserName = ({user, handleChange}) => {
-  const [name, setName] = useState();
+const EditUserEmail = ({user, handleChange}) => {
+  const [email, setEmail] = useState();
 
   const handleSave = async () => {
-    if (name.length > 0) {
-      const res = await restApi.changeUsernameById({username: name, id: user.id});
+    if (email.length > 0) {
+      const res = await restApi.changeEmailById({email: email, id: user.id});
       if(res.rowCount) {
-        handleChange(name);
+        handleChange(email);
       }
     } else {
-      console.log('Username should have some length');
+      console.log('Email should have some length');
     }
   }
 
@@ -24,9 +25,10 @@ const EditUserName = ({user, handleChange}) => {
       <EditUserHeader clickSave={handleSave} />
       <InputWithButton
         inputId='username'
-        labelContent='Username'
-        valueSet={user.username}
-        handleValueChange={value => setName(value)}
+        type='email'
+        labelContent='Email'
+        valueSet={user.email}
+        handleValueChange={value => setEmail(value)}
       >
         <Edit />
       </InputWithButton>
@@ -34,4 +36,4 @@ const EditUserName = ({user, handleChange}) => {
   );
 }
 
-export default EditUserName;
+export default EditUserEmail;

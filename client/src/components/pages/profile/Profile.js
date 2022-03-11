@@ -5,6 +5,7 @@ import { restApi } from '../../../restApi';
 
 import CreatePollMoldal from '../../molecules/modals/CreatePollModal';
 import EditUser from '../../organisms/edit-user/EditUser';
+import EditUserEmail from '../../organisms/edit-user/EditUserEmail';
 import EditUserName from '../../organisms/edit-user/EditUserName';
 import ProfileHeader from '../../organisms/headers/ProfileHeader';
 import NavigationBar from '../../organisms/navigation-bar/NavigationBar';
@@ -15,10 +16,6 @@ const Profile = ({userObj}) => {
   const navigate = useNavigate();
   const [user, setUser] = useState(userObj);
   const [createPollOpen, setCreatePollOpen] = useState(false);
-
-  // useEffect(() => {
-  //   setUser(userObj);
-  // }, [userObj]);
   
   const handleOpenCreatePoll = () => {
     setCreatePollOpen(!createPollOpen);
@@ -27,7 +24,12 @@ const Profile = ({userObj}) => {
   const handleNameChange = (newName) => {
     let temp = user;
     temp.username = newName;
-    console.log(temp);
+    setUser(temp);
+  }
+
+  const handleEmailChange = (newEmail) => {
+    let temp = user;
+    temp.email = newEmail;
     setUser(temp);
   }
 
@@ -47,6 +49,7 @@ const Profile = ({userObj}) => {
         <Route path='/new-poll' element={<EditPoll userId={user.id} />}/>
         <Route path='/user/*' element={<EditUser user={user} />} />
         <Route path='user/edit-username' element={<EditUserName handleChange={handleNameChange} user={user} />} />
+        <Route path='user/edit-email' element={<EditUserEmail handleChange={handleEmailChange} user={user} />} />
       </Routes>
       {createPollOpen && <CreatePollMoldal handleClose={handleOpenCreatePoll} user={user} />} 
       <p> TODO: logout</p>
