@@ -5,7 +5,6 @@ import './Styles.scss';
 
 import Frontpage from './components/pages/frontpage/Frontpage';
 import Voting from './components/pages/voting/Voting';
-import Registeration from './components/pages/registeration/Registeration';
 import Login from './components/pages/login/Login';
 import Profile from './components/pages/profile/Profile';
 import Header from './components/organisms/headers/Header';
@@ -18,6 +17,7 @@ const App = () => {
   const navigate = useNavigate();
 
   const login = (loggedUser) => {
+    console.log('login frontpage');
     setIsLoggedIn(true);
     setUser(loggedUser);
     navigate('/profile');
@@ -28,7 +28,6 @@ const App = () => {
       <Header />
       <Routes>
         <Route path='/' element={<Frontpage handleLogin={login}/>} />
-        <Route path='register' element={<Registeration />} />
         <Route path='login' element={<Login handleLogin={login} />} />
         <Route path='profile/*' element={isLoggedIn ? <Profile userObj={user} /> : <Navigate to='/login' /> } />
         <Route path='vote' element={<Voting />} />

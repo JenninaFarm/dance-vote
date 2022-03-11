@@ -10,7 +10,6 @@ route.patch('/', async (req, res) => {
     const {email, password} = req.body;
     const response = await crud.getUserByEmail(email);
     const user = response.rows[0];
-
     if (user) {
       const isMatch = await confirmPassword(password, user.password);
       if (isMatch) {
@@ -27,9 +26,11 @@ route.patch('/', async (req, res) => {
           .status(HttpStatus.UNAUTHORIZED)
           .json({ error:'Wrong email or password.' });
       }
+    } else {
+      return res
+        .status(HttpStatus.UNAUTHORIZED)
+        .json({ error:'Wrong email or password.' });
     }
-    return res.status(HttpStatus.OK).json(user);
-
   } catch (err) {
     console.log(err);
   }

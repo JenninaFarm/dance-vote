@@ -61,7 +61,7 @@ export const restApi = {
       const res = await client.patch('login/', loginInfo);
       return res.data;
     } catch (err) {
-      return err;
+      return err.response.data;
     }
   },
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Button from '../../atoms/button/Button';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import InputWithNavigation from '../../molecules/fieldsets/inputWithNavigation/InputWithNavigation';
 import Login from '../../organisms/login/Login';
@@ -10,11 +10,8 @@ const Frontpage = ({handleLogin}) => {
   const [loginOpen, setLoginOpen] = useState(false);
   const [registerOpen, setRegisterOpen] = useState(false);
 
-  const createNewPoll = () => {
-    console.log('click');
-  }
-
   const handleLoginOpen = () => {
+    setRegisterOpen(false);
     setLoginOpen(!loginOpen);
   }
 
@@ -28,7 +25,6 @@ const Frontpage = ({handleLogin}) => {
       <h2 className='frontpage__title'>Enter a room to vote or create your own votes by signing up!</h2>
       <InputWithNavigation
         buttonText='Join voting room'
-        onClick={createNewPoll}
         placeholder='Enter access code to vote'
         inputId='participate'
         navBase='vote?poll_id='
@@ -44,6 +40,7 @@ const Frontpage = ({handleLogin}) => {
       {registerOpen &&
         <Register
           handleClose={handleOpenRegistration}
+          openLogin={handleLoginOpen}
         />
       }
       <div className='frontpage__login'>
@@ -55,6 +52,7 @@ const Frontpage = ({handleLogin}) => {
 }
 
 Frontpage.propTypes = {
+  handleLogin: PropTypes.func,
   // optionalNumber: PropTypes.number,
   // optionalArrayOf: PropTypes.arrayOf(PropTypes.number),
   // requiredFunc: PropTypes.func.isRequired,

@@ -10,7 +10,7 @@ import {ReactComponent as Close} from "../../../images/icons/close.svg";
 import {ReactComponent as Eye} from "../../../images/icons/eye.svg";
 
 
-const Register = ({handleClose}) => {
+const Register = ({handleClose, openLogin}) => {
   const [userName, setUserName] = useState();
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
@@ -58,6 +58,7 @@ const Register = ({handleClose}) => {
 
     if(validate(event.target)) {
       submitRegistration();
+      openLogin();
     } 
   }
 
@@ -145,6 +146,7 @@ const Register = ({handleClose}) => {
 
 Register.propTypes = {
   handleClose: PropTypes.func,
+  openLogin: PropTypes.func,
 }
 
 export default Register;
