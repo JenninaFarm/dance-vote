@@ -36,16 +36,17 @@ const EditPoll = () => {
     updatePairs(newPair);
   }
 
+  // Get Poll pairs after the pollId is set
   useEffect(() => {
     const getPairs = async () => {
       const result = await restApi.getPollItemsByPollId(pollId);
       setPairs(result);
     }
 
-    if (pollId && pairs.length === 0) {
+    if (pollId) {
       getPairs();
     }
-  }, [pollId, pairs]);
+  }, [pollId]);
 
   // Get Poll access code after the pollId is set
   useEffect(() => {
