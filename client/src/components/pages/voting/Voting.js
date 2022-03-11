@@ -7,6 +7,7 @@ import { ENDPOINT, restApi } from '../../../restApi';
 import Card from '../../molecules/cards/Card';
 import socketIoClient from 'socket.io-client';
 import Button from '../../atoms/button/Button';
+import PairCard from '../../molecules/cards/PairCard';
 
 const socket = socketIoClient(ENDPOINT, {
   transports: ['websocket'],
@@ -20,6 +21,7 @@ const Voting = () => {
 
   // Handling listening socket for updates
   useEffect(() => {
+    console.log(pairs);
     socket.on('poll-update', newPair => {
       if (newPair.access_code === searchParams.get('poll_id')) {
         setPairs([...pairs, newPair]);
@@ -33,7 +35,7 @@ const Voting = () => {
       const res = await restApi.getPollItemsByPollId(pollId);
       setPairs(res);
     }
-    if(!pollId) {
+    if(pollId) {
       fetchPairs();
     }
   }, [pollId]);
@@ -91,13 +93,15 @@ const Voting = () => {
   
   return (
     <div>
-      <h1>Voting on {pollName} </h1>
+      <h1>Voting on {pollName} {pollId} </h1>
       <Container onDrop={handleDrop}>
         {pairs.map((item, index) => (
             <Draggable key={index}>
-              <Card
+              <PairCard
+                id={index}
                 key={index}
-                content={`${item.leader} & ${item.follower}`}
+                leader={item.leader}
+                follower={item.follower}
               />
             </Draggable>
         ))}

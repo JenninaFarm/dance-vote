@@ -1,0 +1,9 @@
+.pair-card {
+  border: $border-input;
+  display: flex;
+  align-items: center;
+
+  &__pair {
+    padding-left: $space-s;
+  }
+}

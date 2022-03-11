@@ -21,6 +21,7 @@ const EditPoll = () => {
 
   const updatePairs = (newPair) => {
     newPair.push(...pairs);
+    console.log(newPair);
     setPairs(newPair);
   }
 
@@ -31,6 +32,7 @@ const EditPoll = () => {
       poll_id: searchParams.get('poll'),
       access_code: accessCode,
     }
+    console.log(pollItem);
     await restApi.createPollItem(pollItem);
     const newPair = [{leader: leader, follow: follower}];
     updatePairs(newPair);
