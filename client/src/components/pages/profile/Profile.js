@@ -34,7 +34,7 @@ const Profile = ({user}) => {
         <Route path='/' element={<PollList userId={user.id} getFunction={restApi.getOnGoingPollsByOwner} />}/>
         <Route path='/new-poll' element={<EditPoll userId={user.id} />}/>
         <Route path='/user/*' element={<EditUser user={user} />} />
-        <Route path='user/edit-username' element={<EditUserName />} />
+        <Route path='user/edit-username' element={<EditUserName user={user} />} />
       </Routes>
       {createPollOpen && <CreatePollMoldal handleClose={handleOpenCreatePoll} user={user} />} 
       <p> TODO: logout</p>

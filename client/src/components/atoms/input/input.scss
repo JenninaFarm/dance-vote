@@ -12,6 +12,10 @@
 }
 
 .input-with-button {
+  &__input {
+    margin-top: $space-xs;
+  }
+
   &__button {
     border-bottom: $border-input;
     border-radius: 0;

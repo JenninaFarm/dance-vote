@@ -61,12 +61,16 @@ const EditPoll = () => {
 
       <p>TODO: Clear all functionality</p>
       <p>TODO: Save changes functionality</p>
-      <Label inputId='poll-name' content='Vote name' />
       <InputWithButton
+        inputId='poll-name'
+        labelContent='Vote name'
         id='poll-name'
         valueSet={pollName}
+        disabled={true}
         handleValueChange={value => setPollName(value)}
-      > <Edit /> </InputWithButton>
+      >
+        <Edit />
+      </InputWithButton>
       <h5 className='edit-poll__title'>Add a new pair to the vote</h5>
       <NewPair
         onClick={sendNewPair}

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import {ReactComponent as Delete} from "../../../images/icons/trash-l.svg";
 import Button from '../../atoms/button/Button';

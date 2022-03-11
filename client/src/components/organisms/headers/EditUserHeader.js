@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import {ReactComponent as Back} from "../../../images/icons/trash-l.svg";
 import {ReactComponent as Save} from "../../../images/icons/trash-l.svg";
