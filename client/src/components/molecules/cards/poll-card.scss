@@ -1,26 +1,34 @@
 .poll-card {
   background-color: clr(card);
   border-radius: $border-radius-small;
-  display: flex;
-  flex-direction: column;
   width: 100%;
-  align-items: center;
   margin-bottom: $space-m;
-  padding: $space-s;
+  text-align: center;
+
+  &__header {
+    background-color: clr(card-header);
+    width: 100%;
+    border-top-left-radius: $border-radius-small;
+    border-top-right-radius: $border-radius-small;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: $space-s;
+    box-sizing: border-box;
+    margin-bottom: $space-s;
+  }
 
   &__title {
-    padding: $space-xs $space-xl;
-    padding-bottom: $space-m;
+    text-align: center;
+    width: 100%;
+    padding: 0 $space-xxs;
+    text-transform: uppercase;
+    font-weight: $font-weight-semi-bold;
   }
 
   &__access-code,
   &__publish {
     margin-bottom: $space-m;
-  }
-
-  &__edit {
-    align-self: flex-end;
-    margin-top: (-1) * $space-l;
   }
 
   &__icon {

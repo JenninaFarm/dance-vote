@@ -25,7 +25,15 @@ const PollCard = ({name, id, accessCode}) => {
   
   return (
     <Card className="poll-card">
-      <h3 className='poll-card__title' >{name}</h3>
+      <div className='poll-card__header'>
+        <h3 className='poll-card__title' >{name}</h3>
+        <Button
+          onClick={() => navigate(`new-poll?poll=${id}&name=${name}`)}
+          className='button button--icon poll-card__edit'
+        >
+          <Edit className='poll-card__icon' />
+        </Button>
+      </div>
       <Button
         onClick={() => navigate(`access-code?code=${accessCode}`)}
         className='button poll-card__access-code'
@@ -33,12 +41,7 @@ const PollCard = ({name, id, accessCode}) => {
         Access code
       </Button>
       <Button onClick={handleOpenPublish} className='button button--secondary poll-card__publish' >Publish Results</Button>
-      <Button
-        onClick={() => navigate(`new-poll?poll=${id}&name=${name}`)}
-        className='button button--icon poll-card__edit'
-      >
-        <Edit className='poll-card__icon' />
-      </Button>
+      
       {publishOpen && <Publish handleClose={handleOpenPublish} publish={handlePublish} />}
     </Card>
   );
