@@ -102,7 +102,8 @@ const EditPoll = () => {
       
       {pairs.map((pair, index) => (
         <PairCardEditable
-        id={index}
+        pairId={pair.poll_item_id}
+        orderId={index}
         key={index}
         leader={pair.leader}
         follower={pair.follower}

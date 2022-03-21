@@ -22,6 +22,15 @@ route.get('/id', async (req, res) => {
   }
 });
 
+route.patch('/pair', async (req, res) => {
+  try {
+    const result = await crud.setPairByPollItemId(req.body);
+    res.status(HttpStatus.OK).json(result);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
 route.post('/', async (req, res) => {
   try {
     const result = await crud.createPollItem(req.body);

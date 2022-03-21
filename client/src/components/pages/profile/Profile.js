@@ -17,6 +17,7 @@ import Results from '../../organisms/results/Results';
 import EditPoll from '../../organisms/edit-poll/EditPoll';
 import EditPollName from '../../organisms/edit-poll/EditPollName';
 import EditPollPairAmount from '../../organisms/edit-poll/EditPollPairAmount';
+import EditPollPair from '../../organisms/edit-poll/EditPollPair';
 
 const Profile = ({userObj}) => {
   const navigate = useNavigate();
@@ -53,6 +54,7 @@ const Profile = ({userObj}) => {
       <Routes>
         <Route path='/' element={<PollList userId={user.id} getFunction={restApi.getOnGoingPollsByOwner} />}/>
         <Route path='/new-poll' element={<EditPoll userId={user.id} />}/>
+        <Route path='/new-poll/edit-pair' element={<EditPollPair />}/>
         <Route path='/new-poll/edit-name' element={<EditPollName />}/>
         <Route path='/new-poll/edit-pair-amount' element={<EditPollPairAmount />}/>
         <Route path='/history' element={<History user_id={user.id} />}/>

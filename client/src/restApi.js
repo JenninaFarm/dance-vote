@@ -200,6 +200,15 @@ export const restApi = {
     }
   },
 
+  setPairByPollItemId: async (pair) => {
+    try {
+      const res = await client.patch('poll-item/pair', pair);
+      return res.data;
+    } catch (err) {
+      return err;
+    }
+  },
+
   sendVote: async (votes) => {
     try {
       const res = await client.post('vote/', votes);

@@ -290,6 +290,18 @@ const connectionFunctions = {
     })
   },
 
+  setPairByPollItemId: (pair) => {
+    return new Promise((resolve, reject) => {
+      pool.query('UPDATE poll_items SET leader = $1, follower = $2 WHERE poll_item_id = $3', [pair.leader, pair.follower, pair.id], (err, result) => {
+        if(err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    })
+  },
+
   createVote: (vote) => {
     return new Promise((resolve, reject) => {
       pool.query('INSERT INTO votes (poll_id, vote_array) VALUES ($1, $2)', [vote.poll_id, vote.vote], (err, result) => {
