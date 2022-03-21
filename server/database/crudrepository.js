@@ -230,6 +230,18 @@ const connectionFunctions = {
     })
   },
 
+  getPollItemById: (id) => {
+    return new Promise((resolve, reject) => {
+      pool.query('SELECT * FROM poll_items WHERE poll_item_id = $1', [id], (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      })
+    })
+  },
+
   createVote: (vote) => {
     return new Promise((resolve, reject) => {
       pool.query('INSERT INTO votes (poll_id, vote_array) VALUES ($1, $2)', [vote.poll_id, vote.vote], (err, result) => {

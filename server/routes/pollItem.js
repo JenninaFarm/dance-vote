@@ -13,6 +13,15 @@ route.get('/poll-id', async (req, res) => {
   }
 });
 
+route.get('/id', async (req, res) => {
+  try {
+    const result = await crud.getPollItemById(req.query.id);
+    res.status(HttpStatus.OK).json(result.rows[0]);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
 route.post('/', async (req, res) => {
   try {
     const result = await crud.createPollItem(req.body);

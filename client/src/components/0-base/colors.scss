@@ -6,6 +6,7 @@ $color-white: #fff;
 $color-dark-gray: #404E4D;
 $color-gray: #C4C4C4;
 $color-light-gray: #D3D3D3;
+$color-light-beige: #EAE3E3;
 $color-shade-red: #C3423F;
 $color-green: #A6BF36;
 $color-light-green: #CCD645;
@@ -32,6 +33,7 @@ $defaultColors: (
   separator: $color-off-white,
   profile: $color-gray,
   card: $color-white,
+  card-header: $color-light-beige,
 );
 
 /*********************

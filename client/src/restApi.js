@@ -155,6 +155,15 @@ export const restApi = {
     }
   },
 
+  getPollItemById: async (id) => {
+    try {
+      const res = await client.get('poll-item/id', {params: {id: id}});
+      return res.data;
+    } catch (err) {
+      return err;
+    }
+  },
+
   sendVote: async (votes) => {
     try {
       const res = await client.post('vote/', votes);
