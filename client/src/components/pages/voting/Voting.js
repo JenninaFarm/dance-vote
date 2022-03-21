@@ -18,6 +18,7 @@ const Voting = () => {
   const [searchParams] = useSearchParams();
   const [pollName, setPollName] = useState();
   const [pollId, setPollId] = useState();
+  const [pollPairAmount, setPollPairAmount] = useState();
   const [pairs, setPairs] = useState([]);
   const [openSubmit, setOpenSubmit] = useState(false);
 
@@ -47,6 +48,7 @@ const Voting = () => {
       const response = await restApi.getOnGoingPollByAccessCode(accessCode);
       setPollName(response[0].name);
       setPollId(response[0].poll_id);
+      setPollPairAmount(response[0].number_of_items);
     }
 
     if (!pollName) {
@@ -111,7 +113,13 @@ const Voting = () => {
             </Draggable>
         ))}
       </Container>
-      <Button className='button voting__send' onClick={handleOpenSubmit} >Send Your Vote </Button>
+      <Button
+        className='button voting__send'
+        onClick={handleOpenSubmit}
+        disabled={pairs.length !== pollPairAmount}
+      >
+        Send Your Vote
+      </Button>
       {openSubmit && <Vote handleClose={handleOpenSubmit} submit={handleSendVote} pairs={pairs} /> }
     </div>
   );

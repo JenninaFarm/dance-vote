@@ -137,6 +137,15 @@ export const restApi = {
     }
   },
 
+  getPollItemAmountByPollId: async (pollId) => {
+    try {
+      const res = await client.get('poll/item-amount', {params: {poll_id: pollId}});
+      return res.data;
+    } catch (err) {
+      return err;
+    }
+  },
+
   createPollItem: async (pollItem) => {
     try {
       const res = await client.post('poll-item/', pollItem);

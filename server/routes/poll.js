@@ -96,4 +96,13 @@ route.get('/access-code', async (req, res) => {
   }
 });
 
+route.get('/item-amount', async (req, res) => {
+  try {
+    const result = await crud.getPollItemAmountByPollId(req.query.poll_id);
+    res.status(HttpStatus.OK).json(result.rows[0]);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
 module.exports = route;

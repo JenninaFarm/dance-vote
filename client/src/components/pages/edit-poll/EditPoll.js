@@ -14,6 +14,7 @@ const EditPoll = () => {
   const [searchParams] = useSearchParams();
   const [pollName, setPollName] = useState();
   const [pollId, setPollId] = useState();
+  const [pollPairAmount, setPollPairAmount] = useState();
   const [follower, setFollower] = useState();
   const [leader, setLeader] = useState();
   const [pairs, setPairs] = useState([]);
@@ -52,6 +53,8 @@ const EditPoll = () => {
   useEffect(() => {
     const getPollAccessCode = async () => {
       const result = await restApi.getPollAccessCodeByPollId(pollId);
+      const result2 = await restApi.getPollItemAmountByPollId(pollId);
+      setPollPairAmount(result2.number_of_items);
       setAccessCode(result[0].access_code);
     }
 
@@ -83,11 +86,14 @@ const EditPoll = () => {
         <Edit />
       </InputWithButton>
       <h5 className='edit-poll__title'>Add a new pair to the vote</h5>
-      <NewPair
-        onClick={sendNewPair}
-        setLeader={value => setLeader(value)}
-        setFollower={value => setFollower(value)}
-      />
+      {pollPairAmount !== pairs.length && (
+        <NewPair
+          onClick={sendNewPair}
+          setLeader={value => setLeader(value)}
+          setFollower={value => setFollower(value)}
+        />
+      )}
+      
       {pairs.map((pair, index) => (
         <PairCard
         id={index}
