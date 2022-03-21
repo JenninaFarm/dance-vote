@@ -7,6 +7,7 @@
 
   &__label {
     font-weight: $font-weight-bold;
+    padding-top: $space-xxs;
   }
 
   &__edit-item {
@@ -16,7 +17,7 @@
   }
   
   &__icon {
-    width: $icon-s;
-    height: $icon-s;
+    width: $icon-xxs;
+    height: $icon-xxs;
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {ReactComponent as Delete} from "../../../images/icons/trash-l.svg";
+import {ReactComponent as Arrow} from "../../../images/icons/arrow-right.svg";
 import Button from '../../atoms/button/Button';
 import { NavLink, useNavigate } from 'react-router-dom';
 
@@ -14,7 +14,7 @@ const EditUser = ({user}) => {
       <div className='edit-user__content'>
         <p >{user.username}</p>
         <Button onClick={() => navigate('edit-username')} className='button button--icon' >
-          <Delete className='edit-user__icon'/>
+          <Arrow className='edit-user__icon'/>
         </Button>
       </div>
       
@@ -22,7 +22,7 @@ const EditUser = ({user}) => {
       <div className='edit-user__content'>
         <p >{user.email}</p>
         <Button onClick={() => navigate('edit-email')} className='button button--icon' >
-          <Delete className='edit-user__icon' />
+          <Arrow className='edit-user__icon' />
         </Button>
       </div>
 
