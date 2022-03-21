@@ -44,11 +44,14 @@ const Register = ({handleClose, openLogin}) => {
       email: email, 
     }
 
+    console.log(newUser);
     const res = await restApi.createUser(newUser);
+    console.log(res);
     if(res.error) {
       setError(res.error);
     } else {
       setError(undefined);
+      openLogin();
     }
   }
 
@@ -59,7 +62,6 @@ const Register = ({handleClose, openLogin}) => {
 
     if(validate(event.target)) {
       submitRegistration();
-      openLogin();
     } 
   }
 

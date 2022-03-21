@@ -7,9 +7,7 @@ const route = express.Router();
 
 route.post('/', async (req, res) => {
 
-  console.log(req.body.email);
   const existingUser = await crud.getUserByEmail(req.body.email);
-
   if (existingUser.rows.length !== 0) {
     return res
       .status(HttpStatus.BAD_REQUEST)
@@ -18,7 +16,6 @@ route.post('/', async (req, res) => {
 
   try {
     const encryptedPassword = await encryptPassword(req.body.password);
-
     const result = await crud.createUser([req.body.username, encryptedPassword, req.body.email]);
     res.status(HttpStatus.CREATED).json(result);
   } catch (err) {
