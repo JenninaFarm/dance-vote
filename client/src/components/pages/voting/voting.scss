@@ -1,0 +1,6 @@
+.voting {
+  @include element-gutter('padding');
+
+  background-color: clr(voting);
+  min-height: 90vh;
+}

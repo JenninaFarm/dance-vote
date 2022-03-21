@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Container, Draggable} from 'react-smooth-dnd';
 
 import { ENDPOINT, restApi } from '../../../restApi';
 import socketIoClient from 'socket.io-client';
 import Button from '../../atoms/button/Button';
 import PairCard from '../../molecules/cards/PairCard';
+import Vote from '../../molecules/modals/Vote';
 
 const socket = socketIoClient(ENDPOINT, {
   transports: ['websocket'],
 });
 
 const Voting = () => {
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [pollName, setPollName] = useState();
   const [pollId, setPollId] = useState();
   const [pairs, setPairs] = useState([]);
+  const [openSubmit, setOpenSubmit] = useState(false);
 
   // Handling listening socket for updates
   useEffect(() => {
@@ -82,19 +85,24 @@ const Voting = () => {
     }
     try {
       await restApi.sendVote(voteObject);
-      console.log('vote recorded');
+      navigate('/');
     } catch (err) {
       console.log(err);
     }
   }
+
+  const handleOpenSubmit = () => {
+    setOpenSubmit(!openSubmit);
+  }
   
   return (
-    <div>
-      <h1>Voting on {pollName} {pollId} </h1>
+    <div className='voting'>
+      <h2 className='voting__title'>Voting on {pollName} </h2>
       <Container onDrop={handleDrop}>
         {pairs.map((item, index) => (
             <Draggable key={index}>
               <PairCard
+                className='voting__pair'
                 id={index}
                 key={index}
                 leader={item.leader}
@@ -103,7 +111,8 @@ const Voting = () => {
             </Draggable>
         ))}
       </Container>
-      <Button onClick={handleSendVote} >Send Your Vote </Button>
+      <Button className='button voting__send' onClick={handleOpenSubmit} >Send Your Vote </Button>
+      {openSubmit && <Vote handleClose={handleOpenSubmit} submit={handleSendVote} pairs={pairs} /> }
     </div>
   );
 }
