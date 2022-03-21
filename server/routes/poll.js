@@ -79,6 +79,15 @@ route.patch('/name', async (req, res) => {
   }
 });
 
+route.patch('/item-amount', async (req, res) => {
+  try {
+    const result = await crud.setPollItemAmountById(req.body.id, req.body.item_amount);
+    res.status(HttpStatus.OK).json(result);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
 route.patch('/end', async (req, res) => {
   try {
     const result = await crud.setPollGoneById(req.body.poll_id);

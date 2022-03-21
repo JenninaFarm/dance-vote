@@ -194,6 +194,18 @@ const connectionFunctions = {
     })
   },
 
+  setPollItemAmountById: (poll_id, amount) => {
+    return new Promise((resolve, reject) => {
+      pool.query('UPDATE polls SET number_of_items = $1 WHERE poll_id = $2', [amount, poll_id], (err, result) => {
+        if(err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    })
+  },
+
   setPollPublicById: (poll_id) => {
     return new Promise((resolve, reject) => {
       pool.query('UPDATE polls SET public = $1 WHERE poll_id = $2', [true, poll_id.id], (err, result) => {

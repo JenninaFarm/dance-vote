@@ -137,6 +137,15 @@ export const restApi = {
     }
   },
 
+  setPollPairAmountById: async (poll) => {
+    try {
+      const res = await client.patch('poll/item-amount', poll);
+      return res.data;
+    } catch (err) {
+      return err;
+    }
+  },
+
   setPublishByPollId: async (id) => {
     try {
       const res = await client.patch('poll/publish', id);

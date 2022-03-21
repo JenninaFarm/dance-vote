@@ -5,24 +5,23 @@ import InputWithButton from '../../atoms/input/InputWithButton';
 import EditUserHeader from '../headers/EditUserHeader';
 import {ReactComponent as Edit} from "../../../images/icons/edit-input.svg";
 import { restApi } from '../../../restApi';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
-const EditPollDetails = () => {
+const EditPollPairAmount = () => {
   const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
 
-  const [name, setName] = useState();
+  const [pairAmount, setPairAmount] = useState();
   const [pollId, setPollId] = useState();
+  const [name, setName] = useState();
 
   const handleSave = async () => {
-    if (name.length > 0) {
-      const res = await restApi.setPollNameById({name: name, id: pollId});
+    if (pairAmount) {
+      const res = await restApi.setPollPairAmountById({item_amount: pairAmount, id: pollId});
       if(res.rowCount) {
-        // handleChange(email);
         console.log('Change success');
       }
     } else {
-      console.log('Email should have some length');
+      console.log('Pair should have some value');
     }
   }
 
@@ -30,6 +29,7 @@ const EditPollDetails = () => {
     const getPoll = async (id) => {
       const res = await restApi.getPollById(id);
       setPollId(res.poll_id);
+      setPairAmount(res.number_of_items);
       setName(res.name);
     }
     if(searchParams) {
@@ -43,10 +43,11 @@ const EditPollDetails = () => {
       <EditUserHeader clickSave={handleSave} navigateTo={`../new-poll?poll=${pollId}&name=${name}`}/>
       <InputWithButton
         inputId='vote-name'
-        labelContent='Vote name'
-        valueSet={name}
+        labelContent='Vote pair amount'
+        valueSet={pairAmount}
+        type='number'
         disabled={true}
-        handleValueChange={value => setName(value)}
+        handleValueChange={value => setPairAmount(value)}
       >
         <Edit />
       </InputWithButton>
@@ -54,9 +55,9 @@ const EditPollDetails = () => {
   );
 }
 
-EditPollDetails.propTypes = {
+EditPollPairAmount.propTypes = {
   user: PropTypes.object,
   handleChange: PropTypes.func,
 }
 
-export default EditPollDetails;
+export default EditPollPairAmount;

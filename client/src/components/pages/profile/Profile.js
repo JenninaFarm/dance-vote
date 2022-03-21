@@ -15,7 +15,8 @@ import NavigationBar from '../../organisms/navigation-bar/NavigationBar';
 import PollList from '../../organisms/poll-list/PollList';
 import Results from '../../organisms/results/Results';
 import EditPoll from '../../organisms/edit-poll/EditPoll';
-import EditPollDetails from '../../organisms/edit-poll/EditPollDetails';
+import EditPollName from '../../organisms/edit-poll/EditPollName';
+import EditPollPairAmount from '../../organisms/edit-poll/EditPollPairAmount';
 
 const Profile = ({userObj}) => {
   const navigate = useNavigate();
@@ -52,8 +53,8 @@ const Profile = ({userObj}) => {
       <Routes>
         <Route path='/' element={<PollList userId={user.id} getFunction={restApi.getOnGoingPollsByOwner} />}/>
         <Route path='/new-poll' element={<EditPoll userId={user.id} />}/>
-        <Route path='/new-poll/edit-name' element={<EditPollDetails userId={user.id} />}/>
-        <Route path='/new-poll/edit-pair-amount' element={<EditPoll userId={user.id} />}/>
+        <Route path='/new-poll/edit-name' element={<EditPollName />}/>
+        <Route path='/new-poll/edit-pair-amount' element={<EditPollPairAmount />}/>
         <Route path='/history' element={<History user_id={user.id} />}/>
         <Route path='/results' element={<Results />}/>
         <Route path='/user/*' element={<EditUser user={user} />} />
