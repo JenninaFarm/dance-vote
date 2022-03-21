@@ -5,9 +5,9 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import NewPair from '../../molecules/fieldsets/new-pair/NewPair';
 import { restApi } from '../../../restApi';
 import EditPollHeader from '../headers/EditPollHeader';
-import PairCard from '../../molecules/cards/PairCard';
 import Button from '../../atoms/button/Button';
 import {ReactComponent as Arrow} from "../../../images/icons/arrow-right.svg";
+import PairCardEditable from '../../molecules/cards/PairCardEditable';
 
 const EditPoll = () => {
   const [searchParams] = useSearchParams();
@@ -101,7 +101,7 @@ const EditPoll = () => {
       )}
       
       {pairs.map((pair, index) => (
-        <PairCard
+        <PairCardEditable
         id={index}
         key={index}
         leader={pair.leader}

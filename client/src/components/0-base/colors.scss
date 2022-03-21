@@ -6,6 +6,7 @@ $color-white: #fff;
 $color-dark-gray: #404E4D;
 $color-gray: #C4C4C4;
 $color-light-gray: #D3D3D3;
+$color-light-pale-gray: #E7E7E7;
 $color-light-beige: #EAE3E3;
 $color-shade-red: #C3423F;
 $color-green: #A6BF36;
@@ -35,6 +36,7 @@ $defaultColors: (
   voting: $color-gray,
   card: $color-white,
   card-header: $color-light-beige,
+  card-accent: $color-light-pale-gray,
   follower: $color-off-white,
   leader: $color-light-gray,
 );

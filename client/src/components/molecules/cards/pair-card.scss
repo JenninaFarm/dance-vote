@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   margin-bottom: $space-xs;
+  width: 100%;
 
   &__pair {
     padding-left: $space-xs;
@@ -27,5 +28,59 @@
     background-color: clr(follower);
     border-top-right-radius: $border-radius-small;
     border-bottom-right-radius: $border-radius-small;
+  }
+}
+
+.pair-card-editable {
+  display: flex;
+  align-items: center;
+  margin-bottom: $space-xs;
+
+  &__pair {
+    width: 100%;
+    display: flex;
+    margin-left: $space-xs;
+    justify-content: space-evenly;
+  }
+
+  &__lead,
+  &__follow {
+    width: 100%;
+    padding: $space-s;
+  }
+
+  &__lead {
+    text-align: right;
+    background-color: clr(leader);
+    border-top-left-radius: $border-radius-small;
+    border-bottom-left-radius: $border-radius-small;
+  }
+
+  &__follow {
+    background-color: clr(follower);
+  }
+
+  &__button-delete {
+    background-color: clr(light-background);
+    border-radius: 0;
+    padding: 0.585rem 0;
+  }
+
+  &__button-edit {
+    background-color: clr(card-accent);
+    border-radius: 0;
+    padding: 0.585rem $space-xxs;
+    border-top-right-radius: $border-radius-small;
+    border-bottom-right-radius: $border-radius-small;
+  }
+
+  &__buttons {
+    display: flex;
+    height: inherit;
+  }
+
+  &__icon {
+    width: $icon-s;
+    height: $icon-s;
   }
 }
