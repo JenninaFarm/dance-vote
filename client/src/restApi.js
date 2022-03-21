@@ -74,6 +74,15 @@ export const restApi = {
     }
   },
 
+  getPollById: async (poll_id) => {
+    try {
+      const res = await client.get('poll/poll-id', {params: {id: poll_id}});
+      return res.data;
+    } catch (err) {
+      return err;
+    }
+  },
+
   getPollsByOwner: async (owner) => {
     try {
       const res = await client.get('poll/', {params: {id: owner}});
@@ -113,6 +122,15 @@ export const restApi = {
   setPollAccessCode: async (poll) => {
     try {
       const res = await client.patch('poll/access-code', poll);
+      return res.data;
+    } catch (err) {
+      return err;
+    }
+  },
+
+  setPollNameById: async (poll) => {
+    try {
+      const res = await client.patch('poll/name', poll);
       return res.data;
     } catch (err) {
       return err;

@@ -21,7 +21,7 @@ const EditUserName = ({user, handleChange}) => {
 
   return (
     <section>
-      <EditUserHeader clickSave={handleSave} />
+      <EditUserHeader clickSave={handleSave} navigateTo='../user' />
       <InputWithButton
         inputId='username'
         labelContent='Username'

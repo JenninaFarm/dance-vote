@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import NewPair from '../../molecules/fieldsets/new-pair/NewPair';
 import { restApi } from '../../../restApi';
-import EditPollHeader from '../../organisms/headers/EditPollHeader';
-import InputWithButton from '../../atoms/input/InputWithButton';
-import {ReactComponent as Edit} from "../../../images/icons/edit-input.svg";
+import EditPollHeader from '../headers/EditPollHeader';
 import PairCard from '../../molecules/cards/PairCard';
-
+import Button from '../../atoms/button/Button';
+import {ReactComponent as Arrow} from "../../../images/icons/arrow-right.svg";
 
 const EditPoll = () => {
   const [searchParams] = useSearchParams();
@@ -19,6 +18,7 @@ const EditPoll = () => {
   const [leader, setLeader] = useState();
   const [pairs, setPairs] = useState([]);
   const [accessCode, setAccessCode] = useState();
+  const navigate = useNavigate();
 
   const updatePairs = (newPair) => {
     newPair.push(...pairs);
@@ -72,20 +72,26 @@ const EditPoll = () => {
   return (
     <div className='edit-poll'>
       <EditPollHeader />
+      <h5 className='edit-poll__'>Vote name</h5>
+      <div className='edit-poll__'>
+        <p>{pollName}</p>
+        <Button onClick={() => navigate(`edit-name?edit=name&poll_id=${pollId}`)} className='button button--icon' >
+          <Arrow className='edit-poll__icon'/>
+        </Button>
+      </div>
+      <h5 className='edit-poll__'>Vote pair amount</h5>
+      <div className='edit-poll__'>
+        <p>{pollPairAmount}</p>
+        <Button onClick={() => navigate('edit-pair-amount')} className='button button--icon' >
+          <Arrow className='edit-poll__icon'/>
+        </Button>
+      </div>
 
-      <p>TODO: Clear all functionality</p>
-      <p>TODO: Save changes functionality</p>
-      <InputWithButton
-        inputId='poll-name'
-        labelContent='Vote name'
-        id='poll-name'
-        valueSet={pollName}
-        disabled={true}
-        handleValueChange={value => setPollName(value)}
-      >
-        <Edit />
-      </InputWithButton>
-      <h5 className='edit-poll__title'>Add a new pair to the vote</h5>
+      {pollPairAmount !== pairs.length ?
+        <h5 className='edit-poll__title'>Add a new pair to the vote</h5>
+        :
+        <h5 className='edit-poll__title'>Max pairs reached</h5>
+      }
       {pollPairAmount !== pairs.length && (
         <NewPair
           onClick={sendNewPair}

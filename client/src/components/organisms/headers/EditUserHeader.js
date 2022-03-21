@@ -7,12 +7,12 @@ import Button from '../../atoms/button/Button';
 import { useNavigate } from 'react-router-dom';
 
 
-const EditUserHeader = ({clickSave}) => {
+const EditUserHeader = ({clickSave, navigateTo}) => {
   const navigate = useNavigate();
 
   const handleSave = async () => {
     await clickSave();
-    navigate('../user');
+    navigate(navigateTo);
   }
 
   return (
@@ -31,6 +31,7 @@ const EditUserHeader = ({clickSave}) => {
 
 EditUserHeader.propTypes = {
   clickSave: PropTypes.func,
+  navigateTo: PropTypes.string,
 }
 
 export default EditUserHeader;

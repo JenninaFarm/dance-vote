@@ -14,6 +14,15 @@ route.get('/', async (req, res) => {
   }
 });
 
+route.get('/poll-id', async (req, res) => {
+  try {
+    const result = await crud.getPollById(req.query.id);
+    res.status(HttpStatus.OK).json(result.rows[0]);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
 route.get('/on-going', async (req, res) => {
   try {
     const result = await crud.getOnGoingPollsByOwner(req.query.id);
@@ -55,6 +64,15 @@ route.post('/', async (req, res) => {
 route.patch('/access-code', async (req, res) => {
   try {
     const result = await crud.setPollAccesCode(req.body.poll_id, req.body.access_code);
+    res.status(HttpStatus.OK).json(result);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
+route.patch('/name', async (req, res) => {
+  try {
+    const result = await crud.setPollNameById(req.body.id, req.body.name);
     res.status(HttpStatus.OK).json(result);
   } catch (err) {
     res.send(err);
