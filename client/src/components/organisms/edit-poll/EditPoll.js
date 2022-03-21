@@ -14,8 +14,8 @@ const EditPoll = () => {
   const [pollName, setPollName] = useState();
   const [pollId, setPollId] = useState();
   const [pollPairAmount, setPollPairAmount] = useState();
-  const [follower, setFollower] = useState();
-  const [leader, setLeader] = useState();
+  const [follower, setFollower] = useState('');
+  const [leader, setLeader] = useState('');
   const [pairs, setPairs] = useState([]);
   const [accessCode, setAccessCode] = useState();
   const navigate = useNavigate();
@@ -32,6 +32,8 @@ const EditPoll = () => {
       poll_id: searchParams.get('poll'),
       access_code: accessCode,
     }
+    setFollower('');
+    setLeader('');
     await restApi.createPollItem(pollItem);
     const newPair = [{leader: leader, follower: follower}];
     updatePairs(newPair);
@@ -94,6 +96,8 @@ const EditPoll = () => {
       }
       {pollPairAmount !== pairs.length && (
         <NewPair
+          follower={follower}
+          leader={leader}
           onClick={sendNewPair}
           setLeader={value => setLeader(value)}
           setFollower={value => setFollower(value)}
