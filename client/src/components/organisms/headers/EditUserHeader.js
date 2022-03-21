@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {ReactComponent as Back} from "../../../images/icons/trash-l.svg";
-import {ReactComponent as Save} from "../../../images/icons/trash-l.svg";
+import {ReactComponent as Back} from "../../../images/icons/back.svg";
+import {ReactComponent as Save} from "../../../images/icons/save.svg";
 import Button from '../../atoms/button/Button';
 import { useNavigate } from 'react-router-dom';
 
