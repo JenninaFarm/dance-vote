@@ -17,7 +17,7 @@ const EditUserHeader = ({clickSave, navigateTo}) => {
 
   return (
     <header className='edit-header'>
-      <Button onClick={() => navigate('../user')} className='button button--icon' >
+      <Button onClick={() => navigate(navigateTo)} className='button button--icon' >
         <Back className='edit-header__left-icon' />
         Back
       </Button>
