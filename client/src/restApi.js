@@ -173,6 +173,15 @@ export const restApi = {
     }
   },
 
+  getResultsByPollId: async (pollId) => {
+    try {
+      const res = await client.get('result/', {params: {poll_id: pollId}});
+      return res.data;
+    } catch (err) {
+      return err;
+    }
+  },
+
   getUsers: async () => {
     try {
       const res = await client.get('users');

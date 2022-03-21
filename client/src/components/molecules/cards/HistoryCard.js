@@ -4,14 +4,13 @@ import PropTypes from 'prop-types';
 import Card from './Card';
 import {ReactComponent as Delete} from "../../../images/icons/trash-l.svg";
 import { restApi } from '../../../restApi';
-import { arrayOfObjectsTo2DArray, countVotes } from '../../../HelperFunctions';
 
 const HistoryCard = ({id, name}) => {
   const [votes, setVotes] = useState([]);
 
   useEffect(() => {
     const getVotes = async () => {
-      const res = await restApi.getVotesByPollId(id);
+      const res = await restApi.getResultsByPollId(id);
       console.log(res);
       const example = [[151, 152, 153, 154, 155],
         [152, 151, 155, 153, 154],
@@ -53,8 +52,6 @@ const HistoryCard = ({id, name}) => {
         [12, 11, 13],
         [11, 12, 13],
       ];
-      // console.log(arrayOfObjectsTo2DArray(res));
-      // countVotes(resolveWithJudgeComparison);
       setVotes(res);
     }
 

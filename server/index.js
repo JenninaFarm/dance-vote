@@ -48,11 +48,13 @@ const poll = require('./routes/poll');
 const pollItem = require('./routes/pollItem');
 const vote = require('./routes/vote');
 const user = require('./routes/user');
+const result = require('./routes/result');
 
 // public routes
 api.use('/register', register);
 api.use('/login', login);
 api.use('/vote', vote);
+api.use('/result', result);
 // needs authentication
 api.use('/poll', poll);
 api.use('/poll-item', pollItem);
