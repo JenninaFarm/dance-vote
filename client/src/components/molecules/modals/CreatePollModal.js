@@ -12,12 +12,14 @@ import { restApi } from '../../../restApi';
 const CreatePollMoldal = ({handleClose, user}) => {
   const navigate = useNavigate();
   const [pollName, setPollName] = useState();
+  const [pairAmount, setPairAmount] = useState();
 
   const createNewPoll = async () => {
     handleClose();
     if(pollName) {
       const poll = {
         owner_id: user.id,
+        number_of_pairs: pairAmount,
         name: pollName,
       }
       const res = await restApi.createPoll(poll);
@@ -33,6 +35,11 @@ const CreatePollMoldal = ({handleClose, user}) => {
           id='new vote name'
           placeholder='Vote name'
           handleValueChange={value => setPollName(value)} />
+        <Input
+          id='number of pairs'
+          placeholder='Number of Pairs'
+          type='number'
+          handleValueChange={value => setPairAmount(value)} />
         <div className='create-poll__buttons'>
           <Button
             onClick={handleClose}
