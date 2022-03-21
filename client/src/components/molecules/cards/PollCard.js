@@ -19,7 +19,7 @@ const PollCard = ({name, id, accessCode}) => {
   const handlePublish = async () => {
     const res = await restApi.setPublishByPollId({id: id});
     if(res.rowCount) {
-      handleOpenPublish();
+      navigate('history');
     }
   }
   

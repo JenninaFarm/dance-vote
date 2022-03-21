@@ -1,6 +1,6 @@
 const express = require('express');
 const crud = require('../database/crudrepository');
-const { createUniqueId } = require('../HelperFunctions');
+const { createUniqueId, countVotes, resultsInPostgre, arrayOfObjectsTo2DArray } = require('../HelperFunctions');
 const HttpStatus = require('../HttpStatus');
 
 const route = express.Router();
@@ -44,11 +44,8 @@ route.get('/on-going/access-code', async (req, res) => {
 route.post('/', async (req, res) => {
   try {
     const result = await crud.createPoll(req.body);
-    console.log(result.rows[0].poll_id);
     const accessCode = createUniqueId(result.rows[0].poll_id);
-    console.log(accessCode);
     const result2 = await crud.setPollAccesCode(result.rows[0].poll_id, accessCode);
-    console.log(result2);
     res.status(HttpStatus.CREATED).json(result);
   } catch (err) {
     res.send(err);
@@ -64,9 +61,26 @@ route.patch('/access-code', async (req, res) => {
   }
 });
 
+route.patch('/end', async (req, res) => {
+  try {
+    const result = await crud.setPollGoneById(req.body.poll_id);
+    res.status(HttpStatus.OK).json(result);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
 route.patch('/publish', async (req, res) => {
   try {
+    
     const result = await crud.setPollPublicById(req.body);
+    const result2 = await crud.setPollGoneById(req.body);
+    const votes = await crud.getVotesByPollId(req.body.id);
+    const votesIn2dArray = arrayOfObjectsTo2DArray(votes.rows);
+    const placements = countVotes(votesIn2dArray);
+    const placementsInPostgre = resultsInPostgre(placements);
+    const result3 = await crud.createResult(req.body.id, placementsInPostgre);
+
     res.status(HttpStatus.OK).json(result);
   } catch (err) {
     res.send(err);

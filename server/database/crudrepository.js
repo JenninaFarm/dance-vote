@@ -182,6 +182,18 @@ const connectionFunctions = {
     })
   },
 
+  setPollGoneById: (poll_id) => {
+    return new Promise((resolve, reject) => {
+      pool.query('UPDATE polls SET on_going = $1 WHERE poll_id = $2', [false, poll_id.id], (err, result) => {
+        if(err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    })
+  },
+
   getAccessCodeByPollId: (poll_id) => {
     return new Promise((resolve, reject) => {
       pool.query('SELECT access_code FROM polls WHERE poll_id = $1', [poll_id], (err, result) => {
@@ -232,7 +244,19 @@ const connectionFunctions = {
 
   getVotesByPollId: (poll_id) => {
     return new Promise((resolve, reject) => {
-      pool.query('SELECT * FROM votes WHERE poll_id = $1', [poll_id], (err, result) => {
+      pool.query('SELECT vote_array FROM votes WHERE poll_id = $1', [poll_id], (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  },
+
+  createResult: (poll_id, result) => {
+    return new Promise((resolve, reject) => {
+      pool.query('INSERT INTO results (poll_id, result_array) VALUES ($1, $2)', [poll_id, result], (err, result) => {
         if (err) {
           reject(err);
         } else {
