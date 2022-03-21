@@ -1,0 +1,12 @@
+.result {
+  text-align: center;
+
+  &__title {
+    text-transform: uppercase;
+    margin: $space-l 0;
+  }
+
+  &__pair {
+    margin: $space-xs;
+  }
+}

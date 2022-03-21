@@ -13,6 +13,7 @@ import ProfileHeader from '../../organisms/headers/ProfileHeader';
 import History from '../../organisms/history/History';
 import NavigationBar from '../../organisms/navigation-bar/NavigationBar';
 import PollList from '../../organisms/poll-list/PollList';
+import Results from '../../organisms/results/Results';
 import EditPoll from '../edit-poll/EditPoll';
 
 const Profile = ({userObj}) => {
@@ -51,6 +52,7 @@ const Profile = ({userObj}) => {
         <Route path='/' element={<PollList userId={user.id} getFunction={restApi.getOnGoingPollsByOwner} />}/>
         <Route path='/new-poll' element={<EditPoll userId={user.id} />}/>
         <Route path='/history' element={<History user_id={user.id} />}/>
+        <Route path='/results' element={<Results />}/>
         <Route path='/user/*' element={<EditUser user={user} />} />
         <Route path='user/edit-username' element={<EditUserName handleChange={handleNameChange} user={user} />} />
         <Route path='user/edit-email' element={<EditUserEmail handleChange={handleEmailChange} user={user} />} />

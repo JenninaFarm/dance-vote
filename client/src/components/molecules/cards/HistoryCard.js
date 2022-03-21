@@ -43,7 +43,10 @@ const HistoryCard = ({id, name}) => {
         {result.map(pair => (
           <p key={pair.poll_item_id}>{pair.leader + ' & ' + pair.follower}</p>
         ))}
-        <Button className='button button--secondary' onClick={() => navigate(`../results?poll-id=${id}`)}>
+        <Button
+          className='button button--secondary'
+          onClick={() => navigate(`../results?poll-id=${id}&poll-name=${name}`)}
+        >
           View Results
         </Button>
       </div>
