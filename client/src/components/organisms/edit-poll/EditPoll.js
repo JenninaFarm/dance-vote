@@ -72,15 +72,15 @@ const EditPoll = () => {
   return (
     <div className='edit-poll'>
       <EditPollHeader />
-      <h5 className='edit-poll__'>Vote name</h5>
-      <div className='edit-poll__'>
+      <h5 className='edit-poll__label'>Vote name</h5>
+      <div className='edit-poll__edit-item'>
         <p>{pollName}</p>
         <Button onClick={() => navigate(`edit-name?poll_id=${pollId}`)} className='button button--icon' >
           <Arrow className='edit-poll__icon'/>
         </Button>
       </div>
-      <h5 className='edit-poll__'>Vote pair amount</h5>
-      <div className='edit-poll__'>
+      <h5 className='edit-poll__label'>Vote pair amount</h5>
+      <div className='edit-poll__edit-item'>
         <p>{pollPairAmount}</p>
         <Button onClick={() => navigate(`edit-pair-amount?poll_id=${pollId}`)} className='button button--icon' >
           <Arrow className='edit-poll__icon'/>

@@ -1,7 +1,22 @@
 .edit-poll {
   &__title {
-    margin-top: $space-xl;
+    margin-top: $space-l;
     text-align: center;
     font-weight: $font-weight-semi-bold;
+  }
+
+  &__label {
+    font-weight: $font-weight-bold;
+  }
+
+  &__edit-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  &__icon {
+    width: $icon-s;
+    height: $icon-s;
   }
 }
