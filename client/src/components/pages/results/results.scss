@@ -3,4 +3,35 @@
 
   min-height: 100vh;
   background-color: clr(results);
+
+  &__poll-name {
+    text-align: center;
+    font-weight: $font-weight-semi-bold;
+    margin-bottom: $space-s;
+  }
+
+  &__title-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: $space-xs;
+  }
+
+  &__leader-title,
+  &__follower-title {
+    padding: $space-xs;
+    width: 100%;
+    border-radius: $border-radius-small;
+    text-align: center;
+  }
+
+  &__leader-title {
+    background-color: clr(leader);
+    margin-left: 2.6rem;
+  }
+
+  &__follower-title {
+    background-color: clr(follower);
+    margin-left: $space-xxs;
+  }
 }

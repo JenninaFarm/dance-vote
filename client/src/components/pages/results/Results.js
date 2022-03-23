@@ -36,12 +36,14 @@ const Results = () => {
   return (
     <div className='results'>
       <Header />
-      <div> Jotain</div>
+
       {results.map((result, index) => (
         <div key={index}>
-          <p>{pollNames[index]}</p>
-          <p>Leader</p>
-          <p>Follower</p>
+          <p className='results__poll-name'>{pollNames[index]}</p>
+          <div className='results__title-container'>
+            <p className='results__leader-title'>Leader</p>
+            <p className='results__follower-title'>Follower</p>
+          </div>
           {result.map((pair, index) => (
               <PairCardResult
                 key={pair.poll_item_id}
