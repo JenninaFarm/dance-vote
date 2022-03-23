@@ -2,8 +2,8 @@ html, body {
   height: 100%;
   width: 100%;
   margin: 0;
-  padding: 0;
 }
+
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-heading;
   font-weight: $font-weight-regular;
@@ -69,7 +69,8 @@ label {
 }
 
 header {
-  margin: $space-m;
+  margin-left: (-1) * $space-s;
+  padding: $space-m 0;
 }
 // button {
 //   //

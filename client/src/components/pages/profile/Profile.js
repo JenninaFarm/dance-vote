@@ -18,6 +18,7 @@ import EditPoll from '../../organisms/edit-poll/EditPoll';
 import EditPollName from '../../organisms/edit-poll/EditPollName';
 import EditPollPairAmount from '../../organisms/edit-poll/EditPollPairAmount';
 import EditPollPair from '../../organisms/edit-poll/EditPollPair';
+import Header from '../../organisms/headers/Header';
 
 const Profile = ({userObj}) => {
   const navigate = useNavigate();
@@ -42,6 +43,7 @@ const Profile = ({userObj}) => {
 
   return (
     <div className='profile'>
+      <Header />
       <NavigationBar
         clickHome={() => navigate('/profile')}
         clickPlus={handleOpenCreatePoll}

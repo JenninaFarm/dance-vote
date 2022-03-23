@@ -7,9 +7,6 @@ import Frontpage from './components/pages/frontpage/Frontpage';
 import Voting from './components/pages/voting/Voting';
 import Login from './components/pages/login/Login';
 import Profile from './components/pages/profile/Profile';
-import Header from './components/organisms/headers/Header';
-
-
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -24,7 +21,6 @@ const App = () => {
 
   return (
     <div className='dance-vote'>
-      <Header />
       <Routes>
         <Route path='/' element={<Frontpage handleLogin={login}/>} />
         <Route path='login' element={<Login handleLogin={login} />} />

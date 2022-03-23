@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Container, Draggable} from 'react-smooth-dnd';
 
+import Header from '../../organisms/headers/Header';
 import { ENDPOINT, restApi } from '../../../restApi';
 import socketIoClient from 'socket.io-client';
 import Button from '../../atoms/button/Button';
@@ -99,6 +100,7 @@ const Voting = () => {
   
   return (
     <div className='voting'>
+      <Header />
       <h2 className='voting__title'>Voting on {pollName} </h2>
       <Container onDrop={handleDrop}>
         {pairs.map((item, index) => (
