@@ -13,4 +13,13 @@ route.get('/', async (req, res) => {
   }
 });
 
+route.get('/public', async (req, res) => {
+  try {
+    const result = await crud.getPublicResults();
+    res.status(HttpStatus.OK).json(result.rows);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
 module.exports = route;

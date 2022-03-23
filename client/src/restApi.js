@@ -236,6 +236,15 @@ export const restApi = {
     }
   },
 
+  getPublicResults: async () => {
+    try {
+      const res = await client.get('result/public');
+      return res.data;
+    } catch (err) {
+      return err;
+    }
+  },
+
   getUsers: async () => {
     try {
       const res = await client.get('users');
