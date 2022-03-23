@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { restApi } from '../../../restApi';
-import PairCard from '../../molecules/cards/PairCard';
+import PairCardResult from '../../molecules/cards/PairCardResult';
 import Header from '../../organisms/headers/Header';
 
 const Results = () => {
@@ -43,7 +43,7 @@ const Results = () => {
           <p>Leader</p>
           <p>Follower</p>
           {result.map((pair, index) => (
-              <PairCard
+              <PairCardResult
                 key={pair.poll_item_id}
                 id={index}
                 follower={pair.follower}
