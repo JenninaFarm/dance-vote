@@ -22,14 +22,22 @@ const Frontpage = ({handleLogin}) => {
 
   return (
     <div className='frontpage'>
-      <h2 className='frontpage__title'>Enter a room to vote or create your own votes by signing up!</h2>
+      <h1 className='frontpage__title'>DanceVote</h1>
+      <Button
+        className='button button--secondary frontpage__results'
+        onClick={handleOpenRegistration}
+      >
+        View Results
+      </Button>
+
+      <h4 className='frontpage__divider'>or</h4>
+
       <InputWithNavigation
         buttonText='Join voting room'
-        placeholder='Enter access code to vote'
+        placeholder='Vote PIN'
         inputId='participate'
         navBase='vote?poll_id='
       />
-      <h4>or</h4>
       {loginOpen &&
         <Login
           handleClose={handleLoginOpen}
@@ -43,10 +51,11 @@ const Frontpage = ({handleLogin}) => {
           openLogin={handleLoginOpen}
         />
       }
-      <div className='frontpage__login'>
-        <Button onClick={handleLoginOpen}>Log in</Button>
+      <div className='frontpage__footer'>
+        <Button className='button button--secondary frontpage__register' onClick={handleOpenRegistration}>Sign up</Button>
+        <Button className='button frontpage__login' onClick={handleLoginOpen}>Log in</Button>
       </div>
-      <Button modifier='secondary' onClick={handleOpenRegistration}>Sign up</Button>
+      
     </div>
   )
 }
