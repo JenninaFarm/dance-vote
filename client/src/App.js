@@ -7,6 +7,7 @@ import Frontpage from './components/pages/frontpage/Frontpage';
 import Voting from './components/pages/voting/Voting';
 import Login from './components/pages/login/Login';
 import Profile from './components/pages/profile/Profile';
+import Results from './components/pages/results/Results';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -26,6 +27,7 @@ const App = () => {
         <Route path='login' element={<Login handleLogin={login} />} />
         <Route path='profile/*' element={isLoggedIn ? <Profile userObj={user} /> : <Navigate to='/login' /> } />
         <Route path='vote' element={<Voting />} />
+        <Route path='results' element={<Results />} />
       </Routes>
     </div>
   );

@@ -5,8 +5,10 @@ import PropTypes from 'prop-types';
 import InputWithNavigation from '../../molecules/fieldsets/inputWithNavigation/InputWithNavigation';
 import Login from '../../organisms/login/Login';
 import Register from '../../organisms/register/Register';
+import { useNavigate } from 'react-router-dom';
 
 const Frontpage = ({handleLogin}) => {
+  const navigate = useNavigate();
   const [loginOpen, setLoginOpen] = useState(false);
   const [registerOpen, setRegisterOpen] = useState(false);
 
@@ -25,7 +27,7 @@ const Frontpage = ({handleLogin}) => {
       <h1 className='frontpage__title'>DanceVote</h1>
       <Button
         className='button button--secondary frontpage__results'
-        onClick={handleOpenRegistration}
+        onClick={() => navigate('/results')}
       >
         View Results
       </Button>
