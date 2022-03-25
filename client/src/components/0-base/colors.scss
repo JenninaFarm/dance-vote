@@ -7,7 +7,6 @@ $color-dark-gray: #404E4D;
 $color-gray: #C4C4C4;
 $color-light-gray: #D3D3D3;
 $color-light-pale-gray: #E7E7E7;
-$color-light-beige: #EAE3E3;
 $color-shade-red: #C3423F;
 $color-green: #A6BF36;
 $color-light-green: #CCD645;
@@ -15,6 +14,12 @@ $color-light-blue-green: #ACD49C;
 $color-light-turquoise: #BADECA;
 $color-dark-navy: #00043d;
 $color-off-white: #EAE3E3;
+$color-pale-beige: #FFFBE9;
+$color-light-beige: #EAE3E3;
+$color-beige: #E3CAA5;
+$color-dark-brown: #604B39;
+
+
 
 
 /*********************
@@ -26,21 +31,23 @@ DEFAULT COLORS
 $defaultColors: (
   text: $color-black,
   text-inverse: $color-white,
-  light-background: $color-white,
+  light-background: $color-beige,
   pale-background: $color-light-gray,
-  button-primary: $color-black,
-  button-secondary: $color-light-beige,
+  button-primary: $color-dark-brown,
+  button-secondary: $color-pale-beige,
   box-shadow: rgba($color-black, 0.25),
+  modal: $color-beige,
+  modal-background: rgba($color-dark-brown, 0.7),
   separator: $color-off-white,
   profile: $color-gray,
-  voting: $color-gray,
-  results: $color-gray,
+  voting: $color-beige,
+  results: $color-beige,
   card: $color-white,
   card-header: $color-light-beige,
   card-accent: $color-light-pale-gray,
-  follower: $color-off-white,
-  leader: $color-light-gray,
-  placement: $color-white,
+  follower: $color-pale-beige,
+  leader: $color-dark-brown,
+  placement: $color-pale-beige,
 );
 
 /*********************

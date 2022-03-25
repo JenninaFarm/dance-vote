@@ -1,8 +1,10 @@
 .frontpage {
-  margin: $space-l;
+  padding: $space-l;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: clr(light-background);
+  min-height: 100vh;
 
   &__title {
     text-align: center;
