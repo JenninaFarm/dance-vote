@@ -43,5 +43,6 @@
 
   &:disabled {
     cursor: default;
+    background-color: clr(button-disabled);
   } 
 }

@@ -19,11 +19,13 @@
   }
 
   &__title {
+    font-size: $font-24;
     text-align: center;
     width: 100%;
     padding: 0 $space-xxs;
     text-transform: uppercase;
     font-weight: $font-weight-semi-bold;
+    color: clr(text-inverse);
   }
 
   &__access-code,
@@ -34,5 +36,6 @@
   &__icon {
     width: $icon-s;
     height: $icon-s;
+    color: clr(text-inverse);
   }
 }

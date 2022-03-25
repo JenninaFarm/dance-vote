@@ -53,12 +53,13 @@ SPACER
 }
 
 @mixin full-width() {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  margin-left: (-1) * $gutter-medium;
+  margin-right: (-1) * $gutter-medium;
+
+  @include breakpoint(laptop) {
+    margin-left: (-1) * $gutter-large;
+    margin-right: (-1) * $gutter-large;
+  }
 }
 
 /*********************

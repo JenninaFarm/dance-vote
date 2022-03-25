@@ -3,11 +3,10 @@
   @include full-width;
 
   box-sizing: border-box;
-  border-bottom: $border-separator;
-  border-top: $border-separator;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-top: $space-xs;
   padding-bottom: $space-xs;
+  background-color: clr(header-profile);
 }

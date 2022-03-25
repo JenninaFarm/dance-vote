@@ -94,8 +94,10 @@ label {
 }
 
 header {
-  margin-left: (-1) * $space-s;
-  padding: $space-m 0;
+  @include full-width;
+
+  padding: $space-m $space-s;
+  background-color: clr(header);
 }
 // button {
 //   //

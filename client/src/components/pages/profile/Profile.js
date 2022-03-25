@@ -68,7 +68,6 @@ const Profile = ({userObj}) => {
         <Route path='access-code' element={<AccessCode />} />
       </Routes>
       {createPollOpen && <CreatePollMoldal handleClose={handleOpenCreatePoll} user={user} />} 
-      <p> TODO: logout</p>
     </div>
   );
 }

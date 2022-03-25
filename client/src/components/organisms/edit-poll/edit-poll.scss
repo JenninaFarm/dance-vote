@@ -1,4 +1,12 @@
 .edit-poll {
+  @include full-width;
+  @include element-gutter(padding);
+
+  background-color: clr(light-background);
+  margin-bottom: (-1) * $space-l;
+  padding-bottom: $space-l;
+  min-height: 70vh;
+
   &__title {
     margin-top: $space-l;
     text-align: center;
