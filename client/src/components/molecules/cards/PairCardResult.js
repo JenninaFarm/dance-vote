@@ -10,13 +10,13 @@ const PairCardResult = ({id, leader, follower}) => {
   return (
     <Card className='pair-card'>
       {(id + 1 === 1 || id + 1 === 2 || id + 1 === 3) ?
-        <div className='pair-card__crown'>
+        <div className='pair-card__crown--background'>
           {id + 1 === 1 && <Crown1 />}
           {id + 1 === 2 && <Crown2 />}
           {id + 1 === 3 && <Crown3 />}
         </div>
         :
-        <p className='pair-card__placement'>{id + 1}</p>
+        <p className='pair-card__placement--background'>{id + 1}</p>
       }
       <div className='pair-card__pair'>
         <p className='pair-card__lead--result'>{leader}</p>

@@ -101,8 +101,9 @@ const Voting = () => {
   return (
     <div className='voting'>
       <Header />
-      <h2 className='voting__title'>Voting on {pollName} </h2>
-      <Container onDrop={handleDrop}>
+      <h2 className='voting__title'>{pollName}</h2>
+      <p className='voting__help'>Change the order of the pairs by dragging</p>
+      <Container className='voting__pairs' onDrop={handleDrop}>
         {pairs.map((item, index) => (
             <Draggable key={index}>
               <PairCard
@@ -120,7 +121,7 @@ const Voting = () => {
         onClick={handleOpenSubmit}
         disabled={pairs.length !== pollPairAmount}
       >
-        Send Your Vote
+        Vote
       </Button>
       {openSubmit && <Vote handleClose={handleOpenSubmit} submit={handleSendVote} pairs={pairs} /> }
     </div>
