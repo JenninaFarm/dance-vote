@@ -4,7 +4,7 @@ const app = express();
 const api = express.Router();
 const http = require('http');
 const cors = require('cors');
-const whitelist = ['https://dance-vote.herokuapp.com', 'http://127.0.0.1:3500', 'http://localhost:3000'];
+const whitelist = ['https://dance-vote.herokuapp.com', 'http://dance-vote.herokuapp.com', 'http://127.0.0.1:3500', 'http://localhost:3000'];
 const corsOptions = {
   origin: whitelist,
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
