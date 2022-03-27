@@ -13,18 +13,16 @@ const Input = ({children, valueSet, type, placeholder, id, handleValueChange, er
   }
 
   useEffect(() => {
-    console.log('height changed');
     if (id === document.activeElement.id) {
-      console.log('active input');
       const center = height / 2;
       const top = document.getElementById(id).offsetTop;
       if (top > center) {
-          console.log('here');
-          window.scrollTo({
-            top: top - center,
-            left: 0,
-            behavior: 'auto'
-          });        
+        console.log('here');
+        window.scrollTo({
+          top: top - center,
+          left: 0,
+          behavior: 'auto'
+        });        
       }
     }
   }, [height, id] )
