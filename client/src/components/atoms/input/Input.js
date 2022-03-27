@@ -1,14 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ErrorMessage from '../error-message/ErrorMessage';
+import { useWindowSize } from '../../../HelperFunctions';
 
 const Input = ({children, valueSet, type, placeholder, id, handleValueChange, errorMessage, ...rest}) => {
   const [value, setValue] = useState(valueSet? valueSet : '');
+  const [width, height] = useWindowSize();
 
   const handleChange = (e) => {
     setValue(e.target.value);
     handleValueChange(e.target.value);
   }
+
+  useEffect(() => {
+    console.log('height changed');
+    if (id === document.activeElement.id) {
+      console.log('active input');
+      const center = height / 2;
+      const top = document.getElementById(id).offsetTop;
+      if (top > center) {
+          console.log('here');
+          window.scrollTo({
+            top: top - center,
+            left: 0,
+            behavior: 'auto'
+          });        
+      }
+    }
+  }, [height, id] )
 
   useEffect(() => {
     if(valueSet) {
@@ -28,7 +47,6 @@ const Input = ({children, valueSet, type, placeholder, id, handleValueChange, er
       />
 
       {children}
-
       <ErrorMessage>
         {errorMessage}
       </ErrorMessage>

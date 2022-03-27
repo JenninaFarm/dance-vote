@@ -1,7 +1,8 @@
 .input-with-nav {
   @include element-spacer;
-  width: 100%;
 
+  width: 100%;
+  margin-bottom: 6rem;
   display: flex;
   flex-direction: column;
   align-items: center;

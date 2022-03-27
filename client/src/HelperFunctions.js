@@ -1,3 +1,5 @@
+import { useLayoutEffect, useState } from "react";
+
 /**
  * Created new unique id for the id given, ingluding the original id at the end of the
  * new id. Makes sure the character before the original id is a letter to keep it unique. 
@@ -24,4 +26,17 @@ export const createUniqueId = (id, length = 6) => {
   }
 
   return uniqueId += id;
+}
+
+export const useWindowSize = () => {
+  const [size, setSize] = useState([0, 0]);
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight]);
+    }
+    window.addEventListener('resize', updateSize);
+    updateSize();
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+  return size;
 }
