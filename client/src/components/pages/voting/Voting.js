@@ -105,7 +105,7 @@ const Voting = () => {
       <p className='voting__help'>Change the order of the pairs by dragging</p>
       <Container className='voting__pairs' onDrop={handleDrop}>
         {pairs.map((item, index) => (
-            <Draggable key={index} dragBeginDelay={50}>
+            <Draggable key={index} dragbegindelay={0}>
               <PairCard
                 className='voting__pair'
                 id={index}
