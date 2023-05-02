@@ -1,0 +1,36 @@
+users {
+  user_id
+  email
+  username 
+  password 
+  last_login (datetime)
+}
+
+polls {
+  poll_id
+  owner_id  -- FK to user_id
+  name
+  number_of_items (number of pairs)
+  on_going  (boolean)
+  access_code
+  public (boolean)
+}
+
+poll_items {
+  poll_item_id
+  poll_id -- FK to poll_id
+  leader
+  follower
+}
+
+votes {
+  vote_id
+  poll_id -- FK to poll_id
+  vote_array (array of poll_item_ids in order 0 index has the best)
+}
+
+results {
+  result_id
+  poll_id -- FK to poll_id
+  result_array (array of poll_item_ids in order 0 index has the best)
+}
